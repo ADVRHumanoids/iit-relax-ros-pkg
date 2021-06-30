@@ -1,4 +1,4 @@
-HOW TO CREATE THE URDF, SRDF AND SRD FILES:
+HOW TO CREATE THE URDF, SRDF AND SDF FILES:
 -------------------------------------------
 First add the path of the packged to the ```ROS_PACKAGE_PATH``` env variable so that ROS can find it:
 
