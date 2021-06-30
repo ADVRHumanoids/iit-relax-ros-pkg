@@ -3,3 +3,9 @@
 
 <!-- ************ MODEL CONFIGURATION ************ -->
 <xacro:include filename="$(find relax_urdf)/urdf/relax_config.urdf.xacro" />
+  
+<!-- ************ RELAX BASE ************ -->
+<xacro:include filename="$(find relax_urdf)/urdf/relax_base.urdf.xacro"/>
+
+  
+</robot>
