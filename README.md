@@ -8,7 +8,7 @@ If everything goes well you should be able to ```roscd relax_urdf```.
 
 Then go to the ```../iit-relax-ros-pkg/relax_urdf/scripts/``` folder and run:
 
-```./create_urdf_srdf_sdf.sh teleop```
+```./create_urdf_srdf_sdf.sh relax```
 
 Due to missing packages there could be some error messages, the final ```.urdf```, ```.srdf``` and ```.sdf``` should 
 anyway be created.
