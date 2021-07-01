@@ -1,7 +1,12 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
-  
-  
+
+
+<!-- color -->
+<material name="">
+  <color rgba="0.0 0.0 0.0 0.0"/>
+</material> 
+ 
 <!-- links -->
 <link name ="relax_link1">  <!-- link 1 -->
     <inertial>
