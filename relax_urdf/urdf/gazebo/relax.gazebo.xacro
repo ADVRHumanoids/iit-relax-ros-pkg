@@ -1,1 +1,27 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+
+
+<!-- <gazebo reference="joint1">
+	<implicitSpringDamper>1</implicitSpringDamper>
+	<provideFeedback>true</provideFeedback>
+</gazebo>
+<gazebo reference="joint2">
+	<implicitSpringDamper>1</implicitSpringDamper>
+	<provideFeedback>true</provideFeedback>
+</gazebo>
+<gazebo reference="joint3">
+	<implicitSpringDamper>1</implicitSpringDamper>
+	<provideFeedback>true</provideFeedback>
+</gazebo>
+<gazebo reference="joint4">
+	<implicitSpringDamper>1</implicitSpringDamper>
+	<provideFeedback>true</provideFeedback>
+</gazebo>
+<gazebo reference="joint5">
+	<implicitSpringDamper>1</implicitSpringDamper>
+	<provideFeedback>true</provideFeedback>
+</gazebo> -->
+
+</robot>
 
