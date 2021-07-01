@@ -3,3 +3,5 @@
 
 <xacro:property name="model_name" value="IIT RELAX" />
 <xacro:property name="model_version" value="0.1" />
+  
+</robot>
