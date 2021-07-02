@@ -4,7 +4,6 @@
 <xacro:property name="model_name" value="IIT RELAX" />
 <xacro:property name="model_version" value="0.1" />
 
-
 <!-- ************FLOATING BASE*************-->
 <xacro:property name="RELAX_FLOATING_BASE" value="false" />
 
