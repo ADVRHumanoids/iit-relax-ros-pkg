@@ -5,14 +5,14 @@
 <xacro:include filename="$(find relax_urdf)/urdf/relax_base.urdf.xacro"/>
 
 <!-- ***** attach base to the world ***** -->
-<xacro:if value="${ADD_FLOATING_BASE}">
+<xacro:if value="${RELAX_FLOATING_BASE}">
     <link name="world"/>
     <joint name="world_joint" type="floating">
       <parent link="world"/>
       <child link="base_link"/>
     </joint>
 </xacro:if>
-<xacro:unless value="${ADD_FLOATING_BASE}">
+<xacro:unless value="${RELAX_FLOATING_BASE}">
     <link name="world"/>
     <joint name="world_joint" type="fixed">
       <parent link="world"/>
