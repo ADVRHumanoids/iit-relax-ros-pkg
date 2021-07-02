@@ -19,14 +19,14 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0"/>
       <geometry name="relax_link1_visual">
-        <mesh filename="package://teleop_urdf/meshes/mesh_link1.stl" scale="0.0 0.0 0.0" />
+        <mesh filename="package://teleop_urdf/meshes/mesh_link1.stl" scale="0.001 0.001 0.001" />
       </geometry>
       <material name=""/>
     </visual>
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0"/>
       <geometry name="relax_link1_collision">
-        <mesh filename="package://relax_urdf/meshes/mesh_link1.stl" scale="0.0 0.0 0.0" />
+        <mesh filename="package://relax_urdf/meshes/mesh_link1.stl" scale="0.001 0.001 0.001" />
       </geometry>             
     </collision>
 </link>
@@ -40,14 +40,14 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0"/>
       <geometry name="relax_link1_visual">
-        <mesh filename="package://teleop_urdf/meshes/mesh_link2.stl" scale="0.0 0.0 0.0" />
+        <mesh filename="package://teleop_urdf/meshes/mesh_link2.stl" scale="0.001 0.001 0.001" />
       </geometry>
       <material name=""/>
     </visual>
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0"/>
       <geometry name="relax_link2_collision">
-        <mesh filename="package://relax_urdf/meshes/mesh_link2.stl" scale="0.0 0.0 0.0" />
+        <mesh filename="package://relax_urdf/meshes/mesh_link2.stl" scale="0.001 0.001 0.001" />
       </geometry>             
     </collision>
 </link>
@@ -61,14 +61,14 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0"/>
       <geometry name="relax_link3_visual">
-        <mesh filename="package://teleop_urdf/meshes/mesh_link3.stl" scale="0.0 0.0 0.0" />
+        <mesh filename="package://teleop_urdf/meshes/mesh_link3.stl" scale="0.001 0.001 0.001" />
       </geometry>
       <material name=""/>
     </visual>
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0"/>
       <geometry name="relax_link3_collision">
-        <mesh filename="package://relax_urdf/meshes/mesh_link3.stl" scale="0.0 0.0 0.0" />
+        <mesh filename="package://relax_urdf/meshes/mesh_link3.stl" scale="0.001 0.001 0.001" />
       </geometry>             
     </collision>
 </link>
@@ -82,14 +82,14 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0"/>
       <geometry name="relax_link4_visual">
-        <mesh filename="package://teleop_urdf/meshes/mesh_link4.stl" scale="0.0 0.0 0.0" />
+        <mesh filename="package://teleop_urdf/meshes/mesh_link4.stl" scale="0.001 0.001 0.001" />
       </geometry>
       <material name=""/>
     </visual>
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0"/>
       <geometry name="relax_link4_collision">
-        <mesh filename="package://relax_urdf/meshes/mesh_link4.stl" scale="0.0 0.0 0.0" />
+        <mesh filename="package://relax_urdf/meshes/mesh_link4.stl" scale="0.001 0.001 0.001" />
       </geometry>             
     </collision>
 </link>
@@ -103,14 +103,14 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0"/>
       <geometry name="relax_link5_visual">
-        <mesh filename="package://teleop_urdf/meshes/mesh_link5.stl" scale="0.0 0.0 0.0" />
+        <mesh filename="package://teleop_urdf/meshes/mesh_link5.stl" scale="0.001 0.001 0.001" />
       </geometry>
       <material name=""/>
     </visual>
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0"/>
       <geometry name="relax_link5_collision">
-        <mesh filename="package://relax_urdf/meshes/mesh_link5.stl" scale="0.0 0.0 0.0" />
+        <mesh filename="package://relax_urdf/meshes/mesh_link5.stl" scale="0.001 0.001 0.001" />
       </geometry>             
     </collision>
 </link>
