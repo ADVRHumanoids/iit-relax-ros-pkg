@@ -9,20 +9,18 @@
 
 <!-- **** attach to the world **** -->
 <xacro:if value="${ADD_FLOATING_BASE}">
-<link name="world"/>
-
-  <joint name="world_joint" type="floating">
-    <parent link="world"/>
-    <child link=""/>
-</joint>
+    <link name="world"/>
+    <joint name="world_joint" type="floating">
+      <parent link="world"/>
+      <child link=""/>
+    </joint>
 </xacro:if>
 <xacro:unless value="${ADD_FLOATING_BASE}">
-<link name="world"/>
-
-  <joint name="world_joint" type="fixed">
-    <parent link="world"/>
-    <child link=""/>
-</joint>
+    <link name="world"/>
+    <joint name="world_joint" type="fixed">
+      <parent link="world"/>
+      <child link=""/>
+    </joint>
 </xacro:unless>
   
 </robot>
