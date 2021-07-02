@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<robot xmlns:xacro="http://ros.org/wiki/xacro" name="relax">
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
 
 <!-- **** base attached to robot **** -->
 <xacro:if value="${RELAX_FLOATING_BASE}">
