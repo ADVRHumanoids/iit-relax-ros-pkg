@@ -5,19 +5,21 @@
 <xacro:include filename="$(find relax_urdf)/urdf/relax_base.urdf.xacro"/>
 
 <!-- ***** attach base to the world ***** -->
-<xacro:if value="${RELAX_FLOATING_BASE}">
-    <link name="world"/>
-    <joint name="world_joint" type="floating">
-      <parent link="world"/>
-      <child link="base_link"/>
-    </joint>
+<xacro:if value="${RELAX_FLOATING_BASE}" > <!-- floating base -->
+	<link name="world"/>
+  <joint name="world_joint" type="floating">
+    	<parent link="world"/>
+    	<child link="base_link"/>
+		<origin xyz="0 0 0" rpy="0 0 0" />
+	</joint>
 </xacro:if>
-<xacro:unless value="${RELAX_FLOATING_BASE}">
-    <link name="world"/>
-    <joint name="world_joint" type="fixed">
-      <parent link="world"/>
-      <child link="base_link"/>
-    </joint>
-</xacro:unless>
+<xacro:if value="${RELAX_FIXED_BASE}" > <!-- fixed base -->
+  	<link name="world"/>
+   	<joint name="world_joint" type="fixed">
+    		<parent link="world"/>
+    		<child link="base_link"/>
+  	</joint>
+    <origin xyz="0 0 0" rpy="0 0 0" />
+</xacro:if>
   
 </robot>
