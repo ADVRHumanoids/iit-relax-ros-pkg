@@ -91,27 +91,6 @@
       </geometry>             
     </collision>
 </link>
-
-<link name ="relax_link4">  <!-- link 4 -->
-    <inertial>
-      <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
-      <mass value="0.0"/>
-      <inertia ixx="0.0" ixy="0.0" ixz="0.0" iyy="0.0" iyz="0.0" izz="0.0" />
-    </inertial>
-    <visual>
-      <origin xyz="0 0 0" rpy="0 0 0"/>
-      <geometry name="relax_link4_visual">
-        <mesh filename="package://teleop_urdf/meshes/mesh_link4.stl" scale="0.0 0.0 0.0" />
-      </geometry>
-      <material name=""/>
-    </visual>
-    <collision>
-      <origin xyz="0 0 0" rpy="0 0 0"/>
-      <geometry name="relax_link4_collision">
-        <mesh filename="package://relax_urdf/meshes/mesh_link4.stl" scale="0.0 0.0 0.0" />
-      </geometry>             
-    </collision>
-</link>
   
 <link name ="relax_link5">  <!-- link 5 -->
     <inertial>
