@@ -1,6 +1,8 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
 
+<!-- scale -->
+<xacro:property name="mmTom" value="0.001" />
 
 <!-- color -->
 <material name="">
@@ -117,8 +119,8 @@
 <joint name="joint1" type="revolute"> <!-- joint 1 -->
     <parent link="relax_link1"/>
     <child link="relax_link2"/>
-    <origin xyz="0 0 0" rpy="0 0 0"/>
-    <axis xyz="0 0 0"/>
+    <origin xyz="0 ${131.660*mmTom} ${-249.660*mmTom}" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
     <limit velocity="0" effort="0" lower="0" upper="0" />
     <dynamics friction="0" damping="0"/>
 </joint>
@@ -126,8 +128,8 @@
 <joint name="joint2" type="revolute"> <!-- joint 2 -->
     <parent link="relax_link2"/>
     <child link="relax_link3"/>
-    <origin xyz="0 0 0" rpy="0 0 0"/>
-    <axis xyz="0 0 0"/>
+    <origin xyz="0 0 ${-400*mmTom}" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
     <limit velocity="0" effort="0" lower="0" upper="0" />
     <dynamics friction="0" damping="0"/>
 </joint>
@@ -135,8 +137,8 @@
 <joint name="joint3" type="revolute"> <!-- joint 3 -->
     <parent link="relax_link3"/>
     <child link="relax_link4"/>
-    <origin xyz="0 0 0" rpy="0 0 0"/>
-    <axis xyz="0 0 0"/>
+    <origin xyz="0 ${-131.660*mmTom} ${-249.660*mmTom}" rpy="0 0 0"/>
+    <axis xyz="0 0 1"/>
     <limit velocity="0" effort="0" lower="0" upper="0" />
     <dynamics friction="0" damping="0"/>
 </joint>
@@ -144,8 +146,8 @@
 <joint name="joint4" type="revolute"> <!-- joint 4 -->
     <parent link="relax_link4"/>
     <child link="relax_link5"/>
-    <origin xyz="0 0 0" rpy="0 0 0"/>
-    <axis xyz="0 0 0"/>
+    <origin xyz="0 ${-88.1600*mmTom} ${-153.500*mmTom}" rpy="0 0 3.1415927"/>
+    <axis xyz="0 1 0"/>
     <limit velocity="0" effort="0" lower="0" upper="0" />
     <dynamics friction="0" damping="0"/>
 </joint>
