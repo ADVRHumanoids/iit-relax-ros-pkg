@@ -10,7 +10,7 @@
 <!-- ***** attach base to the world ***** -->
 <xacro:if value="${RELAX_FLOATING_BASE}" > <!-- floating base -->
 	<link name="world"/>
-  <joint name="world_joint" type="floating">
+  	<joint name="world_joint" type="floating">
     	<parent link="world"/>
     	<child link="base_link"/>
 		<origin xyz="0 0 0" rpy="0 0 0" />
