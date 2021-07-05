@@ -8,6 +8,9 @@
 <xacro:property name="RELAX_FLOATING_BASE" value="false" />
 
 <!-- ************FIXED BASE*************-->
-<xacro:property name="RELAX_FIXED_BASE" value="true" />  
+<xacro:property name="RELAX_FIXED_BASE" value="true" />
+ 
+<!-- ************MOBILE BASE*************-->
+<xacro:property name="RELAX_MOBILE_BASE" value="false" />
   
 </robot>
