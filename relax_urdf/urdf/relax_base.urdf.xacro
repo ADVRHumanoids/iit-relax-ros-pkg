@@ -19,13 +19,13 @@
     		<origin xyz="0 0 0" rpy="0 0 0" />
 	</joint>
 </xacro:if>
-	
+
+<!-- ********  attach robot  ******** -->
+<xacro:include filename="$(find relax_urdf)/urdf/parts/arm.urdf.xacro" />
+
 <!-- ********  attach robot  ******** -->
 <xacro:if value="${RELAX_MOBILE_BASE}">
 <xacro:include filename="$(find relax_urdf)/urdf/parts/mobile_base.urdf.xacro" />  
 </xacro:if>
-
-<!-- ********  attach robot  ******** -->
-<xacro:include filename="$(find relax_urdf)/urdf/parts/arm.urdf.xacro" />
   
 </robot>
