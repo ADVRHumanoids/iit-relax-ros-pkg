@@ -24,6 +24,6 @@
 <xacro:include filename="$(find relax_urdf)/urdf/parts/arm.urdf.xacro" />
 	
 <!-- ********  attach robot  ******** -->
-<xacro:include filename="$(find relax_urdf)/urdf/parts/base.urdf.xacro" />  
+<xacro:include filename="$(find relax_urdf)/urdf/parts/mobile_base.urdf.xacro" />  
   
 </robot>
