@@ -2,7 +2,7 @@
      <arg name="gui" default="true" />
 
      <!-- send the relax robot XML to param server -->
-     <param name="robot_description" command="(findxacro)/xacro.py′(find relax_urdf)/urdf/relax_fake_base.urdf'" />
+     <param name="robot_description" command="$(find xacro)/xacro.py '$(find relax_urdf)/urdf/relax_fake_base.urdf'" />
      <!-- <param name="robot_description_semantic" textfile="$(find relax_urdf)/srdf/relax_mobile_base.srdf" />   -->
      <param name="use_gui" value="$(arg gui)"/>
      <param name="rate" value="50.0"/>
