@@ -1,1 +1,17 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
 
+<!-- links -->
+<link name ="fake_link">  <!-- fake link -->
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+    </visual>
+</link>  
+  
+<joint name="fake_joint" type="fixed"> <!-- mobile base joint -->
+    <parent link="fake_link"/>
+    <child link="relax_link1"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+</joint>  
+  
+</robot>
