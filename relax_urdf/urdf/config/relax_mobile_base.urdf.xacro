@@ -11,6 +11,9 @@
 <xacro:property name="RELAX_FIXED_BASE" value="false" />  
  
 <!-- ************MOBILE BASE*************-->
-<xacro:property name="RELAX_MOBILE_BASE" value="true" />  
+<xacro:property name="RELAX_MOBILE_BASE" value="true" />
+ 
+<!-- ************FAKE BASE*************-->
+<xacro:property name="RELAX_FAKE_BASE" value="false" />
   
 </robot>
