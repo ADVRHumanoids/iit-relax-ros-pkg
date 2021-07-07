@@ -101,8 +101,8 @@ EOF
             
 	    if [ ${robot_name} = ${model_filename} ];
 	    then
-		printf "${GREEN} changing ${model_filename}_robot.urdf name to _${model_filename}_robot.urdf\n"
-		rosrun xacro xacro --check-order ${robot_name}_robot.urdf.xacro > _${model_filename}_robot.urdf		
+		printf "${GREEN} changing ${model_filename}_robot.urdf name to ${model_filename}_robot.urdf\n"
+		rosrun xacro xacro --check-order ${robot_name}_robot.urdf.xacro > ${model_filename}_robot.urdf		
 	    fi
             rm ${robot_name}_robot.urdf
             printf "${GREEN}...sdf correctly created!${NC}\n"
