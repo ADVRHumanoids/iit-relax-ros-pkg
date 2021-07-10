@@ -32,7 +32,6 @@
       <mass value="1.9989653e+00"/>
       <inertia ixx="${4.9589547e+04*mm2Tom2}"  ixy="${-2.3822174e-02*mm2Tom2}"  ixz="${2.3476881e+02*mm2Tom2}" iyy="${5.1111593e+04*mm2Tom2}" iyz="${7.7698490e-01*mm2Tom2}" izz="${4.0702979e+03*mm2Tom2}" />
     </inertial>
-    </inertial>
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0"/>
       <geometry name="relax_link1_visual">
