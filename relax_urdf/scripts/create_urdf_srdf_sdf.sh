@@ -130,11 +130,11 @@ EOF
 
             cd $SCRIPT_ROOT
 
-            echo
-            ./load_acm.py ../../${robot_name}_srdf/srdf/${model_filename}.srdf --output
-            ./load_acm.py ../../${robot_name}_srdf/srdf/${model_filename}_capsules.srdf --output
-            printf "${RED}skipping computation of default allowed collision detection matrix${NC}\n"
-            printf "${YELLOW}Please make sure the ACM are up-to-date by running ${ORANGE}make acm${YELLOW} in the model build folder${NC}\n"
+           # echo
+           # ./load_acm.py ../../${robot_name}_srdf/srdf/${model_filename}.srdf --output
+           # ./load_acm.py ../../${robot_name}_srdf/srdf/${model_filename}_capsules.srdf --output
+           # printf "${RED}skipping computation of default allowed collision detection matrix${NC}\n"
+           # printf "${YELLOW}Please make sure the ACM are up-to-date by running ${ORANGE}make acm${YELLOW} in the model build folder${NC}\n"
 
 
             echo 
