@@ -6,9 +6,9 @@
 <!-- links -->
 <link name ="relax_link1">  <!-- link 1 -->
     <inertial>
-      <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
-      <mass value="0.0"/>
-      <inertia ixx="0.0" ixy="0.0" ixz="0.0" iyy="0.0" iyz="0.0" izz="0.0" />
+      <origin xyz="${1.3955428e+00*mmTom} ${2.5982581e+01*mmTom} ${-1.6511476e+02*mmTom}" rpy="0 0 0"/>
+      <mass value="5.9029271e+00"/>
+      <inertia ixx="${6.2182861e+04*mm2Tom2}"  ixy="${8.1614096e+01*mm2Tom2}"  ixz="${1.0385066e+02*mm2Tom2}" iyy="${5.5346023e+04*mm2Tom2}" iyz="${1.2999920e+04*mm2Tom2}" izz="${1.6821722e+04*mm2Tom2}" />
     </inertial>
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0"/>
@@ -27,9 +27,11 @@
   
 <link name ="relax_link2">  <!-- link 2 -->
     <inertial>
-      <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
-      <mass value="0.0"/>
-      <inertia ixx="0.0" ixy="0.0" ixz="0.0" iyy="0.0" iyz="0.0" izz="0.0" />
+       <inertial>
+      <origin xyz="${0.0000000e+00*mmTom} ${-7.1720374e+00*mmTom} ${-2.0000694e+02*mmTom}" rpy="0 0 0"/>
+      <mass value="1.9989653e+00"/>
+      <inertia ixx="${4.9589547e+04*mm2Tom2}"  ixy="${-2.3822174e-02*mm2Tom2}"  ixz="${2.3476881e+02*mm2Tom2}" iyy="${5.1111593e+04*mm2Tom2}" iyz="${7.7698490e-01*mm2Tom2}" izz="${4.0702979e+03*mm2Tom2}" />
+    </inertial>
     </inertial>
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0"/>
@@ -48,9 +50,9 @@
 
 <link name ="relax_link3">  <!-- link 3 -->
     <inertial>
-      <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
-      <mass value="0.0"/>
-      <inertia ixx="0.0" ixy="0.0" ixz="0.0" iyy="0.0" iyz="0.0" izz="0.0" />
+      <origin xyz="${-2.1052916e+00*mmTom} ${-1.0638552e+02*mmTom} ${-7.4903486e+01*mmTom}" rpy="0 0 0"/>
+      <mass value="5.8838845e+00"/>
+      <inertia ixx="${6.1043599e+04*mm2Tom2}"  ixy="${-1.5340891e+02*mm2Tom2}"  ixz="${-1.7833160e+02*mm2Tom2}" iyy="${5.3601310e+04*mm2Tom2}" iyz="${-1.1090900e+04*mm2Tom2}" izz="${1.7380798e+04*mm2Tom2}" />
     </inertial>
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0"/>
@@ -69,9 +71,9 @@
 
 <link name ="relax_link4">  <!-- link 4 -->
     <inertial>
-      <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
-      <mass value="0.0"/>
-      <inertia ixx="0.0" ixy="0.0" ixz="0.0" iyy="0.0" iyz="0.0" izz="0.0" />
+      <origin xyz="${2.4496086e-01*mmTom} ${-1.0728501e+00*mmTom} ${-4.9015064e+01*mmTom}" rpy="0 0 0"/>
+      <mass value="1.3982240e+00"/>
+      <inertia ixx="${1.4667270e+04*mm2Tom2}"  ixy="${-2.0411012e+01*mm2Tom2}"  ixz="${-4.4769570e+01*mm2Tom2}" iyy="${8.6598581e+03*mm2Tom2}" iyz="${-8.3199044e+01*mm2Tom2}" izz="${1.0450923e+04*mm2Tom2}" />
     </inertial>
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0"/>
@@ -89,10 +91,10 @@
 </link>
   
 <link name ="relax_link5">  <!-- link 5 -->
-    <inertial>
-      <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
-      <mass value="0.0"/>
-      <inertia ixx="0.0" ixy="0.0" ixz="0.0" iyy="0.0" iyz="0.0" izz="0.0" />
+     <inertial>
+      <origin xyz="${-1.3228834e+00*mmTom} ${-8.4683010e+01*mmTom} ${-5.3211105e+01*mmTom}" rpy="0 0 0"/>
+      <mass value="5.7923846e+00"/>
+      <inertia ixx="${5.5109543e+04*mm2Tom2}"  ixy="${-1.4003837e+02*mm2Tom2}"  ixz="${ 2.1470743e+02*mm2Tom2}" iyy="${5.1309424e+04*mm2Tom2}" iyz="${-1.0289246e+03*mm2Tom2}" izz="${1.3804762e+04*mm2Tom2}" />
     </inertial>
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0"/>
