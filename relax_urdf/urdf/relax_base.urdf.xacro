@@ -42,7 +42,7 @@
                     <child link="relax_link1"/>
                     <origin xyz="0 0 0" rpy="0 0 0" />
             </joint>
-        <xacro:if/>
+        </xacro:if>
     </xacro:unless>
 </xacro:if>
 
@@ -51,12 +51,11 @@
 <xacro:include filename="$(find relax_urdf)/urdf/parts/mobile_base.urdf.xacro" />  
 </xacro:if>
 
-<!-- ********  attach robot  ******** -->
-<xacro:if value="${RELAX_FAKE_BASE}">
-<xacro:include filename="$(find relax_urdf)/urdf/parts/fake_base.urdf.xacro" />  
-</xacro:if>
 	
 <!-- ********  attach robot  ******** -->
-<xacro:include filename="$(find relax_urdf)/urdf/parts/arm.urdf.xacro" />
-  
+
+<xacro:if value="${RELAX_ARM}">
+    <xacro:include filename="$(find relax_urdf)/urdf/parts/arm.urdf.xacro" />
+</xacro:if>
+
 </robot>
