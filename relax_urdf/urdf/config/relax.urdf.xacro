@@ -5,13 +5,16 @@
 <xacro:property name="model_version" value="0.1" />
 
 <!-- ************FLOATING BASE*************-->
-<xacro:property name="RELAX_FLOATING_BASE" value="false" />
+<xacro:property name="RELAX_FLOATING_BASE" value="true" />
+
+<!-- ************ARM*************-->
+<xacro:property name="RELAX_ARM" value="true" />
 
 <!-- ************FIXED BASE*************-->
 <xacro:property name="RELAX_FIXED_BASE" value="false" />
  
 <!-- ************MOBILE BASE*************-->
-<xacro:property name="RELAX_MOBILE_BASE" value="false" />
+<xacro:property name="RELAX_MOBILE_BASE" value="true" />
  
 <!-- ************FAKE BASE*************-->
 <xacro:property name="RELAX_FAKE_BASE" value="false" />

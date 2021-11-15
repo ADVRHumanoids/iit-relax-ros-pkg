@@ -2,7 +2,7 @@
 <robot xmlns:xacro="http://ros.org/wiki/xacro" name="relax">
 
 <!-- ************ MODEL CONFIGURATION ************ -->
-<xacro:include filename="$(find relax_urdf)/urdf/relax_config.urdf.xacro" />
+<xacro:include filename="$(find relax_urdf)/urdf/config/relax.urdf.xacro" />
 	
 <!-- ************ UTILS ************ -->
 <xacro:include filename="$(find relax_urdf)/urdf/relax_utils.urdf.xacro"/>

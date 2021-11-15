@@ -3,21 +3,47 @@
 
 <!-- **** base attached to robot **** -->
 <xacro:if value="${RELAX_FLOATING_BASE}">
-	<link name="base_link"/>
-	<joint name="base_joint" type="fixed">
-    		<parent link="base_link"/>
-    		<child link="relax_link1"/>
-    		<origin xyz="0 0 0" rpy="0 0 0" />
-	</joint>
+    <xacro:if value="${RELAX_MOBILE_BASE}">
+        <link name="base_link"/>
+        <joint name="base_joint" type="fixed">
+                <parent link="base_link"/>
+                <child link="mobile_base_link"/>
+                <origin xyz="0 0 0" rpy="0 0 0" />
+        </joint>
+    </xacro:if>
+    
+    <xacro:unless value="${RELAX_MOBILE_BASE}">
+        <xacro:if value="${RELAX_ARM}">
+            <link name="base_link"/>
+            <joint name="base_joint" type="fixed">
+                    <parent link="base_link"/>
+                    <child link="relax_link1"/>
+                    <origin xyz="0 0 0" rpy="0 0 0" />
+            </joint>
+        </xacro:if>
+    </xacro:unless>
 </xacro:if>
 
 <xacro:if value="${RELAX_FIXED_BASE}">
-	<link name="base_link"/>
-	<joint name="base_joint" type="fixed">
-    		<parent link="base_link"/>
-    		<child link="relax_link1"/>
-    		<origin xyz="0 0 0" rpy="0 0 0" />
-	</joint>
+    <xacro:if value="${RELAX_MOBILE_BASE}">
+        <link name="base_link"/>
+        <joint name="base_joint" type="fixed">
+                <parent link="base_link"/>
+                <child link="mobile_base_link"/>
+                <origin xyz="0 0 0" rpy="0 0 0" />
+        </joint>
+    </xacro:if>
+    
+    <xacro:unless value="${RELAX_MOBILE_BASE}">
+        <xacro:if value="${RELAX_ARM}">
+            <link name="base_link"/>
+            <joint name="base_joint" type="fixed">
+                    <parent link="base_link"/>
+                    <child link="relax_link1"/>
+                    <origin xyz="0 0 0" rpy="0 0 0" />
+            </joint>
+        <xacro:if/>
+    </xacro:unless>
 </xacro:if>
 
 <!-- ********  attach robot  ******** -->

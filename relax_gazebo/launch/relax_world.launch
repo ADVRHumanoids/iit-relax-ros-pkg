@@ -35,7 +35,7 @@
     <!-- start gazebo client -->
     <node name="gazebo_gui" pkg="gazebo_ros" type="gzclient" respawn="false" output="screen" if="$(arg gui)"/>
     <!-- Run a python script to the send a service call to gazebo_ros to spawn a URDF robot -->
-	  <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" args="-file $(find relax_urdf)/urdf/relax_fake_base_robot.urdf -urdf -model relax" />
+	  <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" args="-file $(find relax_urdf)/urdf/relax.urdf -urdf -model relax" />
   </group>
   
 </launch>
