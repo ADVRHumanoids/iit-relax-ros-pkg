@@ -23,20 +23,6 @@
     </collision>
 </link> 
 
-<link name ="left_wheel_motor">
-    <inertial>
-      <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
-      <mass value="0.1"/>
-      <inertia ixx="0.017" ixy="0.0" ixz="0.0" iyy="0.017" iyz="0.0" izz="0.017" />
-    </inertial>
-    <visual>
-      <origin xyz="0 0 0" rpy="0 0 0"/>
-    </visual>
-    <collision>
-      <origin xyz="0 0 0" rpy="0 0 0"/>          
-    </collision>
-</link> 
-
 <link name ="left_wheel">
     <inertial>
       <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
@@ -55,20 +41,6 @@
       <geometry name="mobile_base_link_collision">
         <mesh filename="package://relax_urdf/meshes/mir_base.stl" scale="0.001 0.001 0.001" />
       </geometry>             
-    </collision>
-</link> 
-
-<link name ="right_wheel_motor">
-    <inertial>
-      <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
-      <mass value="0.1"/>
-      <inertia ixx="0.017" ixy="0.0" ixz="0.0" iyy="0.017" iyz="0.0" izz="0.017" />
-    </inertial>
-    <visual>
-      <origin xyz="0 0 0" rpy="0 0 0"/>
-    </visual>
-    <collision>
-      <origin xyz="0 0 0" rpy="0 0 0"/>          
     </collision>
 </link> 
 
@@ -93,30 +65,19 @@
     </collision>
 </link> 
 
-<joint name="j_l_motor" type="fixed">
-	<parent link="mobile_base_link"/>
-	<child link="left_wheel_motor"/>
-    <origin xyz="-0.00448719 0.25 0.09" rpy="0 0 0"/>
-</joint>
-
-<joint name="j_r_motor" type="fixed">
-	<parent link="mobile_base_link"/>
-	<child link="right_wheel_motor"/>
-	<origin xyz="-0.00448719 -0.25 0.09" rpy="0 0 0"/>
-</joint>
 
 <joint name="j_left_wheel" type="continuous">
-	<parent link="left_wheel_motor"/>
+	<parent link="mobile_base_link"/>
 	<child link="left_wheel"/>
-    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <origin xyz="-0.00448719 0.25 0.09" rpy="0 0 0"/>
 	<axis xyz="0 0 -1"/>
    <limit  effort="35" velocity="20"/>
 </joint>
 
 <joint name="j_right_wheel" type="continuous">
-	<parent link="right_wheel_motor"/>
+	<parent link="mobile_base_link"/>
 	<child link="right_wheel"/>
-    <origin xyz="0 0 0" rpy="0 0 0"/>
+	<origin xyz="-0.00448719 -0.25 0.09" rpy="0 0 0"/>
 	<axis xyz="0 0 1"/>
    <limit  effort="35" velocity="20"/>
 </joint>
