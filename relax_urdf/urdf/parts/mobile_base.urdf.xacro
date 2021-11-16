@@ -82,12 +82,4 @@
    <limit  effort="35" velocity="20"/>
 </joint>
 
-  
-<xacro:if value="${RELAX_ARM}">
-    <joint name="mobile_base_joint" type="fixed"> <!-- mobile base joint -->
-        <parent link="mobile_base_link"/>
-        <child link="relax_link1"/>
-        <origin xyz="0 0 ${320.000*mmTom}" rpy="3.1415927 0 0"/>
-    </joint>  
-</xacro:if>  
 </robot>
