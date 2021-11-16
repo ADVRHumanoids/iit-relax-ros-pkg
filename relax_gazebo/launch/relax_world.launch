@@ -27,6 +27,8 @@
        WARNING: exactly one parameter has to be true, otherwise simulation behaviour is undefined -->
   <arg name="world_name" default="$(find relax_gazebo)/worlds/relax.world"/>
   
+  <param name="robot_semantic_description" textfile="$(find relax_srdf)/srdf/relax.srdf"/>
+  
   <!-- run gazebo -->
   <group if="$(arg gazebo)">
     <!-- start gazebo server-->

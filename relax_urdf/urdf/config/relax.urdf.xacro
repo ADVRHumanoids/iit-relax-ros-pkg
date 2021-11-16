@@ -9,9 +9,6 @@
 
 <!-- ************ARM*************-->
 <xacro:property name="RELAX_ARM" value="true" />
-
-<!-- ************FIXED BASE*************-->
-<xacro:property name="RELAX_FIXED_BASE" value="false" />
  
 <!-- ************MOBILE BASE*************-->
 <xacro:property name="RELAX_MOBILE_BASE" value="true" />
