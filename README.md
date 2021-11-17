@@ -15,6 +15,8 @@ anyway be created.
 
 
 # How to use it - Dummy mode
+
+- set_xbot2_config */relax_config/relax_basic.yaml
 - roscore
 - xbot2-core -H dummy
 - rviz (with robot model, tf)

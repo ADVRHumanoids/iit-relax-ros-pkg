@@ -5,8 +5,8 @@
 <link name ="mobile_base_link">  <!-- mobile base link -->
     <inertial>
       <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
-      <mass value="10.0"/>
-      <inertia ixx="1.7" ixy="0.0" ixz="0.0" iyy="1.7" iyz="0.0" izz="1.7" />
+      <mass value="100.0"/>
+      <inertia ixx="17" ixy="0.0" ixz="0.0" iyy="17" iyz="0.0" izz="17" />
     </inertial>
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0"/>
