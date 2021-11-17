@@ -64,8 +64,8 @@ cat >> ../../${robot_name}_gazebo/database/$model_filename/model.config << EOF
   <sdf version='1.4'>${robot_name}.sdf</sdf>
 
   <author>
-   <name>Enrico Mingo</name>
-   <email>enrico.mingo@iit.it</email>
+   <name>A. De Luca, L. Bertoni and D. Torielli</name>
+   <email>name.surname@iit.it</email>
   </author>
 
   <description>

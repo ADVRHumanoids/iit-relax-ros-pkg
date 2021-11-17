@@ -1,7 +1,5 @@
 <?xml version="1.0"?>
-<robot xmlns:xacro="http://ros.org/wiki/xacro">
-
-    
+<robot xmlns:xacro="http://ros.org/wiki/xacro">    
     
 <xacro:if value="${RELAX_MOBILE_BASE}">
     <gazebo reference="wheel_left">
@@ -66,17 +64,16 @@
         </collision>
     </gazebo>
     
-    <gazebo reference="j_wheel_left">
+    <gazebo reference="j_left_wheel">
         <implicitSpringDamper>1</implicitSpringDamper>
         <provideFeedback>true</provideFeedback>
     </gazebo>
 
 
-    <gazebo reference="j_wheel_right">
+    <gazebo reference="j_right_wheel">
         <implicitSpringDamper>1</implicitSpringDamper>
         <provideFeedback>true</provideFeedback>
-    </gazebo>
-
+    </gazebo>   
 </xacro:if>
 
 <!-- <gazebo reference="joint1">

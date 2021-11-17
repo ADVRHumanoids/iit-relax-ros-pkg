@@ -13,11 +13,11 @@
 
 
 <xacro:if value="${RELAX_MOBILE_BASE}">
-    <group name="left_wheel">
+    <group name="left_locomotion">
         <chain base_link="mobile_base_link" tip_link="left_wheel" />
     </group>
     
-    <group name="right_wheel">
+    <group name="right_locomotion">
         <chain base_link="mobile_base_link" tip_link="right_wheel" />
     </group>
 </xacro:if>
@@ -40,8 +40,8 @@
 
 <group name="chains"> <!--THIS HAS TO BE THE LAST GROUP IN THE FILE -->
     <xacro:if value="${RELAX_MOBILE_BASE}">
-        <group name="right_wheel" />
-        <group name="left_wheel" />
+        <group name="right_locomotion" />
+        <group name="left_locomotion" />
     </xacro:if>
 
     <xacro:if value="${RELAX_ARM}">

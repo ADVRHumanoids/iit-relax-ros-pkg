@@ -1,0 +1,47 @@
+solver_options:
+    regularization: 1e-4
+    back_end: "osqp"
+    
+stack:
+    - ["Arm"]
+    - ["Wheel_FL", "Wheel_FR", "Steering_FL", "Steering_FR"]
+
+constraints: ["JointLimits", "VelocityLimits"]
+
+JointLimits:
+    type: JointLimits
+    
+VelocityLimits:
+    type: VelocityLimits
+
+Steering_FL:
+    type: "CentauroSteering"
+    wheel_name: "wheel_1"
+    lib_name: "libcentauro_cartesio_addon.so"
+    lambda: 0.1
+    
+Steering_FR:
+    type: "CentauroSteering"
+    wheel_name: "wheel_2"
+    lib_name: "libcentauro_cartesio_addon.so"
+    lambda: 0.1
+    
+Rolling_FL:
+    type: "WheelRolling"
+    wheel_name: "wheel_1"
+    lib_name: "libcentauro_cartesio_addon.so"
+    wheel_radius: 0.078
+    weight: 1000.0
+    
+Rolling_FR:
+    type: "WheelRolling"
+    wheel_name: "wheel_2"
+    lib_name: "libcentauro_cartesio_addon.so"
+    wheel_radius: 0.078
+    weight: 1000.0
+    
+Arm:
+    type: "Cartesian"
+    distal_link: "relax_link5"
+    base_link: "base_link"
+    lambda: 0.1

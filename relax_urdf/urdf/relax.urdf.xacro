@@ -10,6 +10,9 @@
 <!-- ************ RELAX BASE ************ -->
 <xacro:include filename="$(find relax_urdf)/urdf/relax_base.urdf.xacro"/>
 
+<!-- ************ XBOT-CORE ************ -->
+<!-- <xacro:include filename="$(find relax_urdf)/urdf/gazebo/xbot.gazebo.xacro" /> -->
+
 <!-- ***** attach base to the world ***** -->
 <xacro:if value="${RELAX_FLOATING_BASE}" > <!-- floating base -->
 	<link name="world"/>
