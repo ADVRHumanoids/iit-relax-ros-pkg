@@ -3,8 +3,9 @@ solver_options:
     back_end: "osqp"
     
 stack:
-    - ["Arm"]
-    - ["Wheel_FL", "Wheel_FR", "Steering_FL", "Steering_FR"]
+    - ["SteeringLeft", "SteeringRight", "Base","Arm"]
+    - ["RollingLeft", "RollingRight"]
+    #- ["Postural"]
 
 constraints: ["JointLimits", "VelocityLimits"]
 
@@ -14,30 +15,35 @@ JointLimits:
 VelocityLimits:
     type: VelocityLimits
 
-Steering_FL:
+Base:
+  type: Cartesian
+  lambda: 0.1
+  distal_link: "base_link"
+  
+SteeringLeft:
     type: "CentauroSteering"
-    wheel_name: "wheel_1"
+    wheel_name: "left_wheel"
     lib_name: "libcentauro_cartesio_addon.so"
     lambda: 0.1
     
-Steering_FR:
+SteeringRight:
     type: "CentauroSteering"
-    wheel_name: "wheel_2"
+    wheel_name: "right_wheel"
     lib_name: "libcentauro_cartesio_addon.so"
     lambda: 0.1
     
-Rolling_FL:
+RollingLeft:
     type: "WheelRolling"
-    wheel_name: "wheel_1"
+    wheel_name: "left_wheel"
     lib_name: "libcentauro_cartesio_addon.so"
-    wheel_radius: 0.078
+    wheel_radius: 0.092
     weight: 1000.0
     
-Rolling_FR:
+RollingRight:
     type: "WheelRolling"
-    wheel_name: "wheel_2"
+    wheel_name: "right_wheel"
     lib_name: "libcentauro_cartesio_addon.so"
-    wheel_radius: 0.078
+    wheel_radius: 0.092
     weight: 1000.0
     
 Arm:
@@ -45,3 +51,7 @@ Arm:
     distal_link: "relax_link5"
     base_link: "base_link"
     lambda: 0.1
+    
+Postural:
+  type: Postural
+  lambda: 0.1

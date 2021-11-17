@@ -3,31 +3,35 @@
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
 
 <gazebo>
-<!--
+
     <plugin name="xbot2_link_state_sensor" filename="libxbot2_gz_link_state_sensor.so">
         <links>
-            <link name="pelvis"/>
-            <link name="wheel_1"/>
+            <link name="base_link"/>
+            <link name="left_wheel"/>
         </links>
-    </plugin>-->
+    </plugin>
+    <!--
+    <plugin name="xbot2_ft_driver" filename="libxbot2_gz_ft_server.so"/>
+    
+    <plugin name="xbot2_imu_driver" filename="libxbot2_gz_imu_server.so"/>-->
     
     <plugin name="xbot2_joint_driver" filename="libxbot2_gz_joint_server.so">
         <pid>
-            <!-- TODO -> CHANGE PARAMS              --><!--
+            <!-- TODO -> CHANGE PARAMS              -->
             <gain name="lowpwr_mot" p="50"  d="5"/>
             <gain name="small_mot"  p="250"  d="5"/>
             <gain name="medium_mot" p="1000" d="10"/>
-            <gain name="big_mot"    p="3000" d="10"/>-->
+            <gain name="big_mot"    p="3000" d="10"/>
             <gain name="wheel_mot"  p="0" d="10"/>
             
             <pid name="j_left_wheel"     profile="wheel_mot"/>
             <pid name="j_right_wheel"     profile="wheel_mot"/>
-            <!--
+            
             <pid name="joint1" profile="medium_mot"/>
             <pid name="joint2" profile="medium_mot"/>
             <pid name="joint3" profile="medium_mot"/>
             <pid name="joint4" profile="small_mot"/>
-            <pid name="joint5" profile="small_mot"/>-->
+            <pid name="joint5" profile="small_mot"/>
             
         </pid>
     </plugin>

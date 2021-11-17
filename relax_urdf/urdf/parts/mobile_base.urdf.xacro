@@ -31,14 +31,14 @@
     </inertial>
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0"/>
-      <geometry name="mobile_base_link_visual">
+      <geometry name="left_wheel_link_visual">
         <mesh filename="package://relax_urdf/meshes/mesh_left_wheel.stl" scale="0.001 0.001 0.001" />
       </geometry>
       <material name="dark"/>
     </visual>
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0"/>
-      <geometry name="mobile_base_link_collision">
+      <geometry name="left_wheel_link_collision">
         <mesh filename="package://relax_urdf/meshes/mir_base.stl" scale="0.001 0.001 0.001" />
       </geometry>             
     </collision>
@@ -52,32 +52,90 @@
     </inertial>
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0"/>
-      <geometry name="mobile_base_link_visual">
+      <geometry name="right_wheel_link_visual">
         <mesh filename="package://relax_urdf/meshes/mesh_left_wheel.stl" scale="0.001 0.001 0.001" />
       </geometry>
       <material name="dark"/>
     </visual>
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0"/>
-      <geometry name="mobile_base_link_collision">
+      <geometry name="right_wheel_link_collision">
         <mesh filename="package://relax_urdf/meshes/mir_base.stl" scale="0.001 0.001 0.001" />
       </geometry>             
     </collision>
 </link> 
 
+<link name ="left_wheel_yaw">
+    <inertial>
+      <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
+      <mass value="1.0"/>
+      <inertia ixx="0.17" ixy="0.0" ixz="0.0" iyy="0.17" iyz="0.0" izz="0.17" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry name="left_wheel_yaw_link_visual">
+        <box size="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="dark"/>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry name="left_wheel_yaw_link_collision">
+        <box size="0.001 0.001 0.001"/>
+      </geometry>             
+    </collision>
+</link> 
 
-<joint name="j_left_wheel" type="continuous">
+<link name ="right_wheel_yaw">
+    <inertial>
+      <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
+      <mass value="1.0"/>
+      <inertia ixx="0.17" ixy="0.0" ixz="0.0" iyy="0.17" iyz="0.0" izz="0.17" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry name="right_wheel_yaw_link_visual">
+        <box size="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="dark"/>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry name="right_wheel_yaw_link_collision">
+        <box size="0.001 0.001 0.001"/>
+      </geometry>             
+    </collision>
+</link> 
+
+
+<joint name="j_left_wheel_yaw" type="revolute">
 	<parent link="mobile_base_link"/>
-	<child link="left_wheel"/>
+	<child link="left_wheel_yaw"/>
     <origin xyz="-0.00448719 0.25 0.09" rpy="0 0 0"/>
+	<axis xyz="0 0 1"/>
+   <limit  effort="35" velocity="20" lower="-1" upper="1" />
+</joint>
+
+<joint name="j_right_wheel_yaw" type="revolute">
+	<parent link="mobile_base_link"/>
+	<child link="right_wheel_yaw"/>
+	<origin xyz="-0.00448719 -0.25 0.09" rpy="0 0 0"/>
+	<axis xyz="0 0 1"/>
+   <limit  effort="35" velocity="20" lower="-1" upper="1" />
+</joint>
+
+<joint name="j_left_wheel_roll" type="continuous">
+	<parent link="left_wheel_yaw"/>
+	<child link="left_wheel"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
 	<axis xyz="0 1 0"/>
    <limit  effort="35" velocity="20"/>
 </joint>
 
-<joint name="j_right_wheel" type="continuous">
-	<parent link="mobile_base_link"/>
+<joint name="j_right_wheel_roll" type="continuous">
+	<parent link="right_wheel_yaw"/>
 	<child link="right_wheel"/>
-	<origin xyz="-0.00448719 -0.25 0.09" rpy="0 0 0"/>
+	<origin xyz="0 0 0" rpy="0 0 0"/>
 	<axis xyz="0 1 0"/>
    <limit  effort="35" velocity="20"/>
 </joint>

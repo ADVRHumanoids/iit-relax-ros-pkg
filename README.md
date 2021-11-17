@@ -12,3 +12,12 @@ Then go to the ```../iit-relax-ros-pkg/relax_urdf/scripts/``` folder and run:
 
 Due to missing packages there could be some error messages, the final ```.urdf```, ```.srdf``` and ```.sdf``` should 
 anyway be created.
+
+
+# How to use it - Dummy mode
+- roscore
+- xbot2-core -H dummy
+- rviz (with robot model, tf)
+- rosrun tf static_transform_publisher 0 0 0 0 0 0 ci/base_link base_link 2
+- mon launch relax_cartesio_config relax_cartesio.launch
+- Interactive marker to move the arm
