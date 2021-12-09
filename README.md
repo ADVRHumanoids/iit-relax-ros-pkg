@@ -30,3 +30,5 @@ anyway be created.
 
 You can change the file `relax_urdf/urdf/config/relax.urdf.xacro` you can select if you want the base, arm or both.
 After the changes you have to create again the urdf.
+WARNING:
+Sometimes the CI may fail while moving the base via interactive markers.
