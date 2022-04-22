@@ -10,8 +10,11 @@
 <!-- ************ RELAX BASE ************ -->
 <xacro:include filename="$(find relax_urdf)/urdf/relax_base.urdf.xacro"/>
 
-<!-- ************ XBOT-CORE ************ -->
-<!-- <xacro:include filename="$(find relax_urdf)/urdf/gazebo/xbot.gazebo.xacro" /> -->
+<!-- **** attach robot gazebo **** -->
+<xacro:include filename="$(find relax_urdf)/urdf/gazebo/relax.gazebo.xacro" />
+
+<!-- **** XBotCore **** -->
+<xacro:include filename="$(find relax_urdf)/urdf/gazebo/xbot.gazebo.xacro" />
 
 <!-- ***** attach base to the world ***** -->
 <xacro:if value="${RELAX_FLOATING_BASE}" > <!-- floating base -->
@@ -19,16 +22,16 @@
   	<joint name="world_joint" type="floating">
     	<parent link="world"/>
     	<child link="base_link"/>
-		<origin xyz="0 0 0" rpy="0 0 0" />
+        <origin xyz="0 0 0" rpy="0 0 0" />
 	</joint>
 </xacro:if>
 <xacro:unless value="${RELAX_FLOATING_BASE}" > <!-- fixed base -->
   	<link name="world"/>
    	<joint name="world_joint" type="fixed">
-    		<parent link="world"/>
-    		<child link="base_link"/>
+        <parent link="world"/>
+        <child link="base_link"/>
+        <origin xyz="0 0 0" rpy="0 0 0" />
   	</joint>
-    <origin xyz="0 0 0" rpy="0 0 0" />
 </xacro:unless>
   
 </robot>

@@ -2,7 +2,7 @@
 <robot xmlns:xacro="http://ros.org/wiki/xacro" name="relax">
 
 <xacro:property name="model_name" value="IIT RELAX" />
-<xacro:property name="model_version" value="0.1" />
+<xacro:property name="model_version" value="1.0" />
 
 <!-- ************FLOATING BASE*************-->
 <xacro:property name="RELAX_FLOATING_BASE" value="true" />
@@ -12,6 +12,9 @@
  
 <!-- ************MOBILE BASE*************-->
 <xacro:property name="RELAX_MOBILE_BASE" value="true" />
+
+
+<xacro:property name="USE_REALSENSE" value="true" />
  
   
 </robot>
