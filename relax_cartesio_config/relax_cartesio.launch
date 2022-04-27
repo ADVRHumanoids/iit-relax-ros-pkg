@@ -14,9 +14,9 @@
     <param name="cartesian/problem_description" textfile="$(find relax_cartesio_config)/relax_stack.yaml"/>
 
         
-    <!--<rosparam name="cartesian/velocity_whitelist">
-        <param>[j_left_wheel, j_right_wheel]</param>
-    </rosparam>-->
+    <rosparam param="cartesian/velocity_whitelist">
+        [j_left_wheel_roll, j_right_wheel_roll]
+    </rosparam>
 
 
     <include file="$(find cartesian_interface)/launch/cartesio.launch">
