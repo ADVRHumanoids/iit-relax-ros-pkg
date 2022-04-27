@@ -5,11 +5,16 @@
     <arg name="gui" default="false"/>
     <arg name="args" default=""/>
     
-    <param name="robot_description" textfile="$(find relax_urdf)/urdf/relax.urdf"/>
+    <!-- <param name="robot_description" textfile="$(find relax_urdf)/urdf/relax.urdf"/> -->
     <!--<param name="/robot_description" command="$(find concert_robot_proto)/src/robogen.py $(arg args)"/>-->
+      <!-- Load the URDF/SRDF into the ROS Parameter Server -->
+    <param name="robot_description"
+         command="$(find xacro)/xacro $(find relax_urdf)/urdf/relax.urdf.xacro"/>
 
 
-    <param name="robot_description_semantic" textfile="$(find relax_srdf)/srdf/relax.srdf"/>
+   <!--  <param name="robot_description_semantic" textfile="$(find relax_srdf)/srdf/relax.srdf"/> -->
+    <param name="robot_description_semantic"
+         command="$(find xacro)/xacro $(find relax_srdf)/srdf/relax.srdf.xacro"/>
 
     <param name="cartesian/problem_description" textfile="$(find relax_cartesio_config)/relax_stack.yaml"/>
 
