@@ -11,6 +11,8 @@
 <!-- **** attach robot gazebo **** -->
 <xacro:include filename="$(find relax_urdf)/urdf/gazebo/relax.gazebo.xacro" />
 
+<xacro:include filename="$(find relax_urdf)/urdf/gazebo/xbot.gazebo.xacro" />
+
 <!-- **** attach robot material gazebo **** -->
 <xacro:include filename="$(find relax_urdf)/urdf/gazebo/relax_materials.gazebo.xacro" />
 
