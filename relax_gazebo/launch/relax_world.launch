@@ -31,7 +31,7 @@
   
   <!-- Load the URDF/SRDF into the ROS Parameter Server -->
   <param name="robot_description_gz"
-         command="$(find xacro)/xacro $(find relax_urdf)/urdf/relax.urdf.xacro"/>
+         command="$(find xacro)/xacro $(find relax_urdf)/urdf/relax_robot.urdf.xacro"/>
   
   <!-- run gazebo -->
   <group if="$(arg gazebo)">

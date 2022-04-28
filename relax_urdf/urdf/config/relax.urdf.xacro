@@ -4,17 +4,33 @@
 <xacro:property name="model_name" value="IIT RELAX" />
 <xacro:property name="model_version" value="1.0" />
 
+
+<!-- command line arguments -->
+<xacro:arg name="arm" default="true"/>
+<xacro:arg name="base" default="true"/>
+<!-- For sensors, you can use realsense=true argument to add all cameras (for now only d435i_control_box) 
+or realsense=false togheter with d435_xxx=true to add single ones. This is like the centauro_urdf conf-->
+<xacro:arg name="realsense" default="true"/>
+<xacro:if value="$(arg realsense)">
+	<xacro:arg name="d435i_control_box" default="true"/>
+</xacro:if>
+<xacro:unless value="$(arg realsense)">
+	<xacro:arg name="d435i_control_box" default="false"/>
+</xacro:unless>
+<xacro:arg name="floating_joint" default="true"/>
+
+
 <!-- ************FLOATING BASE*************-->
-<xacro:property name="RELAX_FLOATING_BASE" value="true" />
+<xacro:property name="RELAX_FLOATING_BASE" value="$(arg floating_joint)" />
 
 <!-- ************ARM*************-->
-<xacro:property name="RELAX_ARM" value="true" />
+<xacro:property name="RELAX_ARM" value="$(arg arm)" />
  
 <!-- ************MOBILE BASE*************-->
-<xacro:property name="RELAX_MOBILE_BASE" value="true" />
+<xacro:property name="RELAX_MOBILE_BASE" value="$(arg base)" />
 
-
-<xacro:property name="USE_REALSENSE" value="true" />
+<!--***************** CAMS **********-->
+<xacro:property name="ADD_D435I_CONTROL_BOX" value="$(arg d435i_control_box)" />
  
   
 </robot>

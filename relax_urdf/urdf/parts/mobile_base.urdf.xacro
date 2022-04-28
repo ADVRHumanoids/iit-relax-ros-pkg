@@ -168,7 +168,7 @@
    <limit  effort="35" velocity="20"/>
 </joint>
 
-<xacro:if value="${USE_REALSENSE}">
+<xacro:if value="${ADD_D435I_CONTROL_BOX}">
     <xacro:include filename="$(find realsense_gazebo_description)/urdf/_d435i.urdf.xacro" />
         
         <xacro:sensor_d435i parent="control_box" name="D435i_camera" topics_ns="D435i/D435i_camera"
