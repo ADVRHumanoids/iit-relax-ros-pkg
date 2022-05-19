@@ -115,8 +115,8 @@
     <child link="relax_link2"/>
     <origin xyz="0 ${131.660*mmTom} ${-249.660*mmTom}" rpy="0 0 0"/>
     <axis xyz="0 1 0"/>
-    <limit velocity="0" effort="0" lower="0" upper="0" />
-    <dynamics friction="0" damping="0"/>
+    <limit velocity="3.86" effort="147.0" lower="-3.14" upper="3.14" />
+    <dynamics damping="0.2" friction="10.0"/>
 </joint>
   
 <joint name="joint2" type="revolute"> <!-- joint 2 -->
@@ -124,8 +124,8 @@
     <child link="relax_link3"/>
     <origin xyz="0 0 ${-400*mmTom}" rpy="0 0 0"/>
     <axis xyz="0 1 0"/>
-    <limit velocity="0" effort="0" lower="0" upper="0" />
-    <dynamics friction="0" damping="0"/>
+    <limit velocity="3.86" effort="147.0" lower="-3.14" upper="3.14" />
+    <dynamics damping="0.2" friction="10.0"/>
 </joint>
 
 <joint name="joint3" type="revolute"> <!-- joint 3 -->
@@ -133,8 +133,8 @@
     <child link="relax_link4"/>
     <origin xyz="0 ${-131.660*mmTom} ${-249.660*mmTom}" rpy="0 0 0"/>
     <axis xyz="0 0 1"/>
-    <limit velocity="0" effort="0" lower="0" upper="0" />
-    <dynamics friction="0" damping="0"/>
+    <limit velocity="3.86" effort="147.0" lower="-3.14" upper="3.14" />   
+    <dynamics damping="0.2" friction="10.0"/>
 </joint>
   
 <joint name="joint4" type="revolute"> <!-- joint 4 -->
@@ -142,8 +142,8 @@
     <child link="relax_link5"/>
     <origin xyz="0 ${-88.1600*mmTom} ${-153.500*mmTom}" rpy="0 0 3.1415927"/>
     <axis xyz="0 1 0"/>
-    <limit velocity="0" effort="0" lower="0" upper="0" />
-    <dynamics friction="0" damping="0"/>
+    <limit velocity="3.86" effort="147.0" lower="-3.14" upper="3.14" />
+    <dynamics damping="0.2" friction="10.0"/>
 </joint>
   
 </robot>

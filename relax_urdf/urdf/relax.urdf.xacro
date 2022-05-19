@@ -2,7 +2,7 @@
 <robot xmlns:xacro="http://ros.org/wiki/xacro" name="relax">
 
 <!-- ************ MODEL CONFIGURATION ************ -->
-<xacro:include filename="$(find relax_urdf)/urdf/relax_config.urdf.xacro" />
+<xacro:include filename="$(find relax_urdf)/urdf/config/relax.urdf.xacro" />
 	
 <!-- ************ UTILS ************ -->
 <xacro:include filename="$(find relax_urdf)/urdf/relax_utils.urdf.xacro"/>
@@ -16,16 +16,16 @@
   	<joint name="world_joint" type="floating">
     	<parent link="world"/>
     	<child link="base_link"/>
-		<origin xyz="0 0 0" rpy="0 0 0" />
+        <origin xyz="0 0 0" rpy="0 0 0" />
 	</joint>
 </xacro:if>
-<xacro:if value="${RELAX_FIXED_BASE}" > <!-- fixed base -->
+<xacro:unless value="${RELAX_FLOATING_BASE}" > <!-- fixed base -->
   	<link name="world"/>
    	<joint name="world_joint" type="fixed">
-    		<parent link="world"/>
-    		<child link="base_link"/>
+        <parent link="world"/>
+        <child link="base_link"/>
+        <origin xyz="0 0 0" rpy="0 0 0" />
   	</joint>
-    <origin xyz="0 0 0" rpy="0 0 0" />
-</xacro:if>
+</xacro:unless>
   
 </robot>

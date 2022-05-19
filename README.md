@@ -12,3 +12,23 @@ Then go to the ```../iit-relax-ros-pkg/relax_urdf/scripts/``` folder and run:
 
 Due to missing packages there could be some error messages, the final ```.urdf```, ```.srdf``` and ```.sdf``` should 
 anyway be created.
+
+# Dependency
+- XBot2
+- Cartesian Interface
+
+# How to use it - Dummy mode (only RViz)
+
+- clone this repository
+- set_xbot2_config [local_path]/relax_config/relax_basic.yaml
+- roscore
+- xbot2-core -H dummy
+- rviz (with robot model, tf:  relax_config/relax.rviz)
+- rosrun tf static_transform_publisher 0 0 0 0 0 0 ci/base_link base_link 2
+- mon launch relax_cartesio_config relax_cartesio.launch
+- Interactive marker to move the arm or the base_link
+
+You can change the file `relax_urdf/urdf/config/relax.urdf.xacro` you can select if you want the base, arm or both.
+After the changes you have to create again the urdf.
+WARNING:
+Sometimes the CI may fail while moving the base via interactive markers.
