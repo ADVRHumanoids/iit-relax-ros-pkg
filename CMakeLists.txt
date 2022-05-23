@@ -1,21 +1,19 @@
-cmake_minimum_required(VERSION 2.8)
-PROJECT(iit-relax-ros-pkg)
 
-add_custom_target(	remove_old_relax_urdf_gazebo ALL
-    				        COMMAND ${CMAKE_COMMAND} -E remove_directory 
-        			      "~/.gazebo/models/relax_urdf/")
+cmake_minimum_required(VERSION 3.0)
 
-add_custom_target(  remove_old_relax_gazebo ALL
-                    COMMAND ${CMAKE_COMMAND} -E remove_directory 
-                    "~/.gazebo/models/relax/")
+set(ROBOT_NAME relax)
+project(iit-${ROBOT_NAME}-ros-pkg VERSION 1.0.0)
 
-add_custom_target(  compile_urdf_sdf ALL
-                    COMMAND ${CMAKE_SOURCE_DIR}/relax_urdf/scripts/create_urdf_srdf_sdf.sh relax)
+include(GenerateXrdf.cmake)
 
-if(CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
-    add_custom_target(	copy_relax_gazebo ALL
-        				COMMAND ${CMAKE_COMMAND} -E copy_directory 
-            			"${PROJECT_SOURCE_DIR}/relax_gazebo/sdf/" 
-            			"~/.gazebo/models/relax/"
-            			DEPENDS remove_old_relax_gazebo)
-endif()
+## add sub-packages
+add_subdirectory(relax_urdf)
+add_subdirectory(relax_srdf)
+add_subdirectory(relax_gazebo)
+add_subdirectory(relax_config)
+add_subdirectory(relax_cartesio_config)
+
+enable_testing()
+add_subdirectory(relax_test)
+
+include(GenerateDeb.cmake)

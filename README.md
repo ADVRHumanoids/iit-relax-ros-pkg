@@ -1,34 +1,29 @@
-HOW TO CREATE THE URDF, SRDF AND SDF FILES:
--------------------------------------------
-First add the path of the packged to the ```ROS_PACKAGE_PATH``` env variable so that ROS can find it:
+# iit-relax-ros-pkg 
+Repository dedicated to the IIT robot RELAX
 
-```export ROS_PACKAGE_PATH=$ROS_PACKAGE_PATH:path/to/iit-relax-ros-pkg```
+How to run the simulator
+========================
+To run the simulator under the [Xbot2](https://advrhumanoids.github.io/xbot2_wip/quickstart.html#install-the-xbot2-framework) framework, please follow these steps:
+1) install the required dependencies (mainly ROS, Gazebo, and Xbot2 - see the `.travis.yml` file)
+2) clone the repository to a sourced environment (e.g., a catkin workspace)
+3) set a basic configuration file for Xbot2 with `set_xbot2_config $(rospack find relax_config)/relax_basic.yaml`
+4) [terminal #1] `mon launch relax_gazebo relax_world.launch`  (or `roslaunch` if you don't have `rosmon` installed)
+5) [terminal #2] `xbot2-core --simtime`
+6) follow instructions and tutorials from [our examples repository](https://github.com/ADVRHumanoids/xbot2_examples)
 
-If everything goes well you should be able to ```roscd relax_urdf```.
+*Note:* the provided launch file accepts additional arguments to control the inclusions of perception sensors, namely `velodyne:=true`, and `realsense:=true`.
+You need to have the proper dependencies installed in your setup in order for sensor simulation to work. See the [*forest recipe* for this package](https://github.com/ADVRHumanoids/multidof_recipes/blob/master/recipes/iit-centauro-ros-pkg.yaml).  ??? TO CHECK
 
-Then go to the ```../iit-relax-ros-pkg/relax_urdf/scripts/``` folder and run:
+How to create the Robot Model
+=============================
+*Note:* the repository contains generated files (urdf, srdf) so that is is ready to use without any generation step. The following instructions are meant for developers willing to modify the robot model.
 
-```./create_urdf_srdf_sdf.sh relax```
+First, install all required dependencies via the [`hhcm-forest` tool](https://github.com/ADVRHumanoids/forest), from the [`multidof_recipes`](https://github.com/ADVRHumanoids/multidof_recipes) registry. 
 
-Due to missing packages there could be some error messages, the final ```.urdf```, ```.srdf``` and ```.sdf``` should 
-anyway be created.
-
-# Dependency
-- XBot2
-- Cartesian Interface
-
-# How to use it - Dummy mode (only RViz)
-
-- clone this repository
-- set_xbot2_config [local_path]/relax_config/relax_basic.yaml
-- roscore
-- xbot2-core -H dummy
-- rviz (with robot model, tf:  relax_config/relax.rviz)
-- rosrun tf static_transform_publisher 0 0 0 0 0 0 ci/base_link base_link 2
-- mon launch relax_cartesio_config relax_cartesio.launch
-- Interactive marker to move the arm or the base_link
-
-You can change the file `relax_urdf/urdf/config/relax.urdf.xacro` you can select if you want the base, arm or both.
-After the changes you have to create again the urdf.
-WARNING:
-Sometimes the CI may fail while moving the base via interactive markers.
+Now we can generate the urdf/srdf files via cmake:
+1) `mkdir build && cd build`
+2) `cmake ..`
+3) `make generate`  (generates all files marked with `ADD_TO_ALL TRUE` into the build tree - see the cmakelists files)
+4) (optional) `make publish` (publishes generated files to the source tree)
+5) (optional) `make install` installs the source tree 
+6) (optional) `make package` creates a `.deb` package from the source tree
