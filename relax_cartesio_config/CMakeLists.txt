@@ -1,6 +1,14 @@
-cmake_minimum_required(VERSION 2.8.3)
+cmake_minimum_required(VERSION 3.0)
 project(relax_cartesio_config)
 
 find_package(catkin REQUIRED)
 
 catkin_package()
+
+install(
+  FILES 
+  relax_manipulation_stack.yaml
+  relax_manipulation.launch 
+  DESTINATION 
+  ${CATKIN_PACKAGE_SHARE_DESTINATION}
+)

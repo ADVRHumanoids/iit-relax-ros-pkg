@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>relax_config</name>
+  <version>0.0.0</version>
+  <description>The relax_config package</description>
+  <maintainer email="liana.bertoni@iit.it">liana</maintainer>
+  <license>TODO</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <export>
+  </export>
+</package>
