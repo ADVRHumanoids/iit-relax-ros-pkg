@@ -14,6 +14,12 @@
   <arg name="verbose" default="false"/>
   <arg name="extra_gazebo_args" default=""/>
 
+  
+  <arg name="arm" default="true"/>
+  <arg name="base" default="true"/>
+  <arg name="realsense" default="true"/>
+  
+  
   <!-- Internal arguments, rewrite human-readable gazebo arguments to it's internal arguments -->
   <arg unless="$(arg paused)" name="command_arg1" value=""/>
   <arg     if="$(arg paused)" name="command_arg1" value="-u"/>
@@ -30,7 +36,7 @@
   
   <!-- Load the URDF/SRDF into the ROS Parameter Server -->
   <param name="robot_description_gz"
-         command="$(find xacro)/xacro $(find relax_urdf)/urdf/relax_robot.urdf.xacro"/>
+         command="$(find xacro)/xacro $(find relax_urdf)/urdf/relax_robot.urdf.xacro arm:=$(arg arm) base:=$(arg base) realsense:=$(arg realsense) floating_joint:=false"/>
   
   <!-- run gazebo -->
   <group if="$(arg gazebo)">

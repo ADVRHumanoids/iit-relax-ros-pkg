@@ -7,15 +7,9 @@
     This is a format for representing semantic information about the robot structure.
     A URDF file must exist for this robot as well, where the joints and the links that are referenced are defined
 -->
-robot name="relax">
-  
-    <!--GROUPS: Representation of a set of joints and links. This can be useful for specifying DOF to plan for, defining arms, end effectors, etc-->
-    <!--LINKS: When a link is specified, the parent joint of that link (if it exists) is automatically included-->
-    <!--JOINTS: When a joint is specified, the child link of that joint (which will always exist) is automatically included-->
-    <!--CHAINS: When a chain is specified, all the links along the chain (including endpoints) are included in the group. Additionally, all the joints that are parents to included links are also included. This means that joints along the chain and the parent joint of the base link are included in the group-->
-    <!--SUBGROUPS: Groups can also be formed by referencing to already defined group names-->
+<robot name="relax">
   <group name="base">
-    <link name="mobile_base_link"/>
+    <link name="base_link"/>
   </group>
   <group name="left_locomotion">
     <chain base_link="mobile_base_link" tip_link="left_wheel"/>
@@ -26,12 +20,16 @@ robot name="relax">
   <group name="arm">
     <chain base_link="control_box" tip_link="relax_link5"/>
   </group>
+  <group name="car_frame_chain">
+    <chain base_link="base_link" tip_link="car_frame"/>
+  </group>
   <group name="chains">
     <group name="right_locomotion"/>
     <group name="left_locomotion"/>
     <group name="arm"/>
+    <group name="car_frame_chain"/>
   </group>
-  <!--homing posture -->
+-  <!--homing posture -->
   <group_state name="home" group="chains">
     <joint name="joint1" value="0.6"/>
     <joint name="joint2" value="-1.7"/>
@@ -43,3 +41,4 @@ robot name="relax">
     <joint name="j_right_wheel_yaw" value="0.0"/>
   </group_state>
 </robot>
+

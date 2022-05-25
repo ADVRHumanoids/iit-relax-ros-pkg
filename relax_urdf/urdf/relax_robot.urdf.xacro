@@ -16,4 +16,13 @@
 <!-- **** attach robot material gazebo **** -->
 <xacro:include filename="$(find relax_urdf)/urdf/gazebo/relax_materials.gazebo.xacro" />
 
+<xacro:unless value="${RELAX_MOBILE_BASE}" > <!-- fixed base -->
+  	<link name="world"/>
+   	<joint name="world_joint" type="fixed">
+        <parent link="world"/>
+        <child link="relax_link1"/>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+  	</joint>
+</xacro:unless>
+
 </robot>

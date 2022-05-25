@@ -32,11 +32,16 @@
     
     <xacro:unless value="${RELAX_MOBILE_BASE}">
         <group name="arm">
-            <chain base_link="base_link" tip_link="relax_link5" />
+            <chain base_link="mobile_base_link" tip_link="relax_link5" />
         </group>
     </xacro:unless>
 </xacro:if>
 
+<xacro:if value="${ADD_VIRTUAL_FRAME}">
+    <group name="car_frame_chain">
+        <chain base_link="base_link" tip_link="car_frame"/>
+    </group>
+</xacro:if>
 
 <group name="chains"> <!--THIS HAS TO BE THE LAST GROUP IN THE FILE -->
     <xacro:if value="${RELAX_MOBILE_BASE}">
@@ -46,6 +51,10 @@
 
     <xacro:if value="${RELAX_ARM}">
         <group name="arm" />
+    </xacro:if>
+    
+    <xacro:if value="${ADD_VIRTUAL_FRAME}">
+        <group name="car_frame_chain"/>
     </xacro:if>
 </group>
 

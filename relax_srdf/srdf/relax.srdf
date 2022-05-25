@@ -5,7 +5,7 @@
 -->
 <robot name="relax">
   <group name="base">
-    <link name="mobile_base_link"/>
+    <link name="base_link"/>
   </group>
   <group name="left_locomotion">
     <chain base_link="mobile_base_link" tip_link="left_wheel"/>

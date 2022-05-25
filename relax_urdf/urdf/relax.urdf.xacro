@@ -12,20 +12,17 @@
 
 <!-- ***** attach base to the world ***** -->
 <xacro:if value="${RELAX_FLOATING_BASE}" > <!-- floating base -->
-	<link name="world"/>
-  	<joint name="world_joint" type="floating">
-    	<parent link="world"/>
-    	<child link="base_link"/>
-        <origin xyz="0 0 0" rpy="0 0 0" />
-	</joint>
+    <xacro:if value="${RELAX_MOBILE_BASE}" > 
+        <link name="world"/>
+        <joint name="world_joint" type="floating">
+            <parent link="world"/>
+            <child link="base_link"/>
+        </joint>
+    </xacro:if>
 </xacro:if>
-<xacro:unless value="${RELAX_FLOATING_BASE}" > <!-- fixed base -->
-  	<link name="world"/>
-   	<joint name="world_joint" type="fixed">
-        <parent link="world"/>
-        <child link="base_link"/>
-        <origin xyz="0 0 0" rpy="0 0 0" />
-  	</joint>
-</xacro:unless>
+
+<xacro:if value="${ADD_VIRTUAL_FRAME}">
+  <xacro:include filename="$(find relax_urdf)/urdf/parts/virtual_frame.urdf.xacro"/>
+</xacro:if>
   
 </robot>
