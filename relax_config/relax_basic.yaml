@@ -22,9 +22,9 @@ xbotcore_threads:
 # plugins
 xbotcore_plugins:
 
-    #homing:
-        #thread: rt_main
-        #type: homing_example
+    homing:
+        thread: rt_main
+        type: homing
 
     ros_io: {thread: nrt_main, type: ros_io}
 
