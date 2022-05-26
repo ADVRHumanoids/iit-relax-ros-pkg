@@ -27,11 +27,10 @@
             <pid name="j_left_wheel_roll"     profile="wheel_mot"/>
             <pid name="j_right_wheel_roll"     profile="wheel_mot"/>
             
-            <pid name="joint1" profile="medium_mot"/>
-            <pid name="joint2" profile="medium_mot"/>
-            <pid name="joint3" profile="medium_mot"/>
-            <pid name="joint4" profile="small_mot"/>
-            <pid name="joint5" profile="small_mot"/>
+            <pid name="relax_arm1_joint1" profile="medium_mot"/>
+            <pid name="relax_arm1_joint2" profile="medium_mot"/>
+            <pid name="relax_arm1_joint3" profile="medium_mot"/>
+            <pid name="relax_arm1_joint4" profile="small_mot"/>
             
         </pid>
     </plugin>

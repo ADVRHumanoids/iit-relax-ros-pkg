@@ -23,7 +23,7 @@
             <link name="base_link"/>
             <joint name="base_joint" type="fixed">
                 <parent link="base_link"/>
-                <child link="relax_link1"/>
+                <child link="relax_arm1_link1"/>
                 <origin xyz="0 0 0" rpy="${PI} 0 0" />
             </joint>
         </xacro:if>
@@ -45,7 +45,7 @@
             <link name="base_link"/>
             <joint name="base_joint" type="fixed">
                 <parent link="base_link"/>
-                <child link="relax_link1"/>
+                <child link="relax_arm1_link1"/>
                 <origin xyz="0 0 0" rpy="${PI} 0 0" />
             </joint>
         </xacro:if>
@@ -62,7 +62,7 @@
     <xacro:if value="${RELAX_ARM}">
         <joint name="mobile_base_joint" type="fixed"> <!-- mobile base joint -->
             <parent link="control_box"/>
-            <child link="relax_link1"/>
+            <child link="relax_arm1_link1"/>
             <origin xyz="0 0 0" rpy="3.1415927 0 0"/>
         </joint>  
     </xacro:if>  

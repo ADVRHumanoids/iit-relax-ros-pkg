@@ -2,19 +2,19 @@
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
 
 <!-- **** gazebo materials **** --> 
-<gazebo reference="relax_link1">
+<gazebo reference="relax_arm1_link1">
   <material>Gazebo/Blue</material>
 </gazebo>
-<gazebo reference="relax_link2">
+<gazebo reference="relax_arm1_link2">
   <material>Gazebo/DarkGrey</material>
 </gazebo>
-<gazebo reference="relax_link3">
+<gazebo reference="relax_arm1_link3">
   <material>Gazebo/Blue</material>
 </gazebo>
-<gazebo reference="relax_link4">
+<gazebo reference="relax_arm1_link4">
   <material>Gazebo/Blue</material>
 </gazebo>
-<gazebo reference="relax_link5">
+<gazebo reference="relax_arm1_link5">
   <material>Gazebo/Blue</material>
 </gazebo>
 

@@ -2,7 +2,7 @@
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
 
 <!-- macro arm -->
-<xacro:macro name="relax_arm" params="arm_num rot parent *origin">
+<xacro:macro name="relax_arm" params="arm_num" >
 
 <!-- links -->
 <link name ="relax_arm${arm_num}_link1">  <!-- link 1 -->
@@ -34,7 +34,7 @@
     </inertial>
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0"/>
-      <geometry name="relax_link1_visual">
+      <geometry name="relax_link2_visual">
         <mesh filename="package://relax_urdf/meshes/mesh_link2.stl" scale="0.001 0.001 0.001" />
       </geometry>
       <material name="dark"/>
@@ -112,9 +112,9 @@
 
 <!-- joints -->
 <joint name="relax_arm${arm_num}_joint1" type="revolute"> <!-- joint 1 -->
-    <parent link="${parent}"/>
+    <parent link="relax_arm${arm_num}_link1"/>
     <child link="relax_arm${arm_num}_link2"/>
-    <xacro:insert_block name="origin"/>
+    <origin xyz="${Joint_1_Ox} ${Joint_1_Oy} ${Joint_1_Oz}" rpy="0 0 0"/>
     <axis xyz="0 1 0"/>
     <limit velocity="${Joint_1_velocity}" effort="${Joint_1_effort}" lower="${Joint_1_lower}" upper="${Joint_1_upper}" />
     <dynamics damping="${Joint_1_damp}" friction="${Joint_1_fric}"/>
@@ -126,7 +126,7 @@
     <origin xyz="${Joint_2_Ox} ${Joint_2_Oy} ${Joint_2_Oz}" rpy="0 0 0"/>
     <axis xyz="0 1 0"/>
     <limit velocity="${Joint_2_velocity}" effort="${Joint_2_effort}" lower="${Joint_2_lower}" upper="${Joint_2_upper}" />
-    <dynamics damping="${Joint_2_damp}" friction="${Joint_1_fric}"/>
+    <dynamics damping="${Joint_2_damp}" friction="${Joint_2_fric}"/>
 </joint>
 
 <joint name="relax_arm${arm_num}_joint3" type="revolute"> <!-- joint 3 -->
@@ -135,7 +135,7 @@
     <origin xyz="${Joint_3_Ox} ${Joint_3_Oy} ${Joint_3_Oz}" rpy="0 0 0"/>
     <axis xyz="0 0 1"/>
     <limit velocity="${Joint_3_velocity}" effort="${Joint_3_effort}" lower="${Joint_3_lower}" upper="${Joint_3_upper}" /> 
-    <dynamics damping="${Joint_3_damp}" friction="${Joint_1_fric}"/>
+    <dynamics damping="${Joint_3_damp}" friction="${Joint_3_fric}"/>
 </joint>
   
 <joint name="relax_arm${arm_num}_joint4" type="revolute"> <!-- joint 4 -->
@@ -144,7 +144,9 @@
     <origin xyz="${Joint_4_Ox} ${Joint_4_Oy} ${Joint_4_Oz}" rpy="${Joint_4_Oroll} ${Joint_4_Opitch} ${Joint_4_Oyaw}"/>
     <axis xyz="0 1 0"/>
     <limit velocity="${Joint_4_velocity}" effort="${Joint_4_effort}" lower="${Joint_4_lower}" upper="${Joint_4_upper}" />
-    <dynamics damping="${Joint_4_damp}" friction="${Joint_1_fric}"/>
+    <dynamics damping="${Joint_4_damp}" friction="${Joint_4_fric}"/>
 </joint>
   
+
+  </xacro:macro>
 </robot>
