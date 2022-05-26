@@ -1,0 +1,150 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+
+<!-- macro arm -->
+<xacro:macro name="relax_arm" params="arm_num rot parent *origin">
+
+<!-- links -->
+<link name ="relax_arm${arm_num}_link1">  <!-- link 1 -->
+    <inertial>
+      <origin xyz="${Link_1_x} ${Link_1_y} ${Link_1_z}" />
+      <mass value="${Link_1_mass}"/>
+      <inertia ixx="${Link_1_xx}" ixy="${Link_1_xy}" ixz="${Link_1_xz}" iyy="${Link_1_yy}" iyz="${Link_1_yz}" izz="${Link_1_zz}" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry name="relax_link1_visual">
+        <mesh filename="package://relax_urdf/meshes/mesh_link1.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+      <material name="darkblue"/>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry name="relax_link1_collision">
+        <mesh filename="package://relax_urdf/meshes/mesh_link1.stl" scale="0.001 0.001 0.001" />
+      </geometry>             
+    </collision>
+</link>
+
+<link name ="relax_arm${arm_num}_link2">  <!-- link 2 -->
+    <inertial>
+      <origin xyz="${Link_2_x} ${Link_2_y} ${Link_2_z}" />
+      <mass value="${Link_2_mass}"/>
+      <inertia ixx="${Link_2_xx}" ixy="${Link_2_xy}" ixz="${Link_2_xz}" iyy="${Link_2_yy}" iyz="${Link_2_yz}" izz="${Link_2_zz}" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry name="relax_link1_visual">
+        <mesh filename="package://relax_urdf/meshes/mesh_link2.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+      <material name="dark"/>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry name="relax_link2_collision">
+        <mesh filename="package://relax_urdf/meshes/mesh_link2.stl" scale="0.001 0.001 0.001" />
+      </geometry>             
+    </collision>
+</link> 
+
+<link name ="relax_arm${arm_num}_link3">  <!-- link 3 -->
+    <inertial>
+      <origin xyz="${Link_3_x} ${Link_3_y} ${Link_3_z}" />
+      <mass value="${Link_3_mass}"/>
+      <inertia ixx="${Link_3_xx}" ixy="${Link_3_xy}" ixz="${Link_3_xz}" iyy="${Link_3_yy}" iyz="${Link_3_yz}" izz="${Link_3_zz}" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry name="relax_link3_visual">
+        <mesh filename="package://relax_urdf/meshes/mesh_link3.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+      <material name="darkblue"/>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry name="relax_link3_collision">
+        <mesh filename="package://relax_urdf/meshes/mesh_link3.stl" scale="0.001 0.001 0.001" />
+      </geometry>             
+    </collision>
+</link>
+
+<link name ="relax_arm${arm_num}_link4">  <!-- link 4 -->
+    <inertial>
+      <origin xyz="${Link_4_x} ${Link_4_y} ${Link_4_z}" />
+      <mass value="${Link_4_mass}"/>
+      <inertia ixx="${Link_4_xx}" ixy="${Link_4_xy}" ixz="${Link_4_xz}" iyy="${Link_4_yy}" iyz="${Link_4_yz}" izz="${Link_4_zz}" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry name="relax_link4_visual">
+        <mesh filename="package://relax_urdf/meshes/mesh_link4.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+      <material name="darkblue"/>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry name="relax_link4_collision">
+        <mesh filename="package://relax_urdf/meshes/mesh_link4.stl" scale="0.001 0.001 0.001" />
+      </geometry>             
+    </collision>
+</link>
+
+<link name ="relax_arm${arm_num}_link5">  <!-- link 5 -->
+    <inertial>
+      <origin xyz="${Link_5_x} ${Link_5_y} ${Link_5_z}" />
+      <mass value="${Link_5_mass}"/>
+      <inertia ixx="${Link_5_xx}" ixy="${Link_5_xy}" ixz="${Link_5_xz}" iyy="${Link_5_yy}" iyz="${Link_5_yz}" izz="${Link_5_zz}" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry name="relax_link5_visual">
+        <mesh filename="package://relax_urdf/meshes/mesh_link5.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+      <material name="darkblue"/>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry name="relax_link5_collision">
+        <mesh filename="package://relax_urdf/meshes/mesh_link5.stl" scale="0.001 0.001 0.001" />
+      </geometry>             
+    </collision>
+</link>
+
+<!-- joints -->
+<joint name="relax_arm${arm_num}_joint1" type="revolute"> <!-- joint 1 -->
+    <parent link="${parent}"/>
+    <child link="relax_arm${arm_num}_link2"/>
+    <xacro:insert_block name="origin"/>
+    <axis xyz="0 1 0"/>
+    <limit velocity="${Joint_1_velocity}" effort="${Joint_1_effort}" lower="${Joint_1_lower}" upper="${Joint_1_upper}" />
+    <dynamics damping="${Joint_1_damp}" friction="${Joint_1_fric}"/>
+</joint>
+  
+<joint name="relax_arm${arm_num}_joint2" type="revolute"> <!-- joint 2 -->
+    <parent link="relax_arm${arm_num}_link2"/>
+    <child link="relax_arm${arm_num}_link3"/>
+    <origin xyz="${Joint_2_Ox} ${Joint_2_Oy} ${Joint_2_Oz}" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit velocity="${Joint_2_velocity}" effort="${Joint_2_effort}" lower="${Joint_2_lower}" upper="${Joint_2_upper}" />
+    <dynamics damping="${Joint_2_damp}" friction="${Joint_1_fric}"/>
+</joint>
+
+<joint name="relax_arm${arm_num}_joint3" type="revolute"> <!-- joint 3 -->
+    <parent link="relax_arm${arm_num}_link3"/>
+    <child link="relax_arm${arm_num}_link4"/>
+    <origin xyz="${Joint_3_Ox} ${Joint_3_Oy} ${Joint_3_Oz}" rpy="0 0 0"/>
+    <axis xyz="0 0 1"/>
+    <limit velocity="${Joint_3_velocity}" effort="${Joint_3_effort}" lower="${Joint_3_lower}" upper="${Joint_3_upper}" /> 
+    <dynamics damping="${Joint_3_damp}" friction="${Joint_1_fric}"/>
+</joint>
+  
+<joint name="relax_arm${arm_num}_joint4" type="revolute"> <!-- joint 4 -->
+    <parent link="relax_arm${arm_num}_link4"/>
+    <child link="relax_arm${arm_num}_link5"/>
+    <origin xyz="${Joint_4_Ox} ${Joint_4_Oy} ${Joint_4_Oz}" rpy="${Joint_4_Oroll} ${Joint_4_Opitch} ${Joint_4_Oyaw}"/>
+    <axis xyz="0 1 0"/>
+    <limit velocity="${Joint_4_velocity}" effort="${Joint_4_effort}" lower="${Joint_4_lower}" upper="${Joint_4_upper}" />
+    <dynamics damping="${Joint_4_damp}" friction="${Joint_1_fric}"/>
+</joint>
+  
+</robot>

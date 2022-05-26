@@ -2,148 +2,24 @@
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
 
 <!-- relax arm -->
- 
-<!-- links -->
-<link name ="relax_link1">  <!-- link 1 -->
-    <inertial>
-      <origin xyz="${1.3955428e+00*mmTom} ${2.5982581e+01*mmTom} ${-1.6511476e+02*mmTom}" rpy="0 0 0"/>
-      <mass value="5.9029271e+00"/>
-      <inertia ixx="${6.2182861e+04*mm2Tom2}"  ixy="${8.1614096e+01*mm2Tom2}"  ixz="${1.0385066e+02*mm2Tom2}" iyy="${5.5346023e+04*mm2Tom2}" iyz="${1.2999920e+04*mm2Tom2}" izz="${1.6821722e+04*mm2Tom2}" />
-    </inertial>
-    <visual>
-      <origin xyz="0 0 0" rpy="0 0 0"/>
-      <geometry name="relax_link1_visual">
-        <mesh filename="package://relax_urdf/meshes/mesh_link1.stl" scale="0.001 0.001 0.001" />
-      </geometry>
-      <material name="darkblue"/>
-    </visual>
-    <collision>
-      <origin xyz="0 0 0" rpy="0 0 0"/>
-      <geometry name="relax_link1_collision">
-        <mesh filename="package://relax_urdf/meshes/mesh_link1.stl" scale="0.001 0.001 0.001" />
-      </geometry>             
-    </collision>
-</link>
-  
-<link name ="relax_link2">  <!-- link 2 -->
-    <inertial>
-      <origin xyz="${0.0000000e+00*mmTom} ${-7.1720374e+00*mmTom} ${-2.0000694e+02*mmTom}" rpy="0 0 0"/>
-      <mass value="1.9989653e+00"/>
-      <inertia ixx="${4.9589547e+04*mm2Tom2}"  ixy="${-2.3822174e-02*mm2Tom2}"  ixz="${2.3476881e+02*mm2Tom2}" iyy="${5.1111593e+04*mm2Tom2}" iyz="${7.7698490e-01*mm2Tom2}" izz="${4.0702979e+03*mm2Tom2}" />
-    </inertial>
-    <visual>
-      <origin xyz="0 0 0" rpy="0 0 0"/>
-      <geometry name="relax_link1_visual">
-        <mesh filename="package://relax_urdf/meshes/mesh_link2.stl" scale="0.001 0.001 0.001" />
-      </geometry>
-      <material name="dark"/>
-    </visual>
-    <collision>
-      <origin xyz="0 0 0" rpy="0 0 0"/>
-      <geometry name="relax_link2_collision">
-        <mesh filename="package://relax_urdf/meshes/mesh_link2.stl" scale="0.001 0.001 0.001" />
-      </geometry>             
-    </collision>
-</link>
+<xacro:include filename="$(find relax_urdf)/urdf/parts/relax_arm.urdf.xacro" />
 
-<link name ="relax_link3">  <!-- link 3 -->
-    <inertial>
-      <origin xyz="${-2.1052916e+00*mmTom} ${-1.0638552e+02*mmTom} ${-7.4903486e+01*mmTom}" rpy="0 0 0"/>
-      <mass value="5.8838845e+00"/>
-      <inertia ixx="${6.1043599e+04*mm2Tom2}"  ixy="${-1.5340891e+02*mm2Tom2}"  ixz="${-1.7833160e+02*mm2Tom2}" iyy="${5.3601310e+04*mm2Tom2}" iyz="${-1.1090900e+04*mm2Tom2}" izz="${1.7380798e+04*mm2Tom2}" />
-    </inertial>
-    <visual>
-      <origin xyz="0 0 0" rpy="0 0 0"/>
-      <geometry name="relax_link3_visual">
-        <mesh filename="package://relax_urdf/meshes/mesh_link3.stl" scale="0.001 0.001 0.001" />
-      </geometry>
-      <material name="darkblue"/>
-    </visual>
-    <collision>
-      <origin xyz="0 0 0" rpy="0 0 0"/>
-      <geometry name="relax_link3_collision">
-        <mesh filename="package://relax_urdf/meshes/mesh_link3.stl" scale="0.001 0.001 0.001" />
-      </geometry>             
-    </collision>
-</link>
+<!-- arms -->
+<xacro:relax_arm arm_num="1"  rot="1"  parent="relax_arm${arm_num}_link1">
+      <origin xyz="${Joint_1_Ox} ${Joint_1_Oy} ${Joint_1_Oz}" rpy="0 0 0"/>
+   </xacro:centauro_arm>
 
-<link name ="relax_link4">  <!-- link 4 -->
-    <inertial>
-      <origin xyz="${2.4496086e-01*mmTom} ${-1.0728501e+00*mmTom} ${-4.9015064e+01*mmTom}" rpy="0 0 0"/>
-      <mass value="1.3982240e+00"/>
-      <inertia ixx="${1.4667270e+04*mm2Tom2}"  ixy="${-2.0411012e+01*mm2Tom2}"  ixz="${-4.4769570e+01*mm2Tom2}" iyy="${8.6598581e+03*mm2Tom2}" iyz="${-8.3199044e+01*mm2Tom2}" izz="${1.0450923e+04*mm2Tom2}" />
-    </inertial>
-    <visual>
-      <origin xyz="0 0 0" rpy="0 0 0"/>
-      <geometry name="relax_link4_visual">
-        <mesh filename="package://relax_urdf/meshes/mesh_link4.stl" scale="0.001 0.001 0.001" />
-      </geometry>
-      <material name="darkblue"/>
-    </visual>
-    <collision>
-      <origin xyz="0 0 0" rpy="0 0 0"/>
-      <geometry name="relax_link4_collision">
-        <mesh filename="package://relax_urdf/meshes/mesh_link4.stl" scale="0.001 0.001 0.001" />
-      </geometry>             
-    </collision>
-</link>
-  
-<link name ="relax_link5">  <!-- link 5 -->
-     <inertial>
-      <origin xyz="${-1.3228834e+00*mmTom} ${-8.4683010e+01*mmTom} ${-5.3211105e+01*mmTom}" rpy="0 0 0"/>
-      <mass value="5.7923846e+00"/>
-      <inertia ixx="${5.5109543e+04*mm2Tom2}"  ixy="${-1.4003837e+02*mm2Tom2}"  ixz="${ 2.1470743e+02*mm2Tom2}" iyy="${5.1309424e+04*mm2Tom2}" iyz="${-1.0289246e+03*mm2Tom2}" izz="${1.3804762e+04*mm2Tom2}" />
-    </inertial>
-    <visual>
-      <origin xyz="0 0 0" rpy="0 0 0"/>
-      <geometry name="relax_link5_visual">
-        <mesh filename="package://relax_urdf/meshes/mesh_link5.stl" scale="0.001 0.001 0.001" />
-      </geometry>
-      <material name="darkblue"/>
-    </visual>
-    <collision>
-      <origin xyz="0 0 0" rpy="0 0 0"/>
-      <geometry name="relax_link5_collision">
-        <mesh filename="package://relax_urdf/meshes/mesh_link5.stl" scale="0.001 0.001 0.001" />
-      </geometry>             
-    </collision>
-</link>
+<!-- end_effector attached -->
+<!-- <xacro:if value="${ADD_END_EFFECTOR}">
+      <xacro:include filename="$(find relax_urdf)/urdf/parts/end_effector.urdf.xacro" />
 
-<!-- joints -->
-<joint name="joint1" type="revolute"> <!-- joint 1 -->
-    <parent link="relax_link1"/>
-    <child link="relax_link2"/>
-    <origin xyz="0 ${131.660*mmTom} ${-249.660*mmTom}" rpy="0 0 0"/>
-    <axis xyz="0 1 0"/>
-    <limit velocity="3.86" effort="147.0" lower="-3.14" upper="3.14" />
-    <dynamics damping="0.2" friction="10.0"/>
-</joint>
-  
-<joint name="joint2" type="revolute"> <!-- joint 2 -->
-    <parent link="relax_link2"/>
-    <child link="relax_link3"/>
-    <origin xyz="0 0 ${-400*mmTom}" rpy="0 0 0"/>
-    <axis xyz="0 1 0"/>
-    <limit velocity="3.86" effort="147.0" lower="-3.14" upper="3.14" />
-    <dynamics damping="0.2" friction="10.0"/>
-</joint>
+      <xacro:end_effector arm_num="1"  parent_link="arm1_7">
+                  <origin xyz="0. 0. 0." rpy="0. 0. 0."/>
+      </xacro:end_effector>
 
-<joint name="joint3" type="revolute"> <!-- joint 3 -->
-    <parent link="relax_link3"/>
-    <child link="relax_link4"/>
-    <origin xyz="0 ${-131.660*mmTom} ${-249.660*mmTom}" rpy="0 0 0"/>
-    <axis xyz="0 0 1"/>
-    <limit velocity="3.86" effort="147.0" lower="-3.14" upper="3.14" />   
-    <dynamics damping="0.2" friction="10.0"/>
-</joint>
-  
-<joint name="joint4" type="revolute"> <!-- joint 4 -->
-    <parent link="relax_link4"/>
-    <child link="relax_link5"/>
-    <origin xyz="0 ${-88.1600*mmTom} ${-153.500*mmTom}" rpy="0 0 3.1415927"/>
-    <axis xyz="0 1 0"/>
-    <limit velocity="3.86" effort="147.0" lower="-3.14" upper="3.14" />
-    <dynamics damping="0.2" friction="10.0"/>
-</joint>
-  
+      <xacro:end_effector arm_num="2"  parent_link="arm2_7">
+                  <origin xyz="0. 0. 0." rpy="0. 0. 0."/>
+      </xacroend_effector>
+</xacro:if> -->
+
 </robot>
