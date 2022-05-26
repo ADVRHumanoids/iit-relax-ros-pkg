@@ -53,7 +53,7 @@
 
   	<!-- Run a python script to the send a service call to gazebo_ros to spawn a URDF robot -->
 	  <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
-		      args="-urdf -model relax -param robot_description_gz"/>
+		      args="-urdf -z 0.10 -model relax -param robot_description_gz"/>
   </group>
   
   <!-- run rviz -->
