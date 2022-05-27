@@ -17,7 +17,7 @@
   
   <arg name="arm" default="true"/>
   <arg name="base" default="true"/>
-  <arg name="realsense" default="true"/>
+  <arg name="realsense" default="false"/>
   
   
   <!-- Internal arguments, rewrite human-readable gazebo arguments to it's internal arguments -->

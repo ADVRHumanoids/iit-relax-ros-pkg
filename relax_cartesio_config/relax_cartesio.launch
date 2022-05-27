@@ -1,0 +1,21 @@
+<launch>
+
+	<!-- robot description -->
+	<param name="robot_description" textfile="$(find relax_urdf)/urdf/relax.urdf"/>
+	<param name="robot_description_semantic" textfile="$(find relax_srdf)/srdf/relax.srdf"/>
+    <param name="cartesian/problem_description" textfile="$(find relax_cartesio_config)/relax_stack.yaml"/>
+
+    <!-- launch cartesian interface -->
+    <include file="$(find cartesian_interface)/launch/cartesio.launch">
+        <!-- Control frequency (Hz) -->
+        <arg name="rate" value="100.0"/>
+        <!-- Spawn RviZ interacrive markers -->
+        <arg name="markers" value="true"/>
+        <!-- Set to false for fixed base  -->
+        <arg name="is_model_floating_base" value="true"/>
+    </include>
+
+    <!-- show in rviz -->
+	<node type="rviz" name="rviz" pkg="rviz" args="-d $(find relax_cartesio_config)/relax.rviz"/>
+
+</launch>

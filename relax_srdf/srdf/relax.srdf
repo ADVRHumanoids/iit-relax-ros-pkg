@@ -14,7 +14,7 @@
     <chain base_link="mobile_base_link" tip_link="right_wheel"/>
   </group>
   <group name="arm">
-    <chain base_link="control_box" tip_link="relax_arm1_link5"/>
+    <chain base_link="relax_arm1_link1" tip_link="relax_arm1_link5"/>
   </group>
   <group name="chains">
     <group name="right_locomotion"/>
