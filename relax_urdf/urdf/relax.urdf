@@ -129,6 +129,28 @@
       </geometry>
     </collision>
   </link>
+  <link name="relax_arm1_link6">
+    <!-- link 5 -->
+    <inertial>
+      <origin xyz="-0.0013228834 -0.08468301 -0.053211105"/>
+      <mass value="5.7923846"/>
+      <inertia ixx="0.055109543" ixy="-0.00014003836999999997" ixz="0.00021470742999999998" iyy="0.051309424" iyz="-0.0010289246" izz="0.013804762"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry name="relax_link5_visual">
+        <mesh filename="package://relax_urdf/meshes/mesh_link5.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="darkblue"/>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry name="relax_link5_collision">
+        <mesh filename="package://relax_urdf/meshes/mesh_link5.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </collision>
+  </link>
+
   <!-- joints -->
   <joint name="relax_arm1_joint1" type="revolute">
     <!-- joint 1 -->
