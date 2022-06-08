@@ -7,7 +7,7 @@
     <plugin name="xbot2_link_state_sensor" filename="libxbot2_gz_link_state_sensor.so">
         <links>
             <link name="base_link"/>
-            <link name="left_wheel"/>
+            <link name="left_wheel_link"/>
         </links>
     </plugin>
     <!--
@@ -22,15 +22,25 @@
             <gain name="small_mot"  p="250"  d="5"/>
             <gain name="medium_mot" p="1000" d="10"/>
             <gain name="big_mot"    p="3000" d="10"/>
-            <gain name="wheel_mot"  p="0" d="10"/>
+            <gain name="wheel_mot"  p="1" d="1"/>
             
-            <pid name="j_left_wheel_roll"     profile="wheel_mot"/>
-            <pid name="j_right_wheel_roll"     profile="wheel_mot"/>
+            <pid name="left_wheel_joint"     profile="wheel_mot"/>
+            <pid name="right_wheel_joint"     profile="wheel_mot"/>
+            
+            <pid name="front_left_caster_rotation_joint"     profile="wheel_mot"/>
+            <pid name="front_left_caster_wheel_joint"     profile="wheel_mot"/>
+            <pid name="front_right_caster_rotation_joint"     profile="wheel_mot"/>
+            <pid name="front_right_caster_wheel_joint"     profile="wheel_mot"/>
+            <pid name="rear_left_caster_rotation_joint"     profile="wheel_mot"/>
+            <pid name="rear_left_caster_wheel_joint"     profile="wheel_mot"/>
+            <pid name="rear_right_caster_rotation_joint"     profile="wheel_mot"/>
+            <pid name="rear_right_caster_wheel_joint"     profile="wheel_mot"/>
             
             <pid name="relax_arm1_joint1" profile="medium_mot"/>
             <pid name="relax_arm1_joint2" profile="medium_mot"/>
             <pid name="relax_arm1_joint3" profile="medium_mot"/>
             <pid name="relax_arm1_joint4" profile="small_mot"/>
+            <pid name="relax_arm1_joint5" profile="small_mot"/>
             
         </pid>
     </plugin>

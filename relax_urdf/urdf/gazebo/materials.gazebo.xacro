@@ -17,5 +17,8 @@
 <gazebo reference="relax_arm1_link5">
   <material>Gazebo/Blue</material>
 </gazebo>
+<gazebo reference="relax_arm1_link6">
+  <material>Gazebo/Blue</material>
+</gazebo>
 
 </robot>

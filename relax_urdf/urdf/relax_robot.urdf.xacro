@@ -21,6 +21,11 @@
         <child link="relax_arm${arm_num}_link1"/>
         <origin xyz="0 0 0" rpy="0 0 0" />
   	</joint>
+    
 </xacro:unless>
+
+<xacro:if value="${RELAX_MOBILE_BASE}">
+  <xacro:controller_plugin_gazebo robot_namespace=""/>
+</xacro:if>
 
 </robot>

@@ -1,173 +1,127 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
 
-<!-- links -->
-<link name ="mobile_base_link">  <!-- mobile base link -->
-    <inertial>
-      <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
-      <mass value="100.0"/>
-      <inertia ixx="17" ixy="0.0" ixz="0.0" iyy="17" iyz="0.0" izz="17" />
-    </inertial>
-    <visual>
-      <origin xyz="0 0 0" rpy="0 0 0"/>
-      <geometry name="mobile_base_link_visual">
-        <mesh filename="package://relax_urdf/meshes/mir_base.stl" scale="0.001 0.001 0.001" />
-      </geometry>
-      <material name="dark"/>
-    </visual>
-    <collision>
-      <origin xyz="0 0 0" rpy="0 0 0"/>
-      <geometry name="mobile_base_link_collision">
-        <mesh filename="package://relax_urdf/meshes/mir_base.stl" scale="0.001 0.001 0.001" />
-      </geometry>             
-    </collision>
-</link> 
+    
+  <xacro:include filename="$(find relax_urdf)/urdf/parts/common_base_properties.urdf.xacro" />
+  <xacro:include filename="$(find relax_urdf)/urdf/gazebo/imu.gazebo.urdf.xacro" />
+  <xacro:include filename="$(find relax_urdf)/urdf/gazebo/mir.gazebo.xacro" />
+  <xacro:include filename="$(find relax_urdf)/urdf/parts/mir.transmission.xacro" />
+  <xacro:include filename="$(find relax_urdf)/urdf/parts/sick_s300.urdf.xacro" />
+  <xacro:include filename="$(find relax_urdf)/urdf/parts/wheels.urdf.xacro" />
 
+    
+    <link name="${prefix}base_footprint" />
 
-<link name ="control_box">
-    <inertial>
-      <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
-      <mass value="1.0"/>
-      <inertia ixx="0.17" ixy="0.0" ixz="0.0" iyy="0.17" iyz="0.0" izz="0.17" />
-    </inertial>
-    <visual>
-      <origin xyz="0 0 0" rpy="0 0 0"/>
-      <geometry name="control_box_visual">
-          <box size="0.3 0.3 0.15" />
-      </geometry>
-      <material name="dark"/>
-    </visual>
-    <collision>
-      <origin xyz="0 0 0" rpy="0 0 0"/>
-      <geometry name="control_box_collision">
-          <box size="0.3 0.3 0.15" />
-      </geometry>             
-    </collision>
-</link> 
+    <joint name="${prefix}base_joint" type="fixed">
+      <parent link="${prefix}base_footprint" />
+      <child link="${prefix}base_link" />
+      <origin xyz="0 0 0" rpy="0 0 0" />
+    </joint>
 
-<link name ="left_wheel">
-    <inertial>
-      <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
-      <mass value="1.0"/>
-      <inertia ixx="0.17" ixy="0.0" ixz="0.0" iyy="0.17" iyz="0.0" izz="0.17" />
-    </inertial>
-    <visual>
-      <origin xyz="0 0 0" rpy="0 0 0"/>
-      <geometry name="left_wheel_link_visual">
-        <mesh filename="package://relax_urdf/meshes/mesh_left_wheel.stl" scale="0.001 0.001 0.001" />
-      </geometry>
-      <material name="dark"/>
-    </visual>
-    <collision>
-      <origin xyz="0 0 0" rpy="0 0 0"/>
-      <geometry name="left_wheel_link_collision">
-        <mesh filename="package://relax_urdf/meshes/mesh_left_wheel.stl" scale="0.001 0.001 0.001" />
-      </geometry>             
-    </collision>
-</link> 
+    <link name="${prefix}base_link">
+      <xacro:box_inertial mass="${mir_base_mass}" x="${mir_base_inertial_x_length}" y="${mir_base_inertial_y_length}" z="${mir_base_inertial_z_length}">
+        <origin xyz="${mir_base_inertial_x + mir_act_wheel_dx} ${mir_base_inertial_y} ${mir_base_inertial_z}" rpy="0 0 0" />
+      </xacro:box_inertial>
+      <visual>
+        <origin xyz="${mir_act_wheel_dx} 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://relax_urdf/meshes/mesh_base_revised.stl" />
+        </geometry>
+        <xacro:insert_block name="material_dark_grey" />
+      </visual>
+      <collision>
+        <origin xyz="${mir_act_wheel_dx} 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://relax_urdf/meshes/mesh_base_revised.stl" />
+        </geometry>
+      </collision>
+    </link>
+    <gazebo reference="${prefix}base_link">
+      <material>Gazebo/DarkGrey</material>
+    </gazebo>
 
-<link name ="right_wheel">
-    <inertial>
-      <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
-      <mass value="1.0"/>
-      <inertia ixx="0.17" ixy="0.0" ixz="0.0" iyy="0.17" iyz="0.0" izz="0.17" />
-    </inertial>
-    <visual>
-      <origin xyz="0 0 0" rpy="0 0 0"/>
-      <geometry name="right_wheel_link_visual">
-        <mesh filename="package://relax_urdf/meshes/mesh_left_wheel.stl" scale="0.001 0.001 0.001" />
-      </geometry>
-      <material name="dark"/>
-    </visual>
-    <collision>
-      <origin xyz="0 0 0" rpy="0 0 0"/>
-      <geometry name="right_wheel_link_collision">
-        <mesh filename="package://relax_urdf/meshes/mesh_left_wheel.stl" scale="0.001 0.001 0.001" />
-      </geometry>             
-    </collision>
-</link> 
+    <!-- IMU -->
+    <joint name="${prefix}base_link_to_imu_joint" type="fixed">
+      <parent link="${prefix}base_link" />
+      <child link="${prefix}imu_link" />
+      <origin xyz="0.0 0.0 0.25" rpy="0 0 0" />  <!-- same as real MiR -->
+    </joint>
 
-<link name ="left_wheel_yaw">
-    <inertial>
-      <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
-      <mass value="1.0"/>
-      <inertia ixx="0.17" ixy="0.0" ixz="0.0" iyy="0.17" iyz="0.0" izz="0.17" />
-    </inertial>
-    <visual>
-      <origin xyz="0 0 0" rpy="0 0 0"/>
-      <geometry name="left_wheel_yaw_link_visual">
-        <box size="0.001 0.001 0.001"/>
-      </geometry>
-      <material name="dark"/>
-    </visual>
-    <collision>
-      <origin xyz="0 0 0" rpy="0 0 0"/>
-      <geometry name="left_wheel_yaw_link_collision">
-        <box size="0.001 0.001 0.001"/>
-      </geometry>             
-    </collision>
-</link> 
+    <link name="${prefix}imu_link" />
 
-<link name ="right_wheel_yaw">
-    <inertial>
-      <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
-      <mass value="1.0"/>
-      <inertia ixx="0.17" ixy="0.0" ixz="0.0" iyy="0.17" iyz="0.0" izz="0.17" />
-    </inertial>
-    <visual>
-      <origin xyz="0 0 0" rpy="0 0 0"/>
-      <geometry name="right_wheel_yaw_link_visual">
-        <box size="0.001 0.001 0.001"/>
-      </geometry>
-      <material name="dark"/>
-    </visual>
-    <collision>
-      <origin xyz="0 0 0" rpy="0 0 0"/>
-      <geometry name="right_wheel_yaw_link_collision">
-        <box size="0.001 0.001 0.001"/>
-      </geometry>             
-    </collision>
-</link> 
+    <xacro:imu_gazebo link="${prefix}imu_link" imu_topic="imu_data" update_rate="50.0" />
 
-<joint name="j_control" type="fixed">
-	<parent link="mobile_base_link"/>
-	<child link="control_box"/>
-    <origin xyz="0 0 ${225.000*mmTom+0.15}" rpy="0 0 0"/>
-	<axis xyz="0 0 1"/>
-</joint>
+    <!-- Create an alias for imu_link. This is necessary because the real MiR's
+         TF has imu_link, but the imu_data topic is published in the imu_frame
+         frame. -->
+    <joint name="${prefix}imu_link_to_imu_frame_joint" type="fixed">
+      <parent link="${prefix}imu_link" />
+      <child link="${prefix}imu_frame" />
+      <origin xyz="0 0 0" rpy="0 0 0" />
+    </joint>
 
-<joint name="j_left_wheel_yaw" type="revolute">
-	<parent link="mobile_base_link"/>
-	<child link="left_wheel_yaw"/>
-    <origin xyz="-0.00448719 0.25 0.09" rpy="0 0 0"/>
-	<axis xyz="0 0 1"/>
-   <limit  effort="35" velocity="20" lower="-1" upper="1" />
-</joint>
+    <link name="${prefix}imu_frame" />
 
-<joint name="j_right_wheel_yaw" type="revolute">
-	<parent link="mobile_base_link"/>
-	<child link="right_wheel_yaw"/>
-	<origin xyz="-0.00448719 -0.25 0.09" rpy="0 0 0"/>
-	<axis xyz="0 0 1"/>
-   <limit  effort="35" velocity="20" lower="-1" upper="1" />
-</joint>
+    <!-- Laser scanners -->
+    <joint name="${prefix}base_link_to_front_laser_joint" type="fixed">
+      <parent link="${prefix}base_link" />
+      <child link="${prefix}front_laser_link" />
+      <origin xyz="${laser_dx + mir_act_wheel_dx} ${laser_dy} ${laser_dz}" rpy="0.0 0.0 ${0.25 * pi}" />
+    </joint>
+    <xacro:sick_s300 prefix="${prefix}" link="front_laser_link" topic="f_scan" />
 
-<joint name="j_left_wheel_roll" type="continuous">
-	<parent link="left_wheel_yaw"/>
-	<child link="left_wheel"/>
-    <origin xyz="0 0 0" rpy="0 0 0"/>
-	<axis xyz="0 1 0"/>
-   <limit  effort="35" velocity="20"/>
-</joint>
+    <joint name="${prefix}base_link_to_back_laser_joint" type="fixed">
+      <parent link="${prefix}base_link" />
+      <child link="${prefix}back_laser_link" />
+      <origin xyz="${-laser_dx + mir_act_wheel_dx} ${-laser_dy} ${laser_dz}" rpy="0.0 0.0 ${-0.75 * pi}" />
+    </joint>
 
-<joint name="j_right_wheel_roll" type="continuous">
-	<parent link="right_wheel_yaw"/>
-	<child link="right_wheel"/>
-	<origin xyz="0 0 0" rpy="0 0 0"/>
-	<axis xyz="0 1 0"/>
-   <limit  effort="35" velocity="20"/>
-</joint>
+    <xacro:sick_s300 prefix="${prefix}" link="back_laser_link" topic="b_scan" />
 
+    <!-- Ultrasound sensors -->
+    <joint name="${prefix}us_1_joint" type="fixed">   <!-- right ultrasound -->
+      <parent link="${prefix}base_link" />
+      <child link="${prefix}us_1_frame" />
+      <origin xyz="0.45 -0.12 0.16 " rpy="0 0 0" />  <!-- from visually matching to the mesh of the MiR -->
+    </joint>
+
+    <link name="${prefix}us_1_frame" />
+
+    <joint name="${prefix}us_2_joint" type="fixed">   <!-- left ultrasound -->
+      <parent link="${prefix}base_link" />
+      <child link="${prefix}us_2_frame" />
+      <origin xyz="0.45 0.12 0.16 " rpy="0 0 0" />  <!-- from visually matching to the mesh of the MiR -->
+    </joint>
+
+    <link name="${prefix}us_2_frame" />
+
+    <!-- wheels -->
+    <xacro:actuated_wheel prefix="${prefix}" locationprefix="left" locationright="-1"/>
+    <xacro:actuated_wheel prefix="${prefix}" locationprefix="right" locationright="1"/>
+    <xacro:caster_wheel prefix="${prefix}" locationprefix="fl" locationright="-1" wheel_base_dx="${mir_front_caster_wheel_base_dx + mir_act_wheel_dx}"/>
+    <xacro:caster_wheel prefix="${prefix}" locationprefix="fr" locationright="1" wheel_base_dx="${mir_front_caster_wheel_base_dx + mir_act_wheel_dx}"/>
+    <xacro:caster_wheel prefix="${prefix}" locationprefix="bl" locationright="-1" wheel_base_dx="${-mir_back_caster_wheel_base_dx + mir_act_wheel_dx}"/>
+    <xacro:caster_wheel prefix="${prefix}" locationprefix="br" locationright="1" wheel_base_dx="${-mir_back_caster_wheel_base_dx + mir_act_wheel_dx}"/>
+
+    <joint name="${prefix}base_link_surface_joint" type="fixed">
+      <origin xyz="${mir_act_wheel_dx} 0 0.352" rpy="0 0 0" />
+      <parent link="${prefix}base_link" />
+      <child link="${prefix}surface" />
+      <axis xyz="0 0 1" />
+    </joint>
+
+    <link name="${prefix}surface"/>
+
+    <xacro:mir_wheel_transmissions prefix="${prefix}"/>
+
+    <!-- set the gazebo friction parameters for the wheels -->
+    <xacro:set_all_wheel_frictions prefix="${prefix}"/>
+
+    <xacro:p3d_base_controller prefix="${prefix}" />
+    
+    
+    
+<!--
 <xacro:if value="${ADD_D435I_CONTROL_BOX}">
     <xacro:include filename="$(find realsense_gazebo_description)/urdf/_d435i.urdf.xacro" />
         
@@ -194,6 +148,6 @@
             
             <origin xyz="0.18 0 0" rpy="0 -0.5 0"/>
         </xacro:sensor_d435i>
-</xacro:if>
+</xacro:if>-->
 
 </robot>
