@@ -9,16 +9,16 @@
 -->
 <robot name="relax">
   <group name="base">
-    <link name="base_link"/>
+    <link name="base_footprint"/>
   </group>
   <group name="left_locomotion">
-    <chain base_link="mobile_base_link" tip_link="left_wheel"/>
+    <chain base_link="base_footprint" tip_link="left_wheel_link"/>
   </group>
   <group name="right_locomotion">
-    <chain base_link="mobile_base_link" tip_link="right_wheel"/>
+    <chain base_link="base_footprint" tip_link="right_wheel_link"/>
   </group>
   <group name="arm">
-    <chain base_link="control_box" tip_link="relax_arm1_link5"/>
+    <chain base_link="relax_arm1_link1" tip_link="relax_arm1_link6"/>
   </group>
   <group name="car_frame_chain">
     <chain base_link="base_link" tip_link="car_frame"/>
@@ -30,15 +30,14 @@
     <group name="car_frame_chain"/>
   </group>
 -  <!--homing posture -->
-  <group_state name="home" group="chains">
-    <joint name="relax_arm1_joint1" value="0.6"/>
-    <joint name="relax_arm1_joint2" value="-1.7"/>
-    <joint name="relax_arm1_joint3" value="0.0"/>
-    <joint name="relax_arm1_joint4" value="0.6"/>
-    <joint name="j_left_wheel_roll" value="0.0"/>
-    <joint name="j_left_wheel_yaw" value="0.0"/>
-    <joint name="j_right_wheel_roll" value="0.0"/>
-    <joint name="j_right_wheel_yaw" value="0.0"/>
-  </group_state>
+ <group_state name="home" group="chains">
+    <joint name="relax_arm1_joint1" value="0.0"/>
+    <joint name="relax_arm1_joint2" value="0.6"/>
+    <joint name="relax_arm1_joint3" value="-1.7"/>
+    <joint name="relax_arm1_joint4" value="0.0"/>
+    <joint name="relax_arm1_joint5" value="0.6"/>
+    <joint name="left_wheel_joint" value="0.0"/>
+    <joint name="right_wheel_joint" value="0.0"/>
+  </group_state>  
 </robot>
 
