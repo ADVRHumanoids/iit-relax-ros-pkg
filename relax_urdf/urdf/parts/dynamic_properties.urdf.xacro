@@ -19,4 +19,8 @@
 <xacro:property name="Joint_4_damp" value="  0.2 "/>
 <xacro:property name="Joint_4_fric" value=" 10.0 "/>
 
+<!-- Joint 5 -->
+<xacro:property name="Joint_5_damp" value="  0.2 "/>
+<xacro:property name="Joint_5_fric" value=" 10.0 "/>
+
 </robot>

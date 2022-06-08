@@ -24,7 +24,7 @@
 <xacro:property name="Link_2_y" value=" ${-2.0005579e+02*mmTom} "/>
 <xacro:property name="Link_2_z" value=" ${-5.7041875e+00*mmTom} "/>
 <!-- Mass -->
-<xacro:property name="Link_2_mass" value="1.9989653e+00"/>
+<xacro:property name="Link_2_mass" value="2.6013710e+00"/>
 <!-- Inertia -->
 <xacro:property name="Link_2_xx" value=" ${ 6.4570453e+04*mm2Tom2} "/>
 <xacro:property name="Link_2_xy" value=" ${-1.9926538e+02*mm2Tom2} "/> 
