@@ -25,7 +25,9 @@
 </xacro:unless>
 
 <xacro:if value="${RELAX_MOBILE_BASE}">
-  <xacro:controller_plugin_gazebo robot_namespace=""/>
+    <xacro:if value="${USE_NAV_CONTROLLERS}">
+        <xacro:controller_plugin_gazebo robot_namespace=""/>
+    </xacro:if>
 </xacro:if>
 
 </robot>

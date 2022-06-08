@@ -19,6 +19,8 @@ or realsense=false togheter with d435_xxx=true to add single ones. This is like 
 </xacro:unless>
 <xacro:arg name="floating_joint" default="true"/>
 
+<xacro:arg name="use_nav_controllers" default="true"/>
+
 
 <!-- ************SELECT PARTS*************-->
 <!-- *************************************-->
@@ -35,5 +37,7 @@ or realsense=false togheter with d435_xxx=true to add single ones. This is like 
 
 <!--***************** CAMS **********-->
 <xacro:property name="ADD_D435I_CONTROL_BOX" value="$(arg d435i_control_box)" />
+
+<xacro:property name="USE_NAV_CONTROLLERS" value="$(arg use_nav_controllers)" />
  
 </robot>
