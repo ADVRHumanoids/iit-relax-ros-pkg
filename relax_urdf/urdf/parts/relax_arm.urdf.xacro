@@ -134,6 +134,15 @@
 <link name ="relax_arm${arm_num}_linkEndEffector" />  <!-- link End-Effector -->
 
 <!-- joints -->
+<joint name="relax_arm${arm_num}_joint0" type="revolute"> <!-- joint 1 -->
+    <parent link="base_link"/>
+    <child link="relax_arm${arm_num}_link1"/>
+    <origin xyz="${Joint_0_Ox} ${Joint_0_Oy} ${Joint_0_Oz}" rpy="${Joint_0_Oroll} ${Joint_0_Opitch} ${Joint_0_Oyaw}"/>
+    <axis xyz="0 0 1"/>
+    <limit velocity="${Joint_0_velocity}" effort="${Joint_0_effort}" lower="${Joint_0_lower}" upper="${Joint_0_upper}" />
+    <dynamics damping="${Joint_0_damp}" friction="${Joint_0_fric}"/>
+</joint>
+
 <joint name="relax_arm${arm_num}_joint1" type="revolute"> <!-- joint 1 -->
     <parent link="relax_arm${arm_num}_link1"/>
     <child link="relax_arm${arm_num}_link2"/>
@@ -179,7 +188,7 @@
     <dynamics damping="${Joint_5_damp}" friction="${Joint_5_fric}"/>
 </joint>
 
-<joint name="relax_arm${arm_num}_joint6" type="revolute"> <!-- joint 6 -->
+<joint name="relax_arm${arm_num}_joint6" type="fixed"> <!-- joint 6 fake -->
     <parent link="relax_arm${arm_num}_link6"/>
     <child link="relax_arm${arm_num}_linkEndEffector"/>
     <origin xyz="${Joint_6_Ox} ${Joint_6_Oy} ${Joint_6_Oz}" rpy="${Joint_6_Oroll} ${Joint_6_Opitch} ${Joint_6_Oyaw}"/>

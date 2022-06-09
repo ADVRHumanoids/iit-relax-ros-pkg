@@ -3,6 +3,15 @@
 
 <!-- ARM -->
 
+<!-- Joint 0 Origin : Base - Link 1 -->
+<xacro:property name="Joint_0_Ox" value="  0.0 "/>
+<xacro:property name="Joint_0_Oy" value=" ${-130.000*mmTom} "/>
+<xacro:property name="Joint_0_Oz" value=" ${ 361.300*mmTom} "/>
+
+<xacro:property name="Joint_0_Oroll" value=" 0.0 "/>
+<xacro:property name="Joint_0_Opitch" value=" 0.0 "/>
+<xacro:property name="Joint_0_Oyaw" value=" 0.0 "/>
+
 <!-- Joint 1 Origin : Link 1 - Link 2 -->
 <xacro:property name="Joint_1_Ox" value="  0.0 "/>
 <xacro:property name="Joint_1_Oy" value=" ${ 131.660*mmTom} "/>
@@ -10,7 +19,7 @@
 
 <xacro:property name="Joint_1_Oroll" value=" -1.5707963 "/>
 <xacro:property name="Joint_1_Opitch" value=" 0.0 "/>
-<xacro:property name="Joint_1_Oyaw" value=" 0.0"/>
+<xacro:property name="Joint_1_Oyaw" value=" 0.0 "/>
 
 <!-- Joint 2 Origin : Link 2 - Link 3 -->
 <xacro:property name="Joint_2_Ox" value="  0.0 "/>
@@ -48,7 +57,7 @@
 <xacro:property name="Joint_5_Opitch" value=" 0.0 "/>
 <xacro:property name="Joint_5_Oyaw" value=" 0.0 "/>
 
-<!-- Joint 6 Origin : Link 6 - End-Effector -->
+<!-- Joint 6 fake Origin : Link 6 - End-Effector -->
 <xacro:property name="Joint_6_Ox" value="  0.0 "/>
 <xacro:property name="Joint_6_Oy" value=" 0.0 "/>
 <xacro:property name="Joint_6_Oz" value=" ${28.0000*mmTom} "/>

@@ -3,6 +3,10 @@
 
 <!-- ARM -->
 
+<!-- Joint 0 -->
+<xacro:property name="Joint_0_damp" value="  0.2 "/>
+<xacro:property name="Joint_0_fric" value=" 10.0 "/>
+
 <!-- Joint 1 -->
 <xacro:property name="Joint_1_damp" value="  0.2 "/>
 <xacro:property name="Joint_1_fric" value=" 10.0 "/>
@@ -23,7 +27,7 @@
 <xacro:property name="Joint_5_damp" value="  0.2 "/>
 <xacro:property name="Joint_5_fric" value=" 10.0 "/>
 
-<!-- Joint 6 -->
+<!-- Joint 6 fake -->
 <xacro:property name="Joint_6_damp" value="  0.2 "/>
 <xacro:property name="Joint_6_fric" value=" 10.0 "/>
 
