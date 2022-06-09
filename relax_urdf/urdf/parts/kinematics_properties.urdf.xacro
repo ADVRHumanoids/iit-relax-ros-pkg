@@ -4,8 +4,8 @@
 <!-- ARM -->
 
 <!-- Joint 0 Origin : Base - Link 1 -->
-<xacro:property name="Joint_0_Ox" value="  0.0 "/>
-<xacro:property name="Joint_0_Oy" value=" ${-130.000*mmTom} "/>
+<xacro:property name="Joint_0_Ox" value=" ${-130.000*mmTom} "/>
+<xacro:property name="Joint_0_Oy" value=" 0.0 "/>
 <xacro:property name="Joint_0_Oz" value=" ${ 361.300*mmTom} "/>
 
 <xacro:property name="Joint_0_Oroll" value=" 0.0 "/>
