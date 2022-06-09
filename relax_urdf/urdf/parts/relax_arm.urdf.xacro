@@ -147,7 +147,7 @@
     <parent link="relax_arm${arm_num}_link2"/>
     <child link="relax_arm${arm_num}_link3"/>
     <origin xyz="${Joint_2_Ox} ${Joint_2_Oy} ${Joint_2_Oz}" rpy="${Joint_2_Oroll} ${Joint_2_Opitch} ${Joint_2_Oyaw}"/>
-    <axis xyz="0 1 0"/>
+    <axis xyz="0 0 1"/>
     <limit velocity="${Joint_2_velocity}" effort="${Joint_2_effort}" lower="${Joint_2_lower}" upper="${Joint_2_upper}" />
     <dynamics damping="${Joint_2_damp}" friction="${Joint_2_fric}"/>
 </joint>
@@ -156,7 +156,7 @@
     <parent link="relax_arm${arm_num}_link3"/>
     <child link="relax_arm${arm_num}_link4"/>
     <origin xyz="${Joint_3_Ox} ${Joint_3_Oy} ${Joint_3_Oz}" rpy="${Joint_3_Oroll} ${Joint_3_Opitch} ${Joint_3_Oyaw}"/>
-    <axis xyz="0 1 0"/>
+    <axis xyz="0 0 1"/>
     <limit velocity="${Joint_3_velocity}" effort="${Joint_3_effort}" lower="${Joint_3_lower}" upper="${Joint_3_upper}" /> 
     <dynamics damping="${Joint_3_damp}" friction="${Joint_3_fric}"/>
 </joint>
@@ -174,7 +174,7 @@
     <parent link="relax_arm${arm_num}_link5"/>
     <child link="relax_arm${arm_num}_link6"/>
     <origin xyz="${Joint_5_Ox} ${Joint_5_Oy} ${Joint_5_Oz}" rpy="${Joint_5_Oroll} ${Joint_5_Opitch} ${Joint_5_Oyaw}"/>
-    <axis xyz="0 1 0"/>
+    <axis xyz="0 0 1"/>
     <limit velocity="${Joint_5_velocity}" effort="${Joint_5_effort}" lower="${Joint_5_lower}" upper="${Joint_5_upper}" />
     <dynamics damping="${Joint_5_damp}" friction="${Joint_5_fric}"/>
 </joint>
