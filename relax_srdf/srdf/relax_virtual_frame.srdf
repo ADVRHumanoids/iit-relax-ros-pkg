@@ -18,7 +18,7 @@
     <chain base_link="base_footprint" tip_link="right_wheel_link"/>
   </group>
   <group name="arm">
-    <chain base_link="relax_arm1_link1" tip_link="relax_arm1_link6"/>
+    <chain base_link="relax_arm1_link1" tip_link="relax_arm1_linkEndEffector"/>
   </group>
   <group name="car_frame_chain">
     <chain base_link="base_link" tip_link="car_frame"/>
@@ -36,6 +36,7 @@
     <joint name="relax_arm1_joint3" value="-1.7"/>
     <joint name="relax_arm1_joint4" value="0.0"/>
     <joint name="relax_arm1_joint5" value="0.6"/>
+    <joint name="relax_arm1_joint6" value="0.0"/>
     <joint name="left_wheel_joint" value="0.0"/>
     <joint name="right_wheel_joint" value="0.0"/>
   </group_state>  

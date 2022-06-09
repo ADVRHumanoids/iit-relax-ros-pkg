@@ -14,14 +14,14 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0"/>
       <geometry name="relax_link1_visual">
-        <mesh filename="package://relax_urdf/meshes/mesh_shoulder-yaw.stl" scale="0.001 0.001 0.001" />
+        <mesh filename="package://relax_urdf/meshes/mesh_link1.stl" scale="0.001 0.001 0.001" />
       </geometry>
       <material name="darkblue"/>
     </visual>
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0"/>
       <geometry name="relax_link1_collision">
-        <mesh filename="package://relax_urdf/meshes/mesh_shoulder-yaw.stl" scale="0.001 0.001 0.001" />
+        <mesh filename="package://relax_urdf/meshes/mesh_link1.stl" scale="0.001 0.001 0.001" />
       </geometry>             
     </collision>
 </link>
@@ -35,14 +35,14 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0"/>
       <geometry name="relax_link2_visual">
-        <mesh filename="package://relax_urdf/meshes/mesh_shoulder-pitch.stl" scale="0.001 0.001 0.001" />
+        <mesh filename="package://relax_urdf/meshes/mesh_link2.stl" scale="0.001 0.001 0.001" />
       </geometry>
       <material name="dark"/>
     </visual>
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0"/>
       <geometry name="relax_link2_collision">
-        <mesh filename="package://relax_urdf/meshes/mesh_shoulder-pitch.stl" scale="0.001 0.001 0.001" />
+        <mesh filename="package://relax_urdf/meshes/mesh_link2.stl" scale="0.001 0.001 0.001" />
       </geometry>             
     </collision>
 </link> 
@@ -56,14 +56,14 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0"/>
       <geometry name="relax_link3_visual">
-        <mesh filename="package://relax_urdf/meshes/mesh_elbow.stl" scale="0.001 0.001 0.001" />
+        <mesh filename="package://relax_urdf/meshes/mesh_link3.stl" scale="0.001 0.001 0.001" />
       </geometry>
       <material name="darkblue"/>
     </visual>
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0"/>
       <geometry name="relax_link3_collision">
-        <mesh filename="package://relax_urdf/meshes/mesh_elbow.stl" scale="0.001 0.001 0.001" />
+        <mesh filename="package://relax_urdf/meshes/mesh_link3.stl" scale="0.001 0.001 0.001" />
       </geometry>             
     </collision>
 </link>
@@ -77,14 +77,14 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0"/>
       <geometry name="relax_link4_visual">
-        <mesh filename="package://relax_urdf/meshes/mesh_forearm-yaw.stl" scale="0.001 0.001 0.001" />
+        <mesh filename="package://relax_urdf/meshes/mesh_link4.stl" scale="0.001 0.001 0.001" />
       </geometry>
       <material name="darkblue"/>
     </visual>
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0"/>
       <geometry name="relax_link4_collision">
-        <mesh filename="package://relax_urdf/meshes/mesh_forearm-yaw.stl" scale="0.001 0.001 0.001" />
+        <mesh filename="package://relax_urdf/meshes/mesh_link4.stl" scale="0.001 0.001 0.001" />
       </geometry>             
     </collision>
 </link>
@@ -98,14 +98,14 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0"/>
       <geometry name="relax_link5_visual">
-        <mesh filename="package://relax_urdf/meshes/mesh_wrist-pitch.stl" scale="0.001 0.001 0.001" />
+        <mesh filename="package://relax_urdf/meshes/mesh_link5.stl" scale="0.001 0.001 0.001" />
       </geometry>
       <material name="darkblue"/>
     </visual>
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0"/>
       <geometry name="relax_link5_collision">
-        <mesh filename="package://relax_urdf/meshes/mesh_wrist-pitch.stl" scale="0.001 0.001 0.001" />
+        <mesh filename="package://relax_urdf/meshes/mesh_link5.stl" scale="0.001 0.001 0.001" />
       </geometry>             
     </collision>
 </link>
@@ -119,17 +119,19 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0"/>
       <geometry name="relax_link6_visual">
-        <mesh filename="package://relax_urdf/meshes/mesh_wrist-yaw.stl" scale="0.001 0.001 0.001" />
+        <mesh filename="package://relax_urdf/meshes/mesh_link6.stl" scale="0.001 0.001 0.001" />
       </geometry>
       <material name="darkblue"/>
     </visual>
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0"/>
       <geometry name="relax_link6_collision">
-        <mesh filename="package://relax_urdf/meshes/mesh_wrist-yaw.stl" scale="0.001 0.001 0.001" />
+        <mesh filename="package://relax_urdf/meshes/mesh_link6.stl" scale="0.001 0.001 0.001" />
       </geometry>             
     </collision>
 </link>
+
+<link name ="relax_arm${arm_num}_linkEndEffector" />  <!-- link End-Effector -->
 
 <!-- joints -->
 <joint name="relax_arm${arm_num}_joint1" type="revolute"> <!-- joint 1 -->
@@ -175,6 +177,15 @@
     <axis xyz="0 1 0"/>
     <limit velocity="${Joint_5_velocity}" effort="${Joint_5_effort}" lower="${Joint_5_lower}" upper="${Joint_5_upper}" />
     <dynamics damping="${Joint_5_damp}" friction="${Joint_5_fric}"/>
+</joint>
+
+<joint name="relax_arm${arm_num}_joint6" type="revolute"> <!-- joint 6 -->
+    <parent link="relax_arm${arm_num}_link6"/>
+    <child link="relax_arm${arm_num}_linkEndEffector"/>
+    <origin xyz="${Joint_6_Ox} ${Joint_6_Oy} ${Joint_6_Oz}" rpy="${Joint_6_Oroll} ${Joint_6_Opitch} ${Joint_6_Oyaw}"/>
+    <axis xyz="0 0 1"/>
+    <limit velocity="${Joint_6_velocity}" effort="${Joint_6_effort}" lower="${Joint_6_lower}" upper="${Joint_6_upper}" />
+    <dynamics damping="${Joint_6_damp}" friction="${Joint_6_fric}"/>
 </joint>
   
 

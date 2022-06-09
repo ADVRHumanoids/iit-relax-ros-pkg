@@ -33,4 +33,10 @@
 <xacro:property name="Joint_5_lower" value=" -3.14 "/>
 <xacro:property name="Joint_5_upper" value=" 3.14 "/>
 
+<!-- Joint 6 -->
+<xacro:property name="Joint_6_velocity" value=" 3.86 "/>
+<xacro:property name="Joint_6_effort" value=" 147.0 "/>
+<xacro:property name="Joint_6_lower" value=" -3.14 "/>
+<xacro:property name="Joint_6_upper" value=" 3.14 "/>
+
 </robot>
