@@ -8,6 +8,7 @@
 <!-- command line arguments -->
 <xacro:arg name="arm" default="true"/>
 <xacro:arg name="base" default="true"/>
+<xacro:arg name="floating_joint" default="true"/>
 
 <!-- ************SELECT PARTS*************-->
 <!-- *************************************-->
