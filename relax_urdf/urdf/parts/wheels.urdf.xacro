@@ -33,7 +33,7 @@
   <xacro:property name="mir_caster_wheel_base_dz" value="${mir_caster_wheel_radius - mir_caster_wheel_dz}" />
 
   <xacro:macro name="actuated_wheel" params="prefix locationprefix locationright">
-    <joint name="${prefix}${locationprefix}_wheel_joint" type="continuous">
+    <joint name="${prefix}${locationprefix}_wheel_joint" type="fixed">
       <origin xyz="0.0 ${-mir_act_wheel_dy * locationright} ${mir_act_wheel_radius}" rpy="0 0 0" />
       <parent link="${prefix}base_link" />
       <child link="${prefix}${locationprefix}_wheel_link" />
@@ -43,7 +43,7 @@
 
     <link name="${prefix}${locationprefix}_wheel_link">
       <xacro:cylinder_inertial mass="${mir_act_wheel_mass}" radius="${mir_act_wheel_radius}" length="${mir_act_wheel_width}">
-        <origin xyz="0 0 0" rpy="${0.5 * pi} 0 0" />
+        <origin xyz="0 0 0" rpy="0 0 0" /> <!-- ${0.5 * pi} 0 0 -->
       </xacro:cylinder_inertial>
       <visual>
         <origin xyz="0 0 0" rpy="${pi/2} 0 0" />
@@ -66,7 +66,7 @@
 
   <xacro:macro name="caster_wheel" params="prefix locationprefix locationright wheel_base_dx">
     <!-- caster hub -->
-    <joint name="${prefix}${locationprefix}_caster_rotation_joint" type="continuous">
+    <joint name="${prefix}${locationprefix}_caster_rotation_joint" type="fixed">
       <origin xyz="${wheel_base_dx} ${-mir_caster_wheel_base_dy * locationright} ${mir_caster_wheel_base_dz}" rpy="0 0 0" />
       <parent link="${prefix}base_link" />
       <child link="${prefix}${locationprefix}_caster_rotation_link" />
@@ -77,7 +77,7 @@
     <link name="${prefix}${locationprefix}_caster_rotation_link">
       <inertial>
         <!-- <origin xyz="0 0 -0.042500000044" rpy="${0.5 * pi} ${24 * deg_to_rad} ${1.5 * pi}" /> -->
-        <origin xyz="0 0 -0.042500000044" rpy="${24 * deg_to_rad} 0 ${0.5 * pi} " />
+        <origin xyz="0 0 -0.042500000044" rpy="0 0 0" /> <!-- ${24 * deg_to_rad} 0 ${0.5 * pi} -->
         <mass value="0.3097539019" />
         <inertia
           ixx="0.0005844517978"
@@ -106,7 +106,7 @@
     </gazebo>
 
     <!-- caster wheel -->
-    <joint name="${prefix}${locationprefix}_caster_wheel_joint" type="continuous">
+    <joint name="${prefix}${locationprefix}_caster_wheel_joint" type="fixed">
       <origin xyz="${mir_caster_wheel_dx} ${-mir_caster_wheel_dy * locationright} ${mir_caster_wheel_dz}" rpy="0 0 0" />
       <parent link="${prefix}${locationprefix}_caster_rotation_link" />
       <child link="${prefix}${locationprefix}_caster_wheel_link" />
@@ -115,17 +115,17 @@
 
     <link name="${prefix}${locationprefix}_caster_wheel_link">
       <xacro:cylinder_inertial mass="${mir_caster_wheel_mass}" radius="${mir_caster_wheel_radius}" length="${mir_caster_wheel_width}">
-        <origin xyz="0 0 0" rpy="${0.5 * pi} 0 0" />
+        <origin xyz="0 0 0" rpy="0 0 0" /> <!--${0.5 * pi} -->
       </xacro:cylinder_inertial>
       <visual>
-        <origin xyz="0 0 0" rpy="${pi/2} 0 0" />
+        <origin xyz="0 0 0" rpy="0 0 0" /> <!--${pi/2} 0 0 -->
         <geometry>
           <cylinder radius="${mir_caster_wheel_radius}" length="${mir_caster_wheel_width}" />
         </geometry>
         <xacro:insert_block name="material_black" />
       </visual>
       <collision>
-        <origin xyz="0 0 0" rpy="${pi/2} 0 0" />
+        <origin xyz="0 0 0" rpy="0 0 0" /> <!--${pi/2} 0 0 -->
         <geometry>
           <cylinder radius="${mir_caster_wheel_radius}" length="${mir_caster_wheel_width}" />
         </geometry>
