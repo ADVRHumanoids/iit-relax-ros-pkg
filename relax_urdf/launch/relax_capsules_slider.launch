@@ -2,7 +2,7 @@
     <arg name="gui" default="true" />
 
      <!-- send the relax robot XML to param server -->
-     <param name="robot_description" command="(findxacro)/xacro′(find relax_urdf)/urdf/relax_capsules.rviz'" />
+     <param name="robot_description" command="$(find xacro)/xacro '$(find relax_urdf)/urdf/relax_capsule.urdf'" />
      <!-- <param name="robot_description_semantic" textfile="$(find relax_urdf)/srdf/relax.srdf" />   -->
      <param name="use_gui" value="$(arg gui)"/>
      
@@ -16,7 +16,7 @@
         <param name="publish_frequency" type="double" value="250.0" />
     </node> 
 
-    <node pkg="rviz" type="rviz" name="rviz" output="screen" if="$(arg gui)" args="-d $(find relax_urdf)/launch/relax.rviz">
+    <node pkg="rviz" type="rviz" name="rviz" output="screen" if="$(arg gui)" args="-d $(find relax_urdf)/rviz/relax.rviz">
     </node> 
 
 </launch>
