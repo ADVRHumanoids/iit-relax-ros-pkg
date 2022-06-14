@@ -13,12 +13,12 @@
 
 
 <xacro:if value="${RELAX_MOBILE_BASE}">
-    <group name="left_locomotion">
-        <chain base_link="base_footprint" tip_link="left_wheel_link" />
+    <group name="cartesian_base_linear">
+        <chain base_link="base_footprint" tip_link="fl_caster_wheel_link" />
     </group>
     
-    <group name="right_locomotion">
-        <chain base_link="base_footprint" tip_link="right_wheel_link" />
+    <group name="cartesian_base_rot">
+        <chain base_link="base_footprint" tip_link="left_wheel_link" />
     </group>
 </xacro:if>
 
@@ -26,13 +26,13 @@
     
     <xacro:if value="${RELAX_MOBILE_BASE}">
         <group name="arm">
-            <chain base_link="world" tip_link="relax_arm1_link6" />
+            <chain base_link="base_link" tip_link="relax_arm1_linkEndEffector" />
         </group>
     </xacro:if>
     
     <xacro:unless value="${RELAX_MOBILE_BASE}">
         <group name="arm">
-            <chain base_link="base_link" tip_link="relax_arm1_link6" />
+            <chain base_link="base_link" tip_link="relax_arm1_linkEndEffector" />
         </group>
     </xacro:unless>
 </xacro:if>
@@ -43,10 +43,10 @@
     </group>
 </xacro:if>
 
-<group name="chains"> <!--THIS HAS TO BE THE LAST GROUP IN THE FILE -->
+<group name="chains"> 
     <xacro:if value="${RELAX_MOBILE_BASE}">
-        <group name="right_locomotion" />
-        <group name="left_locomotion" />
+        <group name="cartesian_base_linear" />
+        <group name="cartesian_base_rot" />
     </xacro:if>
 
     <xacro:if value="${RELAX_ARM}">
@@ -66,8 +66,6 @@
     <joint name="relax_arm1_joint3" value="-1.7"/>
     <joint name="relax_arm1_joint4" value="0.0"/>
     <joint name="relax_arm1_joint5" value="0.6"/>
-    <joint name="left_wheel_joint" value="0.0"/>
-    <joint name="right_wheel_joint" value="0.0"/>
   </group_state>  
 
 </robot>
