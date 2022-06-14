@@ -1,0 +1,35 @@
+solver_options:
+    regularization: 1e-4
+    back_end: "qpoases"
+
+stack:
+    - ["ArmControl", "Base"]
+    - ["Postural"]
+    
+constraints: ["JointLimits", "VelocityLimits"]
+
+JointLimits:
+    type: "JointLimits"
+
+VelocityLimits:
+    type: "VelocityLimits"
+
+ArmControl:
+    type: "Cartesian"
+    name: "arm_control"
+    distal_link: "relax_arm1_linkEndEffector"
+    base_link: "base_link"
+    lambda: 0.1
+    use_body_jacobian: true
+
+Base:
+    type: "Cartesian"
+    name: "mir_control"
+    distal_link: "base_link"
+    indices: [0, 5]
+    lambda: 0.1
+    name: mir
+
+Postural:
+    type: Postural
+    lambda: 0.01

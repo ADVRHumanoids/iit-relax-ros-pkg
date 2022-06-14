@@ -7,8 +7,9 @@ catkin_package()
 
 install(
   FILES 
-  relax_manipulation_stack.yaml
-  relax_manipulation.launch 
+  relax_stack.yaml
+  relax.launch 
+  relax.rviz
   DESTINATION 
   ${CATKIN_PACKAGE_SHARE_DESTINATION}
 )
