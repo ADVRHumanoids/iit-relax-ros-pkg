@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <package format="2">
-  <name>relax_cartesio_config</name>
+  <name>relax_cartesio</name>
   <version>0.0.0</version>
-  <description>The relax_cartesio_config package</description>
+  <description>The relax_cartesio package</description>
 
   <maintainer email="alessio.deluca@iit.it">Alessio De Luca</maintainer>
 

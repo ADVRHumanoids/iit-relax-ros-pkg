@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.0)
-project(relax_cartesio_config)
+project(relax_cartesio)
 
 find_package(catkin REQUIRED)
 

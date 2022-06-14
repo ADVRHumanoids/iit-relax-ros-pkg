@@ -11,7 +11,7 @@ add_subdirectory(relax_urdf)
 add_subdirectory(relax_srdf)
 add_subdirectory(relax_gazebo)
 add_subdirectory(relax_config)
-add_subdirectory(relax_cartesio_config)
+add_subdirectory(relax_cartesio)
 
 enable_testing()
 add_subdirectory(relax_test)
