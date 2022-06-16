@@ -70,7 +70,7 @@
 
 <link name ="relax_arm${arm_num}_link4">  <!-- link 4 -->
     <inertial>
-      <origin xyz="${Link_4_x} ${Link_4_y} ${Link_4_z}" rpy="-2.6324601 1.5172034 -2.2584214"/>
+      <origin xyz="${Link_4_x} ${Link_4_y} ${Link_4_z}"/>
       <mass value="${Link_4_mass}"/>
       <inertia ixx="${Link_4_xx}" ixy="${Link_4_xy}" ixz="${Link_4_xz}" iyy="${Link_4_yy}" iyz="${Link_4_yz}" izz="${Link_4_zz}" />
     </inertial>
