@@ -115,7 +115,7 @@
     <disable_collisions link1="fl_caster_rotation_link" link2="right_wheel_link" reason="Never"/>
     <disable_collisions link1="fl_caster_wheel_link" link2="fr_caster_rotation_link" reason="Never"/>
     <disable_collisions link1="fl_caster_wheel_link" link2="fr_caster_wheel_link" reason="Never"/>
-    <disable_collisions link1="fl_caster_wheel_link" link2="front_laser_link" reason="Default"/>
+    <disable_collisions link1="fl_caster_wheel_link" link2="front_laser_link" reason="Never"/>
     <disable_collisions link1="fl_caster_wheel_link" link2="left_wheel_link" reason="Never"/>
     <disable_collisions link1="fl_caster_wheel_link" link2="relax_arm1_link1" reason="Never"/>
     <disable_collisions link1="fl_caster_wheel_link" link2="relax_arm1_link2" reason="Never"/>
@@ -129,12 +129,12 @@
     <disable_collisions link1="fr_caster_rotation_link" link2="left_wheel_link" reason="Never"/>
     <disable_collisions link1="fr_caster_rotation_link" link2="relax_arm1_link1" reason="Never"/>
     <disable_collisions link1="fr_caster_rotation_link" link2="relax_arm1_link2" reason="Never"/>
+    <disable_collisions link1="fr_caster_rotation_link" link2="relax_arm1_link3" reason="Never"/>
     <disable_collisions link1="fr_caster_rotation_link" link2="right_wheel_link" reason="Never"/>
     <disable_collisions link1="fr_caster_wheel_link" link2="front_laser_link" reason="Never"/>
     <disable_collisions link1="fr_caster_wheel_link" link2="left_wheel_link" reason="Never"/>
     <disable_collisions link1="fr_caster_wheel_link" link2="relax_arm1_link1" reason="Never"/>
     <disable_collisions link1="fr_caster_wheel_link" link2="relax_arm1_link2" reason="Never"/>
-    <disable_collisions link1="fr_caster_wheel_link" link2="relax_arm1_link3" reason="Never"/>
     <disable_collisions link1="fr_caster_wheel_link" link2="right_wheel_link" reason="Never"/>
     <disable_collisions link1="front_laser_link" link2="left_wheel_link" reason="Never"/>
     <disable_collisions link1="front_laser_link" link2="relax_arm1_link1" reason="Never"/>
