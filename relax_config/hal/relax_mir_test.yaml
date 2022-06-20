@@ -1,0 +1,10 @@
+xbotcore_devices:
+
+    mir_device:
+        names: [left_wheel_joint, fl_caster_rotation_joint]
+        thread: nrt_main
+
+    joint_master:
+        master: true  # this is a master device for 'joint'
+        thread: rt_main
+

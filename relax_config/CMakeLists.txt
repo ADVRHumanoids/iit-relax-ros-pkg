@@ -9,6 +9,6 @@ install(DIRECTORY hal
   DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
 )
 
-install(FILES relax_basic.yaml 
+install(FILES relax_basic.yaml mir_basic.yaml 
   DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
 )
