@@ -187,7 +187,7 @@
       <inertia ixx="0.001061895408575" ixy="0.0" ixz="0.0" iyy="0.001061895408575" iyz="0.0" izz="0.001953125"/>
     </inertial>
     <visual>
-      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <origin rpy="1.57 0 0" xyz="0 0 0"/>
       <!--${pi/2} 0 0 -->
       <geometry>
         <cylinder length="0.032" radius="0.0625"/>
@@ -197,7 +197,7 @@
       </material>
     </visual>
     <collision>
-      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <origin rpy="1.57 0 0" xyz="0 0 0"/>
       <!--${pi/2} 0 0 -->
       <geometry>
         <cylinder length="0.032" radius="0.0625"/>
