@@ -32,7 +32,7 @@ It is now possible to play with the robot via the provided GUI (invoked with the
 ## Inverse kinematics
 Just type 
 ```bash
-mon launch relax_cartesio thales_cartesio.launch gui:=true
+mon launch relax_cartesio relax_cartesio.launch gui:=true
 ```
 The IK solver will attach to the `xbot2-core` program if available, and will otherwise run in "visual mode".
 
