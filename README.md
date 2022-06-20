@@ -1,29 +1,46 @@
 # iit-relax-ros-pkg 
-Repository dedicated to the IIT robot RELAX
+Description of IIT's RELAX 6-DoF robot, plus configuration files enabling simulation inside the Gazebo environment via the XBot2 framework, and inverse kinematics via the CartesIO framework.
 
-How to run the simulator
-========================
-To run the simulator under the [Xbot2](https://advrhumanoids.github.io/xbot2_wip/quickstart.html#install-the-xbot2-framework) framework, please follow these steps:
-1) install the required dependencies (mainly ROS, Gazebo, and Xbot2 - see the `.travis.yml` file)
-2) clone the repository to a sourced environment (e.g., a catkin workspace)
-3) set a basic configuration file for Xbot2 with `set_xbot2_config $(rospack find relax_config)/relax_basic.yaml`
-4) [terminal #1] `mon launch relax_gazebo relax_world.launch`  (or `roslaunch` if you don't have `rosmon` installed)
-5) [terminal #2] `xbot2-core --simtime`
-6) follow instructions and tutorials from [our examples repository](https://github.com/ADVRHumanoids/xbot2_examples)
+*NOTE:* we recommend the `rosmon` package as a replacement for the `roslaunch` command, as it is faster and provides useful introspection (`apt install ros-$ROS_DISTRO-rosmon`, then refresh the terminal).
 
-*Note:* the provided launch file accepts additional arguments to control the inclusions of perception sensors, namely `velodyne:=true`, and `realsense:=true`.
-You need to have the proper dependencies installed in your setup in order for sensor simulation to work. See the [*forest recipe* for this package](https://github.com/ADVRHumanoids/multidof_recipes/blob/master/recipes/iit-centauro-ros-pkg.yaml).  ??? TO CHECK
+## Installing the package
+Drop it into a catkin workspace `src/` folder, and then invoke either `catkin_make` or `catkin build`.
 
-How to create the Robot Model
-=============================
-*Note:* the repository contains generated files (urdf, srdf) so that is is ready to use without any generation step. The following instructions are meant for developers willing to modify the robot model.
+Simulation and inverse kinematics also requires the `xbot2` (full desktop) binary distribution (instructions [here](https://advrhumanoids.github.io/xbot2/)).
 
-First, install all required dependencies via the [`hhcm-forest` tool](https://github.com/ADVRHumanoids/forest), from the [`multidof_recipes`](https://github.com/ADVRHumanoids/multidof_recipes) registry. 
+## Visualizing the robot
+Just type 
+```bash
+mon launch relax_urdf relax_slider.launch
+```
 
-Now we can generate the urdf/srdf files via cmake:
-1) `mkdir build && cd build`
-2) `cmake ..`
-3) `make generate`  (generates all files marked with `ADD_TO_ALL TRUE` into the build tree - see the cmakelists files)
-4) (optional) `make publish` (publishes generated files to the source tree)
-5) (optional) `make install` installs the source tree 
-6) (optional) `make package` creates a `.deb` package from the source tree
+## Simulating the robot
+
+Terminal #1:
+```bash
+mon launch relax_gazebo empty_world.launch verbose:=true
+```
+
+Terminal #2:
+```bash
+xbot2-core --simtime --config $(rospack find relax_config)/relax_basic.yaml
+```
+*Note that the required configuration file can be set once and for all via `xbot2_set_config $(rospack find relax_config)/relax_basic.yaml`, allowing to omit the `--config` flag.*
+
+It is now possible to play with the robot via the provided GUI (invoked with the `xbot2-gui` command), or to send joint space reference via ROS, e.g. using Python or C++ (see our [examples repository](https://github.com/ADVRHumanoids/xbot2_examples/blob/master/src/ros_api/README.md)).
+
+## Inverse kinematics
+Just type 
+```bash
+mon launch relax_cartesio thales_cartesio.launch gui:=true
+```
+The IK solver will attach to the `xbot2-core` program if available, and will otherwise run in "visual mode".
+
+It is now possible to play wih the robot via interactive markers, or to send Cartesian space reference via ROS, e.g. using Python or C++ (see the docs [here](https://advrhumanoids.github.io/CartesianInterface/quickstart.html)). 
+
+To move the end-effector via interacrive markers
+
+ - right click on a control, select *Continuous control*
+ - move the marker
+ - the IK should track the provided reference
+
