@@ -18,7 +18,7 @@ mon launch relax_urdf relax_slider.launch
 
 Terminal #1:
 ```bash
-mon launch relax_gazebo empty_world.launch verbose:=true
+mon launch relax_gazebo relax_world.launch verbose:=true
 ```
 
 Terminal #2:
