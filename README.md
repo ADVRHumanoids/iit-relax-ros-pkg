@@ -23,7 +23,7 @@ mon launch relax_gazebo relax_world.launch verbose:=true
 
 Terminal #2:
 ```bash
-xbot2-core --simtime --config $(rospack find relax_config)/relax_basic.yaml
+xbot2-core --simtime --config $(rospack find relax_config)/relax_arm_basic.yaml
 ```
 *Note that the required configuration file can be set once and for all via `xbot2_set_config $(rospack find relax_config)/relax_basic.yaml`, allowing to omit the `--config` flag.*
 
