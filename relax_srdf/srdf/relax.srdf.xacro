@@ -13,28 +13,15 @@
 
 
 <xacro:if value="${RELAX_MOBILE_BASE}">
-    <group name="cartesian_base_linear">
-        <chain base_link="base_footprint" tip_link="fl_caster_wheel_link" />
-    </group>
-    
-    <group name="cartesian_base_rot">
-        <chain base_link="base_footprint" tip_link="left_wheel_link" />
+    <group name="cartesian_base">
+        <chain base_link="world" tip_link="base_footprint"/>
     </group>
 </xacro:if>
 
 <xacro:if value="${RELAX_ARM}">
-    
-    <xacro:if value="${RELAX_MOBILE_BASE}">
-        <group name="arm">
-            <chain base_link="base_link" tip_link="relax_arm1_linkEndEffector" />
-        </group>
-    </xacro:if>
-    
-    <xacro:unless value="${RELAX_MOBILE_BASE}">
-        <group name="arm">
-            <chain base_link="base_link" tip_link="relax_arm1_linkEndEffector" />
-        </group>
-    </xacro:unless>
+    <group name="arm">
+        <chain base_link="base_link" tip_link="relax_arm1_linkEndEffector" />
+    </group>
 </xacro:if>
 
 <xacro:if value="${ADD_VIRTUAL_FRAME}">
@@ -45,8 +32,7 @@
 
 <group name="chains"> 
     <xacro:if value="${RELAX_MOBILE_BASE}">
-        <group name="cartesian_base_linear" />
-        <group name="cartesian_base_rot" />
+        <group name="cartesian_base"/>
     </xacro:if>
 
     <xacro:if value="${RELAX_ARM}">
@@ -61,11 +47,11 @@
 <!-- homing posture -->
   <group_state name="home" group="chains">
     <joint name="relax_arm1_joint0" value="0.0"/>
-    <joint name="relax_arm1_joint1" value="0.0"/>
+    <joint name="relax_arm1_joint1" value="0.8"/>
     <joint name="relax_arm1_joint2" value="0.6"/>
-    <joint name="relax_arm1_joint3" value="-1.7"/>
-    <joint name="relax_arm1_joint4" value="0.0"/>
-    <joint name="relax_arm1_joint5" value="0.6"/>
+    <joint name="relax_arm1_joint3" value="0.0"/>
+    <joint name="relax_arm1_joint4" value="-0.5"/>
+    <joint name="relax_arm1_joint5" value="0.0"/>
   </group_state>  
 
 </robot>

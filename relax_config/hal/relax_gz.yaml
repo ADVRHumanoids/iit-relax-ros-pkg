@@ -1,7 +1,9 @@
 xbotcore_devices:
 
     joint_gz:
-        names: []
+        names: [lin_x_joint, lin_y_joint, rot_z_joint, 
+                relax_arm1_joint0, relax_arm1_joint1, relax_arm1_joint2,
+                relax_arm1_joint3, relax_arm1_joint4, relax_arm1_joint5]
         thread: rt_main
 
     joint_master:

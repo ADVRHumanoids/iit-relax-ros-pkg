@@ -4,7 +4,7 @@ find_package(catkin REQUIRED COMPONENTS)
 
 catkin_package()
 
-# mark urdf, meshes and launch files for installation
+# mark urdf, meshes, launch and rviz files for installation
 install(DIRECTORY meshes
   DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
 )
@@ -17,6 +17,11 @@ install(DIRECTORY urdf
   DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
 )
 
+install(DIRECTORY rviz
+  DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
+)
+
+
 # main urdf
 generate_urdf(
   XACRO ${ROBOT_NAME}.urdf.xacro 
@@ -27,7 +32,7 @@ generate_urdf(
 # virtual frame urdf
 generate_urdf(
   XACRO ${ROBOT_NAME}.urdf.xacro 
-  CONFIG config/${ROBOT_NAME}_virtual_frame.urdf.xacro 
+  CONFIG config/${ROBOT_NAME}_mir.urdf.xacro 
   ADD_TO_ALL TRUE
 )
 

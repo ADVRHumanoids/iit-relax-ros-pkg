@@ -1,6 +1,6 @@
 XBotInterface:
-  urdf_path: $(rospack find relax_urdf)/urdf/mir.urdf
-  srdf_path: $(rospack find relax_srdf)/srdf/mir.srdf
+  urdf_path: $(rospack find relax_urdf)/urdf/relax_mir.urdf
+  srdf_path: $(rospack find relax_srdf)/srdf/relax_mir.srdf
 
 ModelInterface:
   model_type: "RBDL"

@@ -1,8 +1,11 @@
 xbotcore_devices:
 
     mir_device:
-        names: [left_wheel_joint, fl_caster_rotation_joint]
+        names: [lin_x_joint, lin_y_joint, rot_z_joint]
         thread: nrt_main
+        params:
+          cmd_vel_topic: {type: string, value: /cmd_vel}
+          odom_topic: {type: string, value: /odom}
 
     joint_master:
         master: true  # this is a master device for 'joint'
