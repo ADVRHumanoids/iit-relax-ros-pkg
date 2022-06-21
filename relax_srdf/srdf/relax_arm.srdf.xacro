@@ -5,7 +5,7 @@
 -->
 <robot xmlns:xacro="http://ros.org/wiki/xacro" name="relax">
     
-    <xacro:include filename="$(find relax_urdf)/urdf/config/relax.urdf.xacro" />
+    <xacro:include filename="$(find relax_urdf)/urdf/config/relax_arm.urdf.xacro" />
 
 
 <xacro:if value="${RELAX_MOBILE_BASE}">
@@ -21,7 +21,7 @@
 
 <xacro:if value="${RELAX_ARM}">
     <group name="arm">
-            <chain base_link="base_link" tip_link="relax_arm1_linkEndEffector" />
+        <chain base_link="base_link" tip_link="relax_arm1_linkEndEffector" />
     </group>
     <xacro:unless  value="${RELAX_MOBILE_BASE}">
         <group name="base">

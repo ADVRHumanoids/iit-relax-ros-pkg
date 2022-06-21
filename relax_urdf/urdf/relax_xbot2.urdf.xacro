@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro" name="relax_xbot2">
+
+<!-- ************ MODEL CONFIGURATION ************ -->
+<xacro:arg name="config" default="$(find relax_urdf)/urdf/config/relax.urdf.xacro" />
+<!-- ************ MODEL CONFIGURATION ************ -->
+<xacro:include filename="$(arg config)"/>
+	
+<!-- ************ RELAX BASE ************ -->
+<xacro:include filename="$(find relax_urdf)/urdf/relax_base_xbot2.urdf.xacro"/>
+
+<!-- ***** attach base to the world ***** -->
+<xacro:if value="${RELAX_FLOATING_BASE}" > <!-- floating base -->
+    <xacro:if value="${RELAX_MOBILE_BASE}" > 
+        <link name="world"/>
+        <joint name="world_joint" type="floating">
+            <parent link="world"/>
+            <child link="base_footprint"/>
+        </joint>
+    </xacro:if>
+</xacro:if>
+
+<xacro:if value="${ADD_VIRTUAL_FRAME}">
+  <xacro:include filename="$(find relax_urdf)/urdf/parts/virtual_frame.urdf.xacro"/>
+</xacro:if>
+  
+</robot>

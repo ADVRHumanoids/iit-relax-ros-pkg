@@ -29,10 +29,25 @@ generate_urdf(
   ADD_TO_ALL TRUE
 )
 
-# virtual frame urdf
+# main urdf xbot2
+generate_urdf(
+  XACRO ${ROBOT_NAME}_xbot2.urdf.xacro 
+  CONFIG config/${ROBOT_NAME}_xbot2.urdf.xacro 
+  ADD_TO_ALL TRUE
+)
+
+
+# MIR urdf
 generate_urdf(
   XACRO ${ROBOT_NAME}.urdf.xacro 
   CONFIG config/${ROBOT_NAME}_mir.urdf.xacro 
+  ADD_TO_ALL TRUE
+)
+
+# arm urdf
+generate_urdf(
+  XACRO ${ROBOT_NAME}.urdf.xacro 
+  CONFIG config/${ROBOT_NAME}_arm.urdf.xacro 
   ADD_TO_ALL TRUE
 )
 

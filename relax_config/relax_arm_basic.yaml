@@ -1,6 +1,6 @@
 XBotInterface:
-  urdf_path: $(rospack find relax_urdf)/urdf/relax.urdf
-  srdf_path: $(rospack find relax_srdf)/srdf/relax.srdf
+  urdf_path: $(rospack find relax_urdf)/urdf/relax_arm.urdf
+  srdf_path: $(rospack find relax_srdf)/srdf/relax_arm.srdf
 
 ModelInterface:
   model_type: "RBDL"
@@ -25,7 +25,7 @@ xbotcore_plugins:
         thread: rt_main
         type: homing
 
-    ros_io: {thread: nrt_main, type: ros_io}
+    ros_io: {thread: nrt_main, type: ros_io, params: {publish_tf: {type: bool, value: false}}}
     ros_control: {thread: nrt_main, type: ros_control, params: {autostart: {type: bool, value: false}}}
     
 

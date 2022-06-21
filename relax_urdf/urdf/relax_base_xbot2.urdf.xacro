@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+
+<xacro:include filename="$(find relax_urdf)/urdf/relax_utils.urdf.xacro" />
+<xacro:include filename="$(find relax_urdf)/urdf/parts/inertial_properties.urdf.xacro" />
+<xacro:include filename="$(find relax_urdf)/urdf/parts/kinematics_properties.urdf.xacro" />
+<xacro:include filename="$(find relax_urdf)/urdf/parts/dynamic_properties.urdf.xacro" />
+<xacro:include filename="$(find relax_urdf)/urdf/parts/limits.urdf.xacro" />
+
+
+<!-- ********  attach robot  ******** -->
+<xacro:if value="${RELAX_ARM}">
+    <xacro:include filename="$(find relax_urdf)/urdf/parts/arm.urdf.xacro" />
+</xacro:if>
+
+
+<!-- Add Base -->
+<xacro:if value="${RELAX_MOBILE_BASE}">
+    <xacro:include filename="$(find relax_urdf)/urdf/parts/mir_base_xbot2.urdf.xacro" />  
+   
+    <xacro:mir prefix=""/>
+    
+</xacro:if>
+	
+
+</robot>

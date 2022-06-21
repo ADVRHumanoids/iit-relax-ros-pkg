@@ -1,13 +1,13 @@
 <?xml version="1.0"?>
-<robot xmlns:xacro="http://ros.org/wiki/xacro" name="relax_mir">
+<robot xmlns:xacro="http://ros.org/wiki/xacro" name="relax_arm">
 
-<xacro:property name="model_name" value="RELAX MIR250" />
+<xacro:property name="model_name" value="RELAX ARM" />
 <xacro:property name="model_version" value="1.0" />
 
 
 <!-- command line arguments -->
-<xacro:arg name="arm" default="false"/>
-<xacro:arg name="base" default="true"/>
+<xacro:arg name="arm" default="true"/>
+<xacro:arg name="base" default="false"/>
 <xacro:arg name="floating_joint" default="false"/>
 
 <!-- ************SELECT PARTS*************-->

@@ -12,9 +12,7 @@
     <group name="base">
         <link name="base_footprint"/>
     </group>
-    <group name="cartesian_base">
-        <chain base_link="world" tip_link="base_footprint"/>
-    </group>
+    <group name="cartesian_base"/>
     <group name="arm">
         <chain base_link="base_link" tip_link="relax_arm1_linkEndEffector"/>
     </group>

@@ -8,6 +8,10 @@
 <xacro:relax_arm arm_num="1" >
    </xacro:relax_arm>
 
+<xacro:unless value="${RELAX_MOBILE_BASE}">
+      <link name="base_link"/>
+</xacro:unless>      
+
 <!-- end_effector attached -->
 <!-- <xacro:if value="${ADD_END_EFFECTOR}">
       <xacro:include filename="$(find relax_urdf)/urdf/parts/end_effector.urdf.xacro" />
