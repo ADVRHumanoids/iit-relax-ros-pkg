@@ -52,12 +52,12 @@
 
 <!-- homing posture -->
   <group_state name="home" group="chains">
-    <joint name="relax_arm1_joint0" value="0.0"/>
-    <joint name="relax_arm1_joint1" value="0.8"/>
-    <joint name="relax_arm1_joint2" value="0.6"/>
-    <joint name="relax_arm1_joint3" value="0.0"/>
-    <joint name="relax_arm1_joint4" value="-0.5"/>
-    <joint name="relax_arm1_joint5" value="0.0"/>
+    <joint name="relax_arm1_joint0" value="0"/>
+        <joint name="relax_arm1_joint1" value="-0.4"/>
+        <joint name="relax_arm1_joint2" value="-1.8"/>
+        <joint name="relax_arm1_joint3" value="0"/>
+        <joint name="relax_arm1_joint4" value="0.8"/>
+        <joint name="relax_arm1_joint5" value="0"/>
   </group_state>  
 
 </robot>
