@@ -165,7 +165,7 @@
     <parent link="relax_arm${arm_num}_link3"/>
     <child link="relax_arm${arm_num}_link4"/>
     <origin xyz="${Joint_3_Ox} ${Joint_3_Oy} ${Joint_3_Oz}" rpy="${Joint_3_Oroll} ${Joint_3_Opitch} ${Joint_3_Oyaw}"/>
-    <axis xyz="0 0 -1"/>
+    <axis xyz="0 0 1"/>
     <limit velocity="${Joint_3_velocity}" effort="${Joint_3_effort}" lower="${Joint_3_lower}" upper="${Joint_3_upper}" /> 
     <dynamics damping="${Joint_3_damp}" friction="${Joint_3_fric}"/>
 </joint>

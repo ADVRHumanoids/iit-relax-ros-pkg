@@ -2,7 +2,7 @@
 
 	<!-- robot description -->
 	<param name="robot_description" textfile="$(find relax_urdf)/urdf/relax_arm.urdf"/>
-	<param name="robot_description_semantic" textfile="$(find relax_srdf)/srdf/relax.srdf"/>
+	<param name="robot_description_semantic" textfile="$(find relax_srdf)/srdf/relax_arm.srdf"/>
     <param name="cartesian/problem_description" textfile="$(find relax_cartesio)/relax_arm_stack.yaml"/>
 
     <!-- launch cartesian interface -->
