@@ -1,0 +1,30 @@
+<launch>
+
+    <param name="robot_description"
+        textfile="$(find relax_urdf)/urdf/relax_arm.urdf"/>
+
+    <param name="robot_description_semantic"
+        textfile="$(find relax_srdf)/srdf/relax_arm.srdf"/>
+
+    <node pkg="cartesian_interface"
+          type="force_estimation_node"
+          name="force_estimator"
+          output="screen" 
+          launch-prefix="xterm -e gdb --args">
+
+        <remap from="~torque_offset" to="cartesian/torque_offset"/>
+
+        <param name="is_model_floating_base" value="false"/>
+        <param name="model_type" value="RBDL"/>
+
+        <param name="links" type="yaml" value="[relax_arm1_linkEndEffector]"/>
+        <param name="chains" type="yaml" value="[arm]"/>
+
+        <param name="relax_arm1_linkEndEffector/dofs" type="yaml" value="[0, 1, 2]"/>
+
+        <param name="rate" value="200.0"/>
+
+    </node>
+
+
+</launch>
