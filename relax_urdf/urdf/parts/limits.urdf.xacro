@@ -6,43 +6,38 @@
 <!-- Joint 0 -->
 <xacro:property name="Joint_0_velocity" value=" 3.86 "/>
 <xacro:property name="Joint_0_effort" value=" 147.0 "/>
-<xacro:property name="Joint_0_lower" value=" -3.14 "/>
-<xacro:property name="Joint_0_upper" value=" 3.14 "/>
+<xacro:property name="Joint_0_lower" value=" -2.70 "/>
+<xacro:property name="Joint_0_upper" value=" 2.70 "/>
 
 <!-- Joint 1 -->
 <xacro:property name="Joint_1_velocity" value=" 3.86 "/>
 <xacro:property name="Joint_1_effort" value=" 147.0 "/>
-<xacro:property name="Joint_1_lower" value=" -3.14 "/>
-<xacro:property name="Joint_1_upper" value=" 3.14 "/>
+<xacro:property name="Joint_1_lower" value=" -2.70 "/>
+<xacro:property name="Joint_1_upper" value=" 2.70 "/>
 
 <!-- Joint 2 -->
 <xacro:property name="Joint_2_velocity" value=" 3.86 "/>
 <xacro:property name="Joint_2_effort" value=" 147.0 "/>
-<xacro:property name="Joint_2_lower" value=" -3.14 "/>
-<xacro:property name="Joint_2_upper" value=" 3.14 "/>
+<xacro:property name="Joint_2_lower" value=" -2.70 "/>
+<xacro:property name="Joint_2_upper" value=" 2.70 "/>
 
 <!-- Joint 3 -->
 <xacro:property name="Joint_3_velocity" value=" 3.86 "/>
 <xacro:property name="Joint_3_effort" value=" 147.0 "/>
-<xacro:property name="Joint_3_lower" value=" -3.14 "/>
-<xacro:property name="Joint_3_upper" value=" 3.14 "/>
+<xacro:property name="Joint_3_lower" value=" -2.70 "/>
+<xacro:property name="Joint_3_upper" value=" 2.70 "/>
 
 <!-- Joint 4 -->
 <xacro:property name="Joint_4_velocity" value=" 3.86 "/>
 <xacro:property name="Joint_4_effort" value=" 147.0 "/>
-<xacro:property name="Joint_4_lower" value=" -3.14 "/>
-<xacro:property name="Joint_4_upper" value=" 3.14 "/>
+<xacro:property name="Joint_4_lower" value=" -2.0 "/>
+<xacro:property name="Joint_4_upper" value=" 2.0 "/>
 
 <!-- Joint 5 -->
 <xacro:property name="Joint_5_velocity" value=" 3.86 "/>
 <xacro:property name="Joint_5_effort" value=" 147.0 "/>
-<xacro:property name="Joint_5_lower" value=" -3.14 "/>
-<xacro:property name="Joint_5_upper" value=" 3.14 "/>
+<xacro:property name="Joint_5_lower" value=" -2.70 "/>
+<xacro:property name="Joint_5_upper" value=" 2.70 "/>
 
-<!-- Joint 6 fake -->
-<xacro:property name="Joint_6_velocity" value=" 3.86 "/>
-<xacro:property name="Joint_6_effort" value=" 147.0 "/>
-<xacro:property name="Joint_6_lower" value=" -3.14 "/>
-<xacro:property name="Joint_6_upper" value=" 3.14 "/>
 
 </robot>

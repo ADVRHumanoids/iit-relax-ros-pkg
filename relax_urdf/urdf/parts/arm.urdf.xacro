@@ -4,24 +4,37 @@
 <!-- relax arm -->
 <xacro:include filename="$(find relax_urdf)/urdf/parts/relax_arm.urdf.xacro" />
 
+<!-- TODO: in wheels.urdf.xacro base link properties are defined, they should be shift into another file -->
+<xacro:include filename="$(find relax_urdf)/urdf/parts/wheels.urdf.xacro" />
+
+<xacro:include filename="$(find relax_urdf)/urdf/parts/common_base_properties.urdf.xacro" />
+
 <!-- arms -->
 <xacro:relax_arm arm_num="1" >
    </xacro:relax_arm>
 
 <xacro:unless value="${RELAX_MOBILE_BASE}">
   <link name="base_link">
-    <inertial>
-      <origin rpy="0 0 0" xyz="0 0 0"/>
-      <mass value="1"/>
-      <inertia ixx="1e-4" ixy="0" ixz="0" iyy="1e-4" iyz="0" izz="1e-4"/>
-    </inertial>
+    <xacro:box_inertial mass="${mir_base_mass}" x="${mir_base_inertial_x_length}" y="${mir_base_inertial_y_length}" z="${mir_base_inertial_z_length}">
+        <origin xyz="${mir_base_inertial_x + mir_act_wheel_dx} ${mir_base_inertial_y} ${mir_base_inertial_z}" rpy="0 0 0" />
+    </xacro:box_inertial>
     <visual>
-      <geometry>
-        <mesh filename="package://relax_urdf/meshes/mesh_base.stl" scale="0.001 0.001 0.001"/>
-      </geometry>
-      <material name="dark_grey"/>
+        <origin xyz="${mir_act_wheel_dx} 0 0" rpy="0 0 0" />
+        <geometry>
+            <mesh filename="package://relax_urdf/meshes/mesh_base_revised.stl" scale="0.001 0.001 0.001"/>
+        </geometry>
+        <material name="dark_grey"/>
     </visual>
+    <collision>
+        <origin xyz="${mir_act_wheel_dx} 0 0" rpy="0 0 0" />
+        <geometry>
+            <mesh filename="package://relax_urdf/meshes/mesh_base_revised.stl"  scale="0.001 0.001 0.001"/>
+        </geometry>
+    </collision>
   </link>
+  <gazebo reference="base_link">
+        <material>Gazebo/DarkGrey</material>
+  </gazebo>
 </xacro:unless>      
 
 <!-- end_effector attached -->
