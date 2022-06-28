@@ -42,9 +42,9 @@
     </joint>
 
     <link name="${prefix}${locationprefix}_wheel_link">
-      <xacro:cylinder_inertial mass="${mir_act_wheel_mass}" radius="${mir_act_wheel_radius}" length="${mir_act_wheel_width}">
+      <xacro:wheel_inertial_y mass="${mir_act_wheel_mass}" radius="${mir_act_wheel_radius}" length="${mir_act_wheel_width}">
         <origin xyz="0 0 0" rpy="0 0 0" /> <!-- ${0.5 * pi} 0 0 -->
-      </xacro:cylinder_inertial>
+      </xacro:wheel_inertial_y>
       <visual>
         <origin xyz="0 0 0" rpy="${pi/2} 0 0" />
         <geometry>
@@ -114,9 +114,9 @@
     </joint>
 
     <link name="${prefix}${locationprefix}_caster_wheel_link">
-      <xacro:cylinder_inertial mass="${mir_caster_wheel_mass}" radius="${mir_caster_wheel_radius}" length="${mir_caster_wheel_width}">
+      <xacro:wheel_inertial_y mass="${mir_caster_wheel_mass}" radius="${mir_caster_wheel_radius}" length="${mir_caster_wheel_width}">
         <origin xyz="0 0 0" rpy="0 0 0" /> <!--${0.5 * pi} -->
-      </xacro:cylinder_inertial>
+      </xacro:wheel_inertial_y>
       <visual>
         <origin xyz="0 0 0" rpy="${pi/2} 0 0" /> <!--${pi/2} 0 0 -->
         <geometry>
