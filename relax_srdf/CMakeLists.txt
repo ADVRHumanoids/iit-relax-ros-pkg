@@ -1,3 +1,4 @@
+set(ROBOT_NAME relax)
 project(${ROBOT_NAME}_srdf)
 
 find_package(catkin REQUIRED)

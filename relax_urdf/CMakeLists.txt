@@ -1,4 +1,7 @@
+set(ROBOT_NAME relax)
 project(${ROBOT_NAME}_urdf)
+
+include(../GenerateXrdf.cmake)
 
 find_package(catkin REQUIRED COMPONENTS)
 
@@ -20,6 +23,7 @@ install(DIRECTORY urdf
 install(DIRECTORY rviz
   DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
 )
+
 
 
 # main urdf
