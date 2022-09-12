@@ -119,8 +119,10 @@ model.update()
 
 
 # set lower impedance for "right arm interface"
-robot.setStiffness({"relax_arm1_joint0": 200})
+robot.setStiffness({"relax_arm1_joint0": 100})
 robot.setStiffness({"relax_arm1_joint1": 200})
+robot.setStiffness({"relax_arm1_joint3": 100})
+robot.setStiffness({"relax_arm1_joint4": 100})
 robot.move()
 
 # safe sleep
@@ -146,8 +148,8 @@ prev_ref_x = 0.0
 prev_ref_teta = 0.0
 
 # filter
-fs = 100 
-b, a = scipy.signal.iirfilter(4, Wn=1, fs=fs, btype="low", ftype="butter")
+fs = 100
+b, a = scipy.signal.iirfilter(3, Wn=0.6, fs=fs, btype="lowpass", ftype="butter")
 live_lfilter = LiveLFilter(b, a)
 
 while not rospy.is_shutdown():
@@ -163,7 +165,10 @@ while not rospy.is_shutdown():
 
     k = 3
     max_vel_x = 0.3
-    max_vel_teta = 0.2
+    max_vel_teta = 0.4
+
+    min_vel_x = 0.05
+    min_vel_teta= 0.05
 
     car_vel_ref[0:3] = -(k * cart_error_x)
     car_vel_ref[5] = -(k * cart_error_y)
@@ -175,19 +180,25 @@ while not rospy.is_shutdown():
     if abs(car_vel_ref[5]) > max_vel_teta:
         car_vel_ref[5] = np.sign(car_vel_ref[5]) * max_vel_teta
 
-    # filter
+    # band around zero
+    if abs(car_vel_ref[0]) < min_vel_x:
+        car_vel_ref[0] = 0.0
 
-    ref_x = live_l_filter(car_vel_ref[0])
+    if abs(car_vel_ref[5]) < min_vel_teta:
+        car_vel_ref[5] = 0.0
 
-    prev_ref_x = car_vel_ref[0]
 
-    car_vel_ref_x.publish(ref_x)
+        
+
+    #ref_x = live_lfilter(car_vel_ref[0])
+
+    car_vel_ref_x.publish(car_vel_ref[0])
     car_vel_ref_teta.publish(car_vel_ref[5])
 
     # send vel ref to base
-    move_cmd.linear.x = ref_x
+    move_cmd.linear.x = car_vel_ref[0]
     move_cmd.angular.z = car_vel_ref[5]
-    #pub.publish(move_cmd)
+    pub.publish(move_cmd)
 
     # sleep
     rate.sleep()
