@@ -31,14 +31,14 @@
       <visual>
         <origin xyz="${mir_act_wheel_dx} 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://relax_urdf/meshes/mesh_base_revised.stl" scale="0.001 0.001 0.001"/>
+          <mesh filename="package://relax_urdf/meshes/mesh_base_2.stl" scale="0.001 0.001 0.001"/>
         </geometry>
         <xacro:insert_block name="material_dark_grey" />
       </visual>
       <collision>
         <origin xyz="${mir_act_wheel_dx} 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://relax_urdf/meshes/mesh_base_revised.stl"  scale="0.001 0.001 0.001"/>
+          <mesh filename="package://relax_urdf/meshes/mesh_base_2.stl"  scale="0.001 0.001 0.001"/>
         </geometry>
       </collision>
     </link>
