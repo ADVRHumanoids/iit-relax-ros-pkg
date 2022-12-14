@@ -21,7 +21,7 @@ xbotcore_threads:
 # plugins
 xbotcore_plugins:
 
-    homing:
+    homingH:
         thread: rt_main
         type: homing
 

@@ -9,6 +9,7 @@
 <xacro:arg name="arm" default="true"/>
 <xacro:arg name="base" default="false"/>
 <xacro:arg name="floating_joint" default="false"/>
+<xacro:arg name="teraflex" default="true"/>
 
 <!-- ************SELECT PARTS*************-->
 <!-- *************************************-->
@@ -19,6 +20,9 @@
 
 <!-- ************ARM*************-->
 <xacro:property name="RELAX_ARM" value="$(arg arm)" />
+
+<!-- ************TERAFLEX*************-->
+<xacro:property name="TERAFLEX_RING" value="$(arg teraflex)" />
  
 <!-- ************MOBILE BASE*************-->
 <xacro:property name="RELAX_MOBILE_BASE" value="$(arg base)" />

@@ -1,0 +1,100 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+
+<!-- *********INERTIA PROPERTIES************* -->
+<xacro:include filename="$(find relax_urdf)/urdf/parts/teraflex_ring_inertial_properties.urdf.xacro"/>
+<!-- *********KINEMATICS PROPERTIES*************** -->
+<xacro:include filename="$(find relax_urdf)/urdf/parts/teraflex_ring_kinematics_properties.urdf.xacro"/>
+
+
+<xacro:macro name="teraflex_ring" params="id parent_link *origin">
+
+<joint name="teraflex_${id}_mount_joint" type="fixed">
+    <xacro:insert_block name="origin"/>
+    <parent link="${parent_link}"/>
+    <child link="teraflex_${id}_link"/>
+</joint>
+
+
+<!-- link ring -->
+<link name ="teraflex_${id}_link">  <!-- link -->
+    <inertial>
+      <origin xyz="${TF_Link_x} ${TF_Link_y} ${TF_Link_z}" />
+      <mass value="${TF_Link_mass}"/>
+      <inertia ixx="${TF_Link_xx}" ixy="${TF_Link_xy}" ixz="${TF_Link_xz}" iyy="${TF_Link_yy}" iyz="${TF_Link_yz}" izz="${TF_Link_zz}" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry name="teraflex_link_visual">
+        <mesh filename="package://relax_urdf/meshes/mesh_teraflex-ring.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+      <material name="dark"/>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry name="teraflex_link_collision">
+        <mesh filename="package://relax_urdf/meshes/mesh_teraflex-ring.stl" scale="0.001 0.001 0.001" />
+      </geometry>             
+    </collision>
+</link>
+
+<link name ="teraflex_${id}_sensor0_link" /> <!-- link fake -->
+<link name ="teraflex_${id}_sensor1_link" />
+<link name ="teraflex_${id}_sensor2_link" />
+<link name ="teraflex_${id}_sensor3_link" />
+<link name ="teraflex_${id}_sensor4_link" />
+<link name ="teraflex_${id}_sensor5_link" />
+<link name ="teraflex_${id}_sensor6_link" />
+<link name ="teraflex_${id}_sensor7_link" />
+
+<joint name="teraflex_${id}_sensor0_joint" type="fixed"> <!-- joint fake -->
+    <parent link="teraflex_${id}_link"/>
+    <child link="teraflex_${id}_sensor0_link"/>
+    <origin xyz="${Joint_TF_S0_Ox} ${Joint_TF_S0_Oy} ${Joint_TF_S0_Oz}" rpy="${Joint_TF_S0_Oroll} ${Joint_TF_S0_Opitch} ${Joint_TF_S0_Oyaw}"/>
+</joint>
+
+<joint name="teraflex_${id}_sensor01_joint" type="fixed"> <!-- joint fake -->
+    <parent link="teraflex_${id}_sensor0_link"/>
+    <child link="teraflex_${id}_sensor1_link"/>
+    <origin xyz="${Joint_S0_S1_Ox} ${Joint_S0_S1_Oy} ${Joint_S0_S1_Oz}" rpy="${Joint_S0_S1_Oroll} ${Joint_S0_S1_Opitch} ${Joint_S0_S1_Oyaw}"/>
+</joint>
+
+<joint name="teraflex_${id}_sensor12_joint" type="fixed"> <!-- joint fake -->
+    <parent link="teraflex_${id}_sensor1_link"/>
+    <child link="teraflex_${id}_sensor2_link"/>
+    <origin xyz="${Joint_S1_S2_Ox} ${Joint_S1_S2_Oy} ${Joint_S1_S2_Oz}" rpy="${Joint_S1_S2_Oroll} ${Joint_S1_S2_Opitch} ${Joint_S1_S2_Oyaw}"/>
+</joint>
+
+<joint name="teraflex_${id}_sensor23_joint" type="fixed"> <!-- joint fake -->
+    <parent link="teraflex_${id}_sensor2_link"/>
+    <child link="teraflex_${id}_sensor3_link"/>
+    <origin xyz="${Joint_S2_S3_Ox} ${Joint_S2_S3_Oy} ${Joint_S2_S3_Oz}" rpy="${Joint_S2_S3_Oroll} ${Joint_S2_S3_Opitch} ${Joint_S2_S3_Oyaw}"/>
+</joint>
+
+<joint name="teraflex_${id}_sensor34_joint" type="fixed"> <!-- joint fake -->
+    <parent link="teraflex_${id}_sensor3_link"/>
+    <child link="teraflex_${id}_sensor4_link"/>
+    <origin xyz="${Joint_S3_S4_Ox} ${Joint_S3_S4_Oy} ${Joint_S3_S4_Oz}" rpy="${Joint_S3_S4_Oroll} ${Joint_S3_S4_Opitch} ${Joint_S3_S4_Oyaw}"/>
+</joint>
+
+<joint name="teraflex_${id}_sensor45_joint" type="fixed"> <!-- joint fake -->
+    <parent link="teraflex_${id}_sensor4_link"/>
+    <child link="teraflex_${id}_sensor5_link"/>
+    <origin xyz="${Joint_S4_S5_Ox} ${Joint_S4_S5_Oy} ${Joint_S4_S5_Oz}" rpy="${Joint_S4_S5_Oroll} ${Joint_S4_S5_Opitch} ${Joint_S4_S5_Oyaw}"/>
+</joint>
+
+<joint name="teraflex_${id}_sensor56_joint" type="fixed"> <!-- joint fake -->
+    <parent link="teraflex_${id}_sensor5_link"/>
+    <child link="teraflex_${id}_sensor6_link"/>
+    <origin xyz="${Joint_S5_S6_Ox} ${Joint_S5_S6_Oy} ${Joint_S5_S6_Oz}" rpy="${Joint_S5_S6_Oroll} ${Joint_S5_S6_Opitch} ${Joint_S5_S6_Oyaw}"/>
+</joint>
+
+<joint name="teraflex_${id}_sensor67_joint" type="fixed"> <!-- joint fake -->
+    <parent link="teraflex_${id}_sensor6_link"/>
+    <child link="teraflex_${id}_sensor7_link"/>
+    <origin xyz="${Joint_S6_S7_Ox} ${Joint_S6_S7_Oy} ${Joint_S6_S7_Oz}" rpy="${Joint_S6_S7_Oroll} ${Joint_S6_S7_Opitch} ${Joint_S6_S7_Oyaw}"/>
+</joint>
+
+</xacro:macro>
+
+</robot>

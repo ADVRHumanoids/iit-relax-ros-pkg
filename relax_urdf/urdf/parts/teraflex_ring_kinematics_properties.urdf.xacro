@@ -1,0 +1,77 @@
+<!--<?xml version="1.0"?>-->
+<robot  xmlns:xacro="http://ros.org/wiki/xacro">
+
+<!-- TERAFLEX RING -->
+<xacro:property name="Joint_TF_S0_Ox" value=" ${-77.6000*mmTom} "/>  <!-- Joint Origin TF To Sensor 0 -->
+<xacro:property name="Joint_TF_S0_Oy" value=" 0.0 "/>
+<xacro:property name="Joint_TF_S0_Oz" value=" 0.0 "/>
+
+<xacro:property name="Joint_TF_S0_Oroll" value=" 0.0 "/>
+<xacro:property name="Joint_TF_S0_Opitch" value=" 0.0"/>
+<xacro:property name="Joint_TF_S0_Oyaw" value=" -3.1415927 "/>
+
+
+<xacro:property name="Joint_S0_S1_Ox" value=" ${-22.7285*mmTom} "/>  <!-- Joint Sensor 0 To Sensor 1 -->
+<xacro:property name="Joint_S0_S1_Oy" value=" ${-54.8715*mmTom} "/>
+<xacro:property name="Joint_S0_S1_Oz" value=" 0.0 "/>
+
+<xacro:property name="Joint_S0_S1_Oroll" value=" 0.0 "/>
+<xacro:property name="Joint_S0_S1_Opitch" value=" 0.0"/>
+<xacro:property name="Joint_S0_S1_Oyaw" value=" -0.7853983 "/>
+
+
+<xacro:property name="Joint_S1_S2_Ox" value=" ${-22.7285*mmTom} "/>  <!-- Joint Sensor 1 To Sensor 2 -->
+<xacro:property name="Joint_S1_S2_Oy" value=" ${-54.8715*mmTom} "/>
+<xacro:property name="Joint_S1_S2_Oz" value=" 0.0 "/>
+
+<xacro:property name="Joint_S1_S2_Oroll" value=" 0.0 "/>
+<xacro:property name="Joint_S1_S2_Opitch" value=" 0.0"/>
+<xacro:property name="Joint_S1_S2_Oyaw" value=" -0.7853983 "/>
+
+
+<xacro:property name="Joint_S2_S3_Ox" value=" ${-22.7285*mmTom} "/>  <!-- Joint Sensor 2 To Sensor 3 -->
+<xacro:property name="Joint_S2_S3_Oy" value=" ${-54.8715*mmTom} "/>
+<xacro:property name="Joint_S2_S3_Oz" value=" 0.0 "/>
+
+<xacro:property name="Joint_S2_S3_Oroll" value=" 0.0 "/>
+<xacro:property name="Joint_S2_S3_Opitch" value=" 0.0"/>
+<xacro:property name="Joint_S2_S3_Oyaw" value=" -0.7853983 "/>
+
+
+<xacro:property name="Joint_S3_S4_Ox" value=" ${-22.7285*mmTom} "/>  <!-- Joint Sensor 3 To Sensor 4 -->
+<xacro:property name="Joint_S3_S4_Oy" value=" ${-54.8715*mmTom} "/>
+<xacro:property name="Joint_S3_S4_Oz" value=" 0.0 "/>
+
+<xacro:property name="Joint_S3_S4_Oroll" value=" 0.0 "/>
+<xacro:property name="Joint_S3_S4_Opitch" value=" 0.0"/>
+<xacro:property name="Joint_S3_S4_Oyaw" value=" -0.7853983 "/>
+
+
+<xacro:property name="Joint_S4_S5_Ox" value=" ${-22.7285*mmTom} "/>  <!-- Joint Sensor 4 To Sensor 5 -->
+<xacro:property name="Joint_S4_S5_Oy" value=" ${-54.8715*mmTom} "/>
+<xacro:property name="Joint_S4_S5_Oz" value=" 0.0 "/>
+
+<xacro:property name="Joint_S4_S5_Oroll" value=" 0.0 "/>
+<xacro:property name="Joint_S4_S5_Opitch" value=" 0.0"/>
+<xacro:property name="Joint_S4_S5_Oyaw" value=" -0.7853983 "/>
+
+
+<xacro:property name="Joint_S5_S6_Ox" value=" ${-22.7285*mmTom} "/>  <!-- Joint Sensor 5 To Sensor 6 -->
+<xacro:property name="Joint_S5_S6_Oy" value=" ${-54.8715*mmTom} "/>
+<xacro:property name="Joint_S5_S6_Oz" value=" 0.0 "/>
+
+<xacro:property name="Joint_S5_S6_Oroll" value=" 0.0 "/>
+<xacro:property name="Joint_S5_S6_Opitch" value=" 0.0"/>
+<xacro:property name="Joint_S5_S6_Oyaw" value=" -0.7853983 "/>
+
+
+<xacro:property name="Joint_S6_S7_Ox" value=" ${-22.7285*mmTom} "/>  <!-- Joint Sensor 6 To Sensor 7 -->
+<xacro:property name="Joint_S6_S7_Oy" value=" ${-54.8715*mmTom} "/>
+<xacro:property name="Joint_S6_S7_Oz" value=" 0.0 "/>
+
+<xacro:property name="Joint_S6_S7_Oroll" value=" 0.0 "/>
+<xacro:property name="Joint_S6_S7_Opitch" value=" 0.0"/>
+<xacro:property name="Joint_S6_S7_Oyaw" value=" -0.7853983 "/>
+
+
+</robot>

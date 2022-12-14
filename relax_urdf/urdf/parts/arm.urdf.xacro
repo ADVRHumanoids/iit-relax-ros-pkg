@@ -13,6 +13,15 @@
 <xacro:relax_arm arm_num="1" >
    </xacro:relax_arm>
 
+<!-- sensor ring (optionally) -->
+<xacro:if value="${TERAFLEX_RING}" > <!-- teraflex - ring -->
+    <xacro:include filename="$(find relax_urdf)/urdf/parts/teraflex_ring.urdf.xacro"/>
+    <xacro:teraflex_ring id="1" parent_link="relax_arm1_link5">
+        <origin xyz=" 0.0 0.142500 -0.0881600 " rpy="-1.5707963 -0.6404992 0" />
+    </xacro:teraflex_ring>
+</xacro:if>
+
+
 <xacro:unless value="${RELAX_MOBILE_BASE}">
   <link name="base_link">
     <xacro:box_inertial mass="${mir_base_mass}" x="${mir_base_inertial_x_length}" y="${mir_base_inertial_y_length}" z="${mir_base_inertial_z_length}">

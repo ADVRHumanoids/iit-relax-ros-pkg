@@ -1,0 +1,19 @@
+<!--<?xml version="1.0"?>-->
+<robot  xmlns:xacro="http://ros.org/wiki/xacro">
+
+<!-- TERAFLEX RING -->
+<!-- Center of Mass -->
+<xacro:property name="TF_Link_x" value=" ${ 0*mmTom} "/>
+<xacro:property name="TF_Link_y" value=" ${ 0*mmTom} "/>
+<xacro:property name="TF_Link_z" value=" ${ 0*mmTom} "/>
+<!-- Mass -->
+<xacro:property name="TF_Link_mass" value="0.03"/>
+<!-- Inertia -->
+<xacro:property name="TF_Link_xx" value=" ${ 8.11875e-05*mm2Tom2} "/>
+<xacro:property name="TF_Link_xy" value=" ${ 0.0000000e+00*mm2Tom2} "/> 
+<xacro:property name="TF_Link_xz" value=" ${ 0.0000000e+00*mm2Tom2} "/>
+<xacro:property name="TF_Link_yy" value=" ${ 8.11875e-05*mm2Tom2} "/>
+<xacro:property name="TF_Link_yz" value=" ${ 0.0000000e+00*mm2Tom2} "/> 
+<xacro:property name="TF_Link_zz" value=" ${ 2.534375e+03*mm2Tom2} "/>
+
+</robot>
