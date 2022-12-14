@@ -29,6 +29,7 @@
     </group_state>
     <!--DISABLE COLLISIONS: By default it is assumed that any link of the robot could potentially come into collision with any other link in the robot. This tag disables collision checking between a specified pair of links. -->
     <disable_collisions link1="base_link" link2="relax_arm1_link1" reason="Adjacent"/>
+    <disable_collisions link1="base_link" link2="relax_arm1_link2" reason="Adjacent"/> <!-- Spheres are too big! -->
     <disable_collisions link1="relax_arm1_link1" link2="relax_arm1_link2" reason="Adjacent"/>
     <disable_collisions link1="relax_arm1_link2" link2="relax_arm1_link3" reason="Adjacent"/>
     <disable_collisions link1="relax_arm1_link3" link2="relax_arm1_link4" reason="Adjacent"/>
