@@ -1,0 +1,295 @@
+<?xml version="1.0" ?>
+<robot name="relax" version="1.0">
+  <material name="darkblue">
+    <color rgba="0.0 0.3 0.9 1.0"/>
+  </material>
+  <material name="dark">
+    <color rgba="0.1 0.1 0.1 1.0"/>
+  </material>
+  <link name="relax_arm1_link1">
+    <inertial>
+      <origin xyz="-0.0018991406 0.022645162 0.16741297" rpy="0 0 0"/>
+      <mass value="6.2381702"/>
+      <inertia ixx="0.065816037" ixy="-0.00011791629" ixz="-4.0067927e-05" iyy="0.057828314" iyz="-0.011584403" izz="0.01940196"/>
+    </inertial>
+    <visual>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+      <geometry>
+        <mesh filename="package://relax_urdf/meshes/mesh_link1.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="darkblue"/>
+    </visual>
+    <collision>
+      <origin xyz="1.27448e-05 0.0080130685 0.18331350000000002" rpy="3.026920884699987 0.0003566849008104247 0.00621413308723434"/>
+      <geometry>
+        <cylinder radius="0.0915579" length="0.13791276538840705"/>
+      </geometry>
+    </collision>
+    <collision>
+      <origin xyz="-0.000012 0.015903 0.251817" rpy="3.026920884699987 0.0003566849008104247 0.00621413308723434"/>
+      <geometry>
+        <sphere radius="0.0915579"/>
+      </geometry>
+    </collision>
+    <collision>
+      <origin xyz="0.000037 0.000123 0.114810" rpy="3.026920884699987 0.0003566849008104247 0.00621413308723434"/>
+      <geometry>
+        <sphere radius="0.0915579"/>
+      </geometry>
+    </collision>
+  </link>
+  <link name="relax_arm1_link2">
+    <inertial>
+      <origin xyz="-3.1494342e-05 -0.20005579 -0.0057041875" rpy="0 0 0"/>
+      <mass value="2.601371"/>
+      <inertia ixx="0.064570453" ixy="-0.00019926537999999998" ixz="-1.6866045999999998e-06" iyy="0.0051512542" iyz="-2.9627309e-06" izz="0.06672465300000001"/>
+    </inertial>
+    <visual>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+      <geometry>
+        <mesh filename="package://relax_urdf/meshes/mesh_link2.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="dark"/>
+    </visual>
+    <collision>
+      <origin xyz="6.627765e-09 -0.2000087888 -0.0145835" rpy="-1.570798825542884 -7.62859514660638e-08 7.628614208566964e-08"/>
+      <geometry>
+        <cylinder radius="0.0779127" length="0.4002004224012504"/>
+      </geometry>
+    </collision>
+    <collision>
+      <origin xyz="0.000000 -0.400109 -0.014583" rpy="-1.570798825542884 -7.62859514660638e-08 7.628614208566964e-08"/>
+      <geometry>
+        <sphere radius="0.0779127"/>
+      </geometry>
+    </collision>
+    <collision>
+      <origin xyz="-0.000000 0.000091 -0.014584" rpy="-1.570798825542884 -7.62859514660638e-08 7.628614208566964e-08"/>
+      <geometry>
+        <sphere radius="0.0779127"/>
+      </geometry>
+    </collision>
+  </link>
+  <link name="relax_arm1_link3">
+    <inertial>
+      <origin xyz="0.0020858498 -0.078452653 -0.10797347" rpy="0 0 0"/>
+      <mass value="5.9482803"/>
+      <inertia ixx="0.062877846" ixy="0.00011665783" ixz="0.00012931181" iyy="0.018390664" iyz="-0.011034081" izz="0.055056825999999996"/>
+    </inertial>
+    <visual>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+      <geometry>
+        <mesh filename="package://relax_urdf/meshes/mesh_link3.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="darkblue"/>
+    </visual>
+    <collision>
+      <origin xyz="2.628750000000001e-06 -0.06550102000000001 -0.1240435" rpy="-1.4622056613977197 0.00023368259885343988 -0.00020959122120104543"/>
+      <geometry>
+        <cylinder radius="0.0921787" length="0.1380269667138794"/>
+      </geometry>
+    </collision>
+    <collision>
+      <origin xyz="-0.000013 -0.134108 -0.131523" rpy="-1.4622056613977197 0.00023368259885343988 -0.00020959122120104543"/>
+      <geometry>
+        <sphere radius="0.0921787"/>
+      </geometry>
+    </collision>
+    <collision>
+      <origin xyz="0.000019 0.003106 -0.116564" rpy="-1.4622056613977197 0.00023368259885343988 -0.00020959122120104543"/>
+      <geometry>
+        <sphere radius="0.0921787"/>
+      </geometry>
+    </collision>
+  </link>
+  <link name="relax_arm1_link4">
+    <inertial>
+      <origin xyz="0.00096471566 -0.0042586853 0.046169896" rpy="0 0 0"/>
+      <mass value="1.6710337"/>
+      <inertia ixx="0.017329393999999998" ixy="0.00021094011" ixz="-0.00024511391" iyy="0.010036060999999999" iyz="0.00042230531" izz="0.012350325"/>
+    </inertial>
+    <visual>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+      <geometry>
+        <mesh filename="package://relax_urdf/meshes/mesh_link4.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="darkblue"/>
+    </visual>
+    <collision>
+      <origin xyz="3.900474999999999e-06 2.995635e-06 0.08748095" rpy="-6.579347097687788e-05 0.00011540250586511395 -3.796365715055323e-09"/>
+      <geometry>
+        <cylinder radius="0.115074" length="0.1319941011646182"/>
+      </geometry>
+    </collision>
+    <collision>
+      <origin xyz="-0.000004 -0.000001 0.021484" rpy="-6.579347097687788e-05 0.00011540250586511395 -3.796365715055323e-09"/>
+      <geometry>
+        <sphere radius="0.115074"/>
+      </geometry>
+    </collision>
+    <collision>
+      <origin xyz="0.000012 0.000007 0.153478" rpy="-6.579347097687788e-05 0.00011540250586511395 -3.796365715055323e-09"/>
+      <geometry>
+        <sphere radius="0.115074"/>
+      </geometry>
+    </collision>
+  </link>
+  <link name="relax_arm1_link5">
+    <inertial>
+      <origin xyz="-0.0013991722 0.052618238 -0.08425954199999999" rpy="0 0 0"/>
+      <mass value="6.181102"/>
+      <inertia ixx="0.059736008" ixy="-0.00014975682" ixz="-5.2815066e-05" iyy="0.015244194999999999" iyz="0.0011994937999999999" izz="0.055701504"/>
+    </inertial>
+    <visual>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+      <geometry>
+        <mesh filename="package://relax_urdf/meshes/mesh_link5.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="darkblue"/>
+    </visual>
+    <collision>
+      <origin xyz="4.59689e-05 0.023164550000000002 -0.08812225" rpy="-1.569142743279265 0.001909333046753714 -0.0019061784145204248"/>
+      <geometry>
+        <cylinder radius="0.104678" length="0.13080711726714422"/>
+      </geometry>
+    </collision>
+    <collision>
+      <origin xyz="-0.000079 -0.042239 -0.088230" rpy="-1.569142743279265 0.001909333046753714 -0.0019061784145204248"/>
+      <geometry>
+        <sphere radius="0.104678"/>
+      </geometry>
+    </collision>
+    <collision>
+      <origin xyz="0.000171 0.088568 -0.088014" rpy="-1.569142743279265 0.001909333046753714 -0.0019061784145204248"/>
+      <geometry>
+        <sphere radius="0.104678"/>
+      </geometry>
+    </collision>
+  </link>
+  <link name="relax_arm1_link6">
+    <inertial>
+      <origin xyz="0.0005687903199999999 0.0 0.0022653642000000002" rpy="0 0 0"/>
+      <mass value="0.48141935"/>
+      <inertia ixx="0.0008220642" ixy="1.0675057e-07" ixz="3.5319177e-07" iyy="0.00083596992" iyz="0.0" izz="0.0012890535"/>
+    </inertial>
+    <visual>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+      <geometry>
+        <mesh filename="package://relax_urdf/meshes/mesh_link6.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="darkblue"/>
+    </visual>
+    <collision>
+      <origin xyz="2.333865e-07 -5.2943999999999994e-09 -0.02024995" rpy="0.0 1.5707963267948966 -0.0"/>
+      <geometry>
+        <cylinder radius="0.0752452" length="5.659878616105297e-07"/>
+      </geometry>
+    </collision>
+    <collision>
+      <origin xyz="-0.000000 -0.000000 -0.020250" rpy="0.0 1.5707963267948966 -0.0"/>
+      <geometry>
+        <sphere radius="0.0752452"/>
+      </geometry>
+    </collision>
+    <collision>
+      <origin xyz="0.000001 -0.000000 -0.020250" rpy="0.0 1.5707963267948966 -0.0"/>
+      <geometry>
+        <sphere radius="0.0752452"/>
+      </geometry>
+    </collision>
+  </link>
+  <link name="relax_arm1_linkEndEffector"/>
+  <joint name="relax_arm1_joint0" type="revolute">
+    <origin xyz="-0.13 0.0 0.3613" rpy="0.0 0.0 0.0"/>
+    <axis xyz="0.0 0.0 1.0"/>
+    <parent link="base_link"/>
+    <child link="relax_arm1_link1"/>
+    <limit effort="147.0" lower="-3.14" upper="3.14" velocity="3.86"/>
+    <dynamics damping="0.2" friction="10.0"/>
+  </joint>
+  <joint name="relax_arm1_joint1" type="revolute">
+    <origin xyz="0.0 0.13166 0.24966" rpy="-1.5707963 0.0 0.0"/>
+    <axis xyz="0.0 0.0 1.0"/>
+    <parent link="relax_arm1_link1"/>
+    <child link="relax_arm1_link2"/>
+    <limit effort="147.0" lower="-3.14" upper="3.14" velocity="3.86"/>
+    <dynamics damping="0.2" friction="10.0"/>
+  </joint>
+  <joint name="relax_arm1_joint2" type="revolute">
+    <origin xyz="0.0 -0.4 0.0" rpy="0.0 0.0 0.0"/>
+    <axis xyz="0.0 0.0 1.0"/>
+    <parent link="relax_arm1_link2"/>
+    <child link="relax_arm1_link3"/>
+    <limit effort="147.0" lower="-3.14" upper="3.14" velocity="3.86"/>
+    <dynamics damping="0.2" friction="10.0"/>
+  </joint>
+  <joint name="relax_arm1_joint3" type="revolute">
+    <origin xyz="0.0 -0.24966 -0.13166" rpy="1.5707963 0.0 0.0"/>
+    <axis xyz="0.0 0.0 1.0"/>
+    <parent link="relax_arm1_link3"/>
+    <child link="relax_arm1_link4"/>
+    <limit effort="147.0" lower="-3.14" upper="3.14" velocity="3.86"/>
+    <dynamics damping="0.2" friction="10.0"/>
+  </joint>
+  <joint name="relax_arm1_joint4" type="revolute">
+    <origin xyz="0.0 -0.08816 0.1535" rpy="1.5707963 0.0 0.0"/>
+    <axis xyz="0.0 0.0 1.0"/>
+    <parent link="relax_arm1_link4"/>
+    <child link="relax_arm1_link5"/>
+    <limit effort="147.0" lower="-3.14" upper="3.14" velocity="3.86"/>
+    <dynamics damping="0.2" friction="10.0"/>
+  </joint>
+  <joint name="relax_arm1_joint5" type="revolute">
+    <origin xyz="0.0 0.22216 -0.08816" rpy="-1.5707963 0.0 0.0"/>
+    <axis xyz="0.0 0.0 1.0"/>
+    <parent link="relax_arm1_link5"/>
+    <child link="relax_arm1_link6"/>
+    <limit effort="147.0" lower="-3.14" upper="3.14" velocity="3.86"/>
+    <dynamics damping="0.2" friction="10.0"/>
+  </joint>
+  <joint name="relax_arm1_joint6" type="fixed">
+    <origin xyz="0.0 0.0 0.028" rpy="0.0 0.0 0.0"/>
+    <axis xyz="0.0 0.0 1.0"/>
+    <parent link="relax_arm1_link6"/>
+    <child link="relax_arm1_linkEndEffector"/>
+    <limit effort="147.0" lower="-3.14" upper="3.14" velocity="3.86"/>
+    <dynamics damping="0.2" friction="10.0"/>
+  </joint>
+  <link name="base_link">
+    <inertial>
+      <origin xyz="-0.054485000000000006 0.0 0.15" rpy="0.0 0.0 0.0"/>
+      <mass value="97.0"/>
+      <inertia ixx="1.050832913" ixy="0.0" ixz="0.0" iyy="2.344165729" iyz="0.0" izz="2.7483322339999994"/>
+    </inertial>
+    <visual>
+      <origin xyz="-0.004485 0.0 0.0" rpy="0.0 0.0 0.0"/>
+      <geometry>
+        <mesh filename="package://relax_urdf/meshes/mesh_base_revised.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="dark_grey">
+        <color rgba="0.3 0.3 0.3 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.0 5.9102329999999995e-08 0.218567" rpy="-1.5707963265650648 1.5707960603723925 -1.5707960601425608"/>
+      <geometry>
+        <cylinder radius="0.319357" length="0.4739740000000168"/>
+      </geometry>
+    </collision>
+    <collision>
+      <origin xyz="-0.236987 -0.000000 0.218567" rpy="-1.5707963265650648 1.5707960603723925 -1.5707960601425608"/>
+      <geometry>
+        <sphere radius="0.319357"/>
+      </geometry>
+    </collision>
+    <collision>
+      <origin xyz="0.236987 0.000000 0.218567" rpy="-1.5707963265650648 1.5707960603723925 -1.5707960601425608"/>
+      <geometry>
+        <sphere radius="0.319357"/>
+      </geometry>
+    </collision>
+  </link>
+  <gazebo reference="base_link">
+    <material>Gazebo/DarkGrey</material>
+  </gazebo>
+</robot>
