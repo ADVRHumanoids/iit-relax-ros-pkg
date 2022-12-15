@@ -238,9 +238,9 @@
 
 <!-- mounting joint -->
   <joint name="teraflex_1_mount_joint" type="fixed">
-    <origin rpy="-1.5707963 -0.6404992 0" xyz=" 0.0 0.142500 -0.0881600 "/>
     <parent link="relax_arm1_link5"/>
     <child link="teraflex_1_link"/>
+    <origin rpy="-1.5707963 -0.6404992 0" xyz=" 0.0 0.142500 -0.0881600 "/>
   </joint>
 
   <joint name="teraflex_1_sensor0_joint" type="fixed">
