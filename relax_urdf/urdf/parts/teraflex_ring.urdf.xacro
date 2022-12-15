@@ -95,6 +95,16 @@
     <origin xyz="${Joint_S6_S7_Ox} ${Joint_S6_S7_Oy} ${Joint_S6_S7_Oz}" rpy="${Joint_S6_S7_Oroll} ${Joint_S6_S7_Opitch} ${Joint_S6_S7_Oyaw}"/>
 </joint>
 
+<joint name="relax_arm1_joint5" type="revolute">
+    <!-- joint fake -->
+    <parent link="teraflex_1_sensor7_link"/>
+    <child link="relax_arm1_link6"/>
+    <origin rpy="0.0 0.0 2.9966942" xyz="-0.0776 0.0 0.0796600"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="147.0" lower="-2.7" upper="2.7" velocity="3.86"/>
+    <dynamics damping="0.2" friction="10.0"/>
+  </joint>
+
 </xacro:macro>
 
 </robot>

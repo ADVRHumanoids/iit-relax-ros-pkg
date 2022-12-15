@@ -179,14 +179,15 @@
     <dynamics damping="${Joint_4_damp}" friction="${Joint_4_fric}"/>
 </joint>
 
-<joint name="relax_arm${arm_num}_joint5" type="revolute"> <!-- joint 5 -->
+<!-- joint 5 -->
+<!-- <joint name="relax_arm${arm_num}_joint5" type="revolute"> 
     <parent link="relax_arm${arm_num}_link5"/>
     <child link="relax_arm${arm_num}_link6"/>
     <origin xyz="${Joint_5_Ox} ${Joint_5_Oy} ${Joint_5_Oz}" rpy="${Joint_5_Oroll} ${Joint_5_Opitch} ${Joint_5_Oyaw}"/>
     <axis xyz="0 0 1"/>
     <limit velocity="${Joint_5_velocity}" effort="${Joint_5_effort}" lower="${Joint_5_lower}" upper="${Joint_5_upper}" />
     <dynamics damping="${Joint_5_damp}" friction="${Joint_5_fric}"/>
-</joint>
+</joint> -->
 
 <joint name="relax_arm${arm_num}_joint6" type="fixed"> <!-- joint 6 fake -->
     <parent link="relax_arm${arm_num}_link6"/>
