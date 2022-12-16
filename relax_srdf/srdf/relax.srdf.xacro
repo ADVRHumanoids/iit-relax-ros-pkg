@@ -14,9 +14,9 @@
         <link name="base_footprint"/>
     </group>
 
-    <group name="cartesian_base">
+    <!--<group name="cartesian_base">
         <chain base_link="world" tip_link="base_footprint"/>
-    </group>
+    </group>-->
 </xacro:if>
 
 <xacro:if value="${RELAX_ARM}">
@@ -37,9 +37,9 @@
 </xacro:if>
 
 <group name="chains"> 
-    <xacro:if value="${RELAX_MOBILE_BASE}">
+    <!--<xacro:if value="${RELAX_MOBILE_BASE}">
         <group name="cartesian_base"/>
-    </xacro:if>
+    </xacro:if>-->
 
     <xacro:if value="${RELAX_ARM}">
         <group name="arm" />
