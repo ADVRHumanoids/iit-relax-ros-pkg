@@ -25,7 +25,7 @@ xbotcore_plugins:
         thread: rt_main
         type: homing
 
-    ros_io: {thread: nrt_main, type: ros_io, params: {publish_tf: {type: bool, value: false}}}
+    ros_io: {thread: nrt_main, type: ros_io, params: {publish_tf: {type: bool, value: true}}}
     ros_control: {thread: nrt_main, type: ros_control, params: {autostart: {type: bool, value: false}}}
     
 

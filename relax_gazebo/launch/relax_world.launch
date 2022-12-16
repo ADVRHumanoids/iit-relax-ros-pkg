@@ -3,6 +3,7 @@
 
   <remap from="mobile_base_controller/cmd_vel" to="cmd_vel" />
   <remap from="mobile_base_controller/odom"    to="odom" />
+  <remap from="joint_states"                   to="gazebo/joint_states" />
   
   <param name="use_sim_time" type="bool" value="true"/>
   <arg name="gazebo" default="true"/>
@@ -67,8 +68,6 @@
   </group>
 
 
-  <remap from="joint_states"                   to="mir/joint_states" />
-
    <!-- Load ros_control controller configurations -->
   <rosparam file="$(find mir_description)/config/joint_state_controller.yaml" command="load" />
   <rosparam file="$(find mir_description)/config/diffdrive_controller.yaml" command="load" subst_value="true" />
@@ -77,10 +76,11 @@
   <node name="controller_spawner" pkg="controller_manager" type="spawner" output="screen"
     args="joint_state_controller mobile_base_controller"/>
 
-  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
+  
+<!--  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
     <rosparam param="source_list">[mir/joint_states]</rosparam>
     <param name="rate" value="200.0" />
-  </node>
+  </node>-->
 
   <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher" output="screen">
 			<param name="publish_frequency" type="double" value="250.0"/>
