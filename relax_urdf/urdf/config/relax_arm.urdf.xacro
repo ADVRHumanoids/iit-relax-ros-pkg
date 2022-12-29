@@ -9,6 +9,8 @@
 <xacro:arg name="arm" default="true"/>
 <xacro:arg name="base" default="false"/>
 <xacro:arg name="floating_joint" default="false"/>
+<xacro:arg name="end_effector" default="none"/> <!-- none, ball, dagana_fixed, dagana -->
+
 
 <!-- ************SELECT PARTS*************-->
 <!-- *************************************-->
@@ -25,5 +27,9 @@
 
 <!--***************** CAMS **********-->
 <xacro:property name="ADD_D435I_CONTROL_BOX" value="false" />
+
+<!--***************** END EFFECTOR **********-->
+<xacro:property name="END_EFFECTOR" value="$(arg end_effector)" />
+
  
 </robot>

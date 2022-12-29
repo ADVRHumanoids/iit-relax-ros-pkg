@@ -9,10 +9,12 @@
 
 <xacro:include filename="$(find relax_urdf)/urdf/parts/common_base_properties.urdf.xacro" />
 
-<!-- arms -->
-<xacro:relax_arm arm_num="1" >
-   </xacro:relax_arm>
+<xacro:property name="arm_num" value="1" />
 
+<!-- *********************************************************************** arm **************************************************************** -->
+<xacro:relax_arm arm_num="${arm_num}" />
+
+<!-- ******************************************************************* mobile base **************************************************************** -->
 <xacro:unless value="${RELAX_MOBILE_BASE}">
   <link name="base_link">
     <xacro:box_inertial mass="${mir_base_mass}" x="${mir_base_inertial_x_length}" y="${mir_base_inertial_y_length}" z="${mir_base_inertial_z_length}">
@@ -37,17 +39,35 @@
   </gazebo>
 </xacro:unless>      
 
-<!-- end_effector attached -->
-<!-- <xacro:if value="${ADD_END_EFFECTOR}">
-      <xacro:include filename="$(find relax_urdf)/urdf/parts/end_effector.urdf.xacro" />
+<!-- ******************************************************************* end_effector  **************************************************************** -->
+<xacro:if value="${END_EFFECTOR == 'none'}">
+    <!-- nothing to do -->
+</xacro:if>
 
-      <xacro:end_effector arm_num="1"  parent_link="arm1_7">
-                  <origin xyz="0. 0. 0." rpy="0. 0. 0."/>
-      </xacro:end_effector>
+<xacro:if value="${END_EFFECTOR == 'ball'}">
+	<xacro:include filename="$(find centauro_urdf)/urdf/parts/ball.urdf.xacro" />
 
-      <xacro:end_effector arm_num="2"  parent_link="arm2_7">
-                  <origin xyz="0. 0. 0." rpy="0. 0. 0."/>
-      </xacroend_effector>
-</xacro:if> -->
+	<xacro:ball_end_effector arm_num="${arm_num}"  parent_link="relax_arm${arm_num}_linkEndEffector">
+		      <origin xyz="0 0 0" rpy="0. ${PI} 0."/>
+	</xacro:ball_end_effector>
+</xacro:if>
+
+<xacro:if value="${END_EFFECTOR == 'dagana_fixed'}">
+	<xacro:include filename="$(find dagana_urdf)/urdf/dagana_macro.urdf.xacro" />
+
+	<xacro:dagana_gripper name="dagana_${arm_num}" parent_link="relax_arm${arm_num}_linkEndEffector" joint_type="fixed">
+		<origin xyz="0. 0 0" rpy="0. 0 0"/>
+	</xacro:dagana_gripper>
+	  
+</xacro:if>
+
+<xacro:if value="${END_EFFECTOR == 'dagana'}">
+	<xacro:include filename="$(find dagana_urdf)/urdf/dagana_macro.urdf.xacro" />
+
+	<xacro:dagana_gripper name="dagana_${arm_num}" parent_link="relax_arm${arm_num}_linkEndEffector" joint_type="revolute">
+		<origin xyz="0. 0 0" rpy="0. 0 0"/>
+	</xacro:dagana_gripper>
+</xacro:if>
+
 
 </robot>
