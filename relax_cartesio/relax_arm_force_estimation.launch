@@ -1,5 +1,10 @@
 <launch>
 
+    <arg name="gdb" default="false"/>
+    
+    <arg unless="$(arg gdb)" name="prefix" value="" />
+    <arg if="$(arg gdb)" name="prefix" value="xterm -e gdb --args" />
+    
     <param name="robot_description"
         textfile="$(find relax_urdf)/urdf/relax_arm.urdf"/>
 
@@ -10,7 +15,7 @@
           type="force_estimation_node"
           name="force_estimator"
           output="screen" 
-          launch-prefix="xterm -e gdb --args">
+          launch-prefix="$(arg prefix)">
 
         <remap from="~torque_offset" to="cartesian/torque_offset"/>
 
