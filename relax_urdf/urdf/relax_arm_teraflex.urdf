@@ -148,7 +148,7 @@
     <!-- joint 1 -->
     <parent link="base_link"/>
     <child link="relax_arm1_link1"/>
-    <origin rpy="0.0 0.0 0.0" xyz="-0.13 0.0 0.3613"/>
+    <origin rpy="0.0 0.0 0.0" xyz="-0.134485 0.0 0.3613"/>
     <axis xyz="0 0 1"/>
     <limit effort="147.0" lower="-2.7" upper="2.7" velocity="3.86"/>
     <dynamics damping="0.2" friction="10.0"/>
@@ -311,7 +311,7 @@
       <inertia ixx="1.050832913" ixy="0.0" ixz="0.0" iyy="2.344165729" iyz="0.0" izz="2.7483322339999994"/>
     </inertial>
     <visual>
-      <origin rpy="0 0 0" xyz="-0.004485 0 0"/>
+      <origin rpy="0 0 0" xyz="-0.0 0 0"/>
       <geometry>
         <mesh filename="package://relax_urdf/meshes/mesh_base_revised.stl" scale="0.001 0.001 0.001"/>
       </geometry>
