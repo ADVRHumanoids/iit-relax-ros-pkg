@@ -6,16 +6,16 @@ catkin_package()
 
 # main srdf, with acm
 generate_srdf(
-  XACRO ${ROBOT_NAME}.srdf.xacro 
-  CONFIG config/${ROBOT_NAME}.urdf.xacro 
+  XACRO ${ROBOT_NAME}.srdf.xacro
+  CONFIG config/${ROBOT_NAME}.urdf.xacro
   ADD_TO_ALL TRUE
   GEN_ACM TRUE
 )
 
 # arm srdf, with acm
 generate_srdf(
-  XACRO ${ROBOT_NAME}_arm.srdf.xacro 
-  CONFIG config/${ROBOT_NAME}_arm.urdf.xacro 
+  XACRO ${ROBOT_NAME}_arm.srdf.xacro
+  CONFIG config/${ROBOT_NAME}_arm.urdf.xacro
   ADD_TO_ALL TRUE
   GEN_ACM TRUE
 )
@@ -29,8 +29,8 @@ generate_capsule_srdf_acm(
 
 # plain srdf for virtual frame model
 generate_srdf(
-  XACRO ${ROBOT_NAME}.srdf.xacro 
-  CONFIG config/${ROBOT_NAME}_virtual_frame.urdf.xacro 
+  XACRO ${ROBOT_NAME}.srdf.xacro
+  CONFIG config/${ROBOT_NAME}_virtual_frame.urdf.xacro
   ADD_TO_ALL TRUE
 )
 

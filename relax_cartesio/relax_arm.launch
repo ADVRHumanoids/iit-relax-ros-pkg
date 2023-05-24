@@ -5,6 +5,9 @@
 	<param name="robot_description_semantic" textfile="$(find relax_srdf)/srdf/relax_arm.srdf"/>
     <param name="cartesian/problem_description" textfile="$(find relax_cartesio)/relax_arm_stack.yaml"/>
 
+    <param name="cartesian/velocity_whitelist" type="yaml"
+        value="[]"/>
+
     <!-- launch cartesian interface -->
     <include file="$(find cartesian_interface)/launch/cartesio.launch">
         <!-- Control frequency (Hz) -->
