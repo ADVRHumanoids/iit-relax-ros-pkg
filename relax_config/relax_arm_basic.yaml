@@ -28,6 +28,20 @@ xbotcore_plugins:
     ros_io: {thread: nrt_main, type: ros_io, params: {publish_tf: {type: bool, value: true}}}
     ros_control: {thread: nrt_main, type: ros_control, params: {autostart: {type: bool, value: false}}}
 
+    cartesio_imp: 
+        thread: rt_main 
+        type: albero_cartesio_rt
+        params:
+            enabled_chains: 
+                value: [arm]
+                type: vector<string>
+            problem_description:
+                value: $PWD/../relax_cartesio/relax_arm_impedance_stack.yaml
+                type: file
+            solver: {value: AlberoImpedance, type: string}
+            enable_feedback: {value: true, type: bool}
+            fc_map: {value: {low: 0.95, high: 0.99}, type: map<double>}
+
 # global parameters
 # additional parameters that don't relate to any plugin 
 xbotcore_param:

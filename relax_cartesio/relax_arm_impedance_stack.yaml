@@ -1,0 +1,28 @@
+stack:
+    - [EE]
+
+EE:
+    type: Interaction
+    base_link: base_link
+    distal_link: relax_arm1_linkEndEffector
+    force_max:
+        - 100000
+        - 100000
+        - 100000
+        - 100000
+        - 100000
+        - 100000
+    stiffness:
+        - 1500.0
+        - 1500.0
+        - 1500.0
+        - 200.0
+        - 200.0
+        - 200.0
+    damping:
+        - 0.7
+        - 0.7
+        - 0.7
+        - 0.7
+        - 0.7
+        - 0.7
