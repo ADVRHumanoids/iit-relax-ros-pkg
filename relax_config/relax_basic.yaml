@@ -27,14 +27,15 @@ xbotcore_plugins:
 
     ros_io: {thread: nrt_main, type: ros_io}
     ros_control: {thread: nrt_main, type: ros_control, params: {autostart: {type: bool, value: false}}}
-    
+   
+    periodic_motion: {thread: rt_main, type: periodic_motion}
 
 
 # global parameters
 xbotcore_param:
     /jm/tx_filter_autostart: {value: true, type: bool}
     /jm/tx_filter_cutoff: {value: 2.0, type: double}
-    /jm/enable_safety: {value: false, type: bool}
+    /jm/enable_safety: {value: true, type: bool}
     /xbot_internal/ros_io/call_timeout: {value: 1.0, type: chrono}
     /rt_main/memory_hooks: {value: true, type: bool}
 
