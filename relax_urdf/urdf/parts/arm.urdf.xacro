@@ -45,7 +45,7 @@
 </xacro:if>
 
 <xacro:if value="${END_EFFECTOR == 'ball'}">
-	<xacro:include filename="$(find centauro_urdf)/urdf/parts/ball.urdf.xacro" />
+	<xacro:include filename="$(find relax_urdf)/urdf/parts/ball.urdf.xacro" />
 
 	<xacro:ball_end_effector arm_num="${arm_num}"  parent_link="relax_arm${arm_num}_linkEndEffector">
 		      <origin xyz="0 0 0.02" rpy="0. ${PI} 0."/>
