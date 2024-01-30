@@ -15,6 +15,7 @@
   <arg name="physics" default="ode"/>
   <arg name="verbose" default="false"/>
   <arg name="extra_gazebo_args" default=""/>
+  <arg name="rviz" default="true"/>
 
   
   <arg name="arm" default="true"/>
@@ -60,8 +61,6 @@
 		      args="-urdf -model relax -param robot_description"/>
 
 
-  <remap from="joint_states"                   to="mir/joint_states" />
-
    <!-- Load ros_control controller configurations -->
   <rosparam file="$(find relax_config)/mir_config/joint_state_controller.yaml" command="load" />
   <rosparam file="$(find relax_config)/mir_config/diffdrive_controller.yaml" command="load" subst_value="true" />
@@ -70,13 +69,8 @@
   <node name="controller_spawner" pkg="controller_manager" type="spawner" output="screen"
     args="joint_state_controller mobile_base_controller"/>
 
-  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
-    <rosparam param="source_list">[mir/joint_states]</rosparam>
-    <param name="rate" value="200.0" />
-  </node>
-
-  <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher" output="screen">
-			<param name="publish_frequency" type="double" value="250.0"/>
-  </node>
+  
+    <node if="$(arg rviz)" pkg="rviz" type="rviz" name="rviz" output="screen" args="-d $(find relax_urdf)/rviz/relax.rviz">
+    </node> 
 
 </launch>
