@@ -27,14 +27,6 @@ xbotcore_plugins:
 
     ros_io: {thread: nrt_main, type: ros_io, params: {publish_tf: {type: bool, value: true}}}
     ros_control: {thread: nrt_main, type: ros_control, params: {autostart: {type: bool, value: false}}}
-    
-    periodic_motion: 
-        thread: rt_main
-        type: periodic_motion
-        params:
-           q_home_start: {value: [0, 1.57, 0, 0, 0, 0], type: Eigen::VectorXd}
-           q_home_end:   {value: [0, 0.5, -0.5, 0, 0.5, 0], type: Eigen::VectorXd}
-           time: {value: 15.0, type: double}
 
     cartesio_imp: 
         thread: rt_main 

@@ -4,19 +4,49 @@
 <!-- |    EDITING THIS FILE BY HAND IS NOT RECOMMENDED                                 | -->
 <!-- =================================================================================== -->
 <robot name="relax">
+  <!-- none, ball, dagana_fixed, dagana -->
   <!-- ************SELECT PARTS*************-->
   <!-- *************************************-->
   <!-- color -->
+  <material name="black">
+    <color rgba="0.4 0.4 0.4 1"/>
+  </material>
   <material name="darkblue">
     <color rgba="0.0 0.3 0.9 1"/>
   </material>
   <material name="dark">
     <color rgba="0.1 0.1 0.1 1"/>
   </material>
+  <material name="dark_grey">
+    <color rgba="0.2 0.2 0.2 1"/>
+  </material>
   <!-- ARM -->
   <!-- ARM -->
   <!-- ARM -->
   <!-- ARM -->
+  <link name="base_link">
+    <inertial>
+      <mass value="97.0"/>
+      <origin rpy="0 0 0" xyz="-0.054485000000000006 0.0 0.15"/>
+      <inertia ixx="1.050832913" ixy="0.0" ixz="0.0" iyy="2.344165729" iyz="0.0" izz="2.7483322339999994"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="-0.004485 0 0"/>
+      <geometry>
+        <mesh filename="package://relax_urdf/meshes/mesh_base_revised.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="dark_grey"/>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="-0.004485 0 0"/>
+      <geometry>
+        <mesh filename="package://relax_urdf/meshes/mesh_base_revised.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </collision>
+  </link>
+  <gazebo reference="base_link">
+    <material>Gazebo/DarkGrey</material>
+  </gazebo>
   <!-- links -->
   <link name="relax_arm1_link1">
     <!-- link 1 -->
@@ -151,7 +181,7 @@
     <!-- joint 1 -->
     <parent link="base_link"/>
     <child link="relax_arm1_link1"/>
-    <origin rpy="0.0 0.0 0.0" xyz="-0.13 0.0 0.3613"/>
+    <origin rpy="0.0 0.0 0.0" xyz="-0.13448500000000002 0.0 0.3613"/>
     <axis xyz="0 0 1"/>
     <limit effort="147.0" lower="-2.7" upper="2.7" velocity="3.86"/>
     <dynamics damping="0.2" friction="10.0"/>
@@ -207,39 +237,11 @@
     <child link="relax_arm1_linkEndEffector"/>
     <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.028"/>
   </joint>
-  <link name="base_link">
-    <inertial>
-      <mass value="97.0"/>
-      <origin rpy="0 0 0" xyz="-0.054485000000000006 0.0 0.15"/>
-      <inertia ixx="1.050832913" ixy="0.0" ixz="0.0" iyy="2.344165729" iyz="0.0" izz="2.7483322339999994"/>
-    </inertial>
-    <visual>
-      <origin rpy="0 0 0" xyz="-0.004485 0 0"/>
-      <geometry>
-        <mesh filename="package://relax_urdf/meshes/mesh_base_revised.stl" scale="0.001 0.001 0.001"/>
-      </geometry>
-      <material name="dark_grey"/>
-    </visual>
-    <collision>
-      <origin rpy="0 0 0" xyz="-0.004485 0 0"/>
-      <geometry>
-        <mesh filename="package://relax_urdf/meshes/mesh_base_revised.stl" scale="0.001 0.001 0.001"/>
-      </geometry>
-    </collision>
-  </link>
-  <gazebo reference="base_link">
-    <material>Gazebo/DarkGrey</material>
-  </gazebo>
-  <!-- end_effector attached -->
-  <!-- <xacro:if value="${ADD_END_EFFECTOR}">
-      <xacro:include filename="$(find relax_urdf)/urdf/parts/end_effector.urdf.xacro" />
-
-      <xacro:end_effector arm_num="1"  parent_link="arm1_7">
-                  <origin xyz="0. 0. 0." rpy="0. 0. 0."/>
-      </xacro:end_effector>
-
-      <xacro:end_effector arm_num="2"  parent_link="arm2_7">
-                  <origin xyz="0. 0. 0." rpy="0. 0. 0."/>
-      </xacroend_effector>
-</xacro:if> -->
+  <!-- nothing to do -->
+  <!-- floating base -->
+  <link name="world"/>
+  <joint name="world_joint" type="fixed">
+    <parent link="world"/>
+    <child link="base_link"/>
+  </joint>
 </robot>
