@@ -4,7 +4,8 @@
 <!-- macro arm -->
 <xacro:macro name="relax_arm" params="arm_num" >
 
-<!-- links -->
+<!-- links -->  
+
 <link name ="relax_arm${arm_num}_link1">  <!-- link 1 -->
     <inertial>
       <origin xyz="${Link_1_x} ${Link_1_y} ${Link_1_z}" />
