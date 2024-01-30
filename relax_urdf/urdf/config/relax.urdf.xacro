@@ -18,7 +18,7 @@ or realsense=false togheter with d435_xxx=true to add single ones. This is like 
 	<xacro:arg name="d435i_control_box" default="false"/>
 </xacro:unless>
 <xacro:arg name="floating_joint" default="false"/>
-<xacro:arg name="end_effector" default="ball"/> <!-- none, ball, dagana_fixed, dagana -->
+<xacro:arg name="end_effector" default="none"/> <!-- none, ball, dagana_fixed, dagana -->
 
 <xacro:arg name="use_nav_controllers" default="true"/>
 
