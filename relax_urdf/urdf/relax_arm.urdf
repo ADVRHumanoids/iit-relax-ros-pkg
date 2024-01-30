@@ -237,7 +237,37 @@
     <child link="relax_arm1_linkEndEffector"/>
     <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.028"/>
   </joint>
-  <!-- nothing to do -->
+  <link name="ball1">
+    <inertial>
+      <origin rpy="0 0 0" xyz="-1.0072498e-05 3.7590658e-05 0.019772332"/>
+      <mass value="1.27"/>
+      <inertia ixx="0.0023061092" ixy="2.9181758e-07" ixz="-2.1246683999999997e-07" iyy="0.0023053155000000002" iyz="7.9290978e-07" izz="0.0030675615999999997"/>
+    </inertial>
+    <visual>
+      <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+      <geometry name="ball1_visual">
+        <mesh filename="package://relax_urdf/meshes/BallHand.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="dark_grey"/>
+    </visual>
+    <collision>
+      <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+      <geometry name="ball1_collision">
+        <mesh filename="package://relax_urdf/meshes/simple/BallHand.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </collision>
+  </link>
+  <link name="ball1_tip"/>
+  <joint name="j_arm1_ball_mount_joint" type="fixed">
+    <parent link="relax_arm1_linkEndEffector"/>
+    <child link="ball1"/>
+    <origin rpy="0. 3.14159265359 0." xyz="0 0 0.02"/>
+  </joint>
+  <joint name="j_ball1_tip" type="fixed">
+    <parent link="ball1"/>
+    <child link="ball1_tip"/>
+    <origin rpy="0 0 0" xyz="0 0 -0.07"/>
+  </joint>
   <!-- floating base -->
   <link name="world"/>
   <joint name="world_joint" type="fixed">

@@ -9,7 +9,7 @@
 <xacro:arg name="arm" default="true"/>
 <xacro:arg name="base" default="false"/>
 <xacro:arg name="floating_joint" default="false"/>
-<xacro:arg name="end_effector" default="none"/> <!-- none, ball, dagana_fixed, dagana -->
+<xacro:arg name="end_effector" default="ball"/> <!-- none, ball, dagana_fixed, dagana -->
 
 
 <!-- ************SELECT PARTS*************-->
