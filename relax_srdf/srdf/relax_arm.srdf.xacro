@@ -53,11 +53,20 @@
 <!-- homing posture -->
   <group_state name="home" group="chains">
     <joint name="relax_arm1_joint0" value="0"/>
-        <joint name="relax_arm1_joint1" value="-0.4"/>
-        <joint name="relax_arm1_joint2" value="-1.8"/>
-        <joint name="relax_arm1_joint3" value="0"/>
-        <joint name="relax_arm1_joint4" value="0.8"/>
-        <joint name="relax_arm1_joint5" value="0"/>
+    <joint name="relax_arm1_joint1" value="-0.4"/>
+    <joint name="relax_arm1_joint2" value="-1.8"/>
+    <joint name="relax_arm1_joint3" value="0"/>
+    <joint name="relax_arm1_joint4" value="0.8"/>
+    <joint name="relax_arm1_joint5" value="0"/>
   </group_state>  
+  
+  <xacro:if value="${RELAX_ARM}">
+    <disable_collisions link1="relax_arm1_link1" link2="relax_arm1_link2" reason="Adjacent"/>
+    <disable_collisions link1="relax_arm1_link2" link2="relax_arm1_link3" reason="Adjacent"/>
+    <disable_collisions link1="relax_arm1_link3" link2="relax_arm1_link4" reason="Adjacent"/>
+    <disable_collisions link1="relax_arm1_link3" link2="relax_arm1_link5" reason="Never"/>
+    <disable_collisions link1="relax_arm1_link4" link2="relax_arm1_link5" reason="Adjacent"/>
+    <disable_collisions link1="relax_arm1_link5" link2="relax_arm1_link6" reason="Adjacent"/>
+  </xacro:if>
 
 </robot>
