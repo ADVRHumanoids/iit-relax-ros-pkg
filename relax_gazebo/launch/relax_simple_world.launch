@@ -16,6 +16,7 @@
   <arg name="verbose" default="false"/>
   <arg name="extra_gazebo_args" default=""/>
   <arg name="rviz" default="true"/>
+  <arg name="rviz_config" default="$(find relax_urdf)/rviz/relax.rviz"/>
 
   
   <arg name="arm" default="true"/>
@@ -70,7 +71,7 @@
     args="joint_state_controller mobile_base_controller"/>
 
   
-    <node if="$(arg rviz)" pkg="rviz" type="rviz" name="rviz" output="screen" args="-d $(find relax_urdf)/rviz/relax.rviz">
+    <node if="$(arg rviz)" pkg="rviz" type="rviz" name="rviz" output="screen" args="-d $(arg rviz_config)">
     </node> 
 
 </launch>
