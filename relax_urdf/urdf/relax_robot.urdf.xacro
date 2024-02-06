@@ -1,8 +1,5 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://ros.org/wiki/xacro" name="relax">
-
-<!-- ********* relax gazebo ********* -->  
-<xacro:arg name="floating_joint" default="false" />
   
 <!-- **** attach urdf robot model **** -->
 <xacro:include filename="$(find relax_urdf)/urdf/relax.urdf.xacro" />
@@ -13,15 +10,6 @@
 <xacro:include filename="$(find relax_urdf)/urdf/gazebo/xbot.gazebo.xacro" />
 
 <xacro:include filename="$(find relax_urdf)/urdf/gazebo/materials.gazebo.xacro" />
-
-<xacro:unless value="${RELAX_MOBILE_BASE}" > <!-- fixed base -->
-  	<link name="world"/>
-   	<joint name="world_joint" type="fixed">
-        <parent link="world"/>
-        <child link="base_link"/>
-        <origin xyz="0 0 0" rpy="0 0 0" />
-  	</joint>
-</xacro:unless>
 
 <xacro:if value="${RELAX_MOBILE_BASE}">
     <xacro:if value="${USE_NAV_CONTROLLERS}">
