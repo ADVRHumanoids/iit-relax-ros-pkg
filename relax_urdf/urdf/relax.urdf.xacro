@@ -19,11 +19,11 @@
         </joint>
     </xacro:if>
 </xacro:if>
-<xacro:unless value="${RELAX_MOBILE_BASE}" > <!-- fixed base -->
+<xacro:unless value="${RELAX_FLOATING_BASE}" > <!-- fixed base -->
   	<link name="world"/>
    	<joint name="world_joint" type="fixed">
         <parent link="world"/>
-        <child link="base_link"/>
+        <child link="base_footprint"/>
         <origin xyz="0 0 0" rpy="0 0 0" />
   	</joint>
 </xacro:unless>
