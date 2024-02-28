@@ -1,12 +1,13 @@
 <launch>
 
-	<!-- robot description -->
-	<param name="robot_description" textfile="$(find relax_urdf)/urdf/relax_xbot2.urdf"/>
-	<param name="robot_description_semantic" textfile="$(find relax_srdf)/srdf/relax.srdf"/>
-    <param name="cartesian/problem_description" textfile="$(find relax_cartesio)/relax_stack.yaml"/>
+    <!-- robot description -->
+    <param name="robot_description" textfile="$(find relax_urdf)/urdf/relax_mir.urdf"/>
+    <param name="robot_description_semantic" textfile="$(find relax_srdf)/srdf/relax_mir.srdf"/>
+    <param name="cartesian/problem_description" textfile="$(find relax_cartesio)/mir_stack.yaml"/>
 
     <param name="cartesian/velocity_whitelist" type="yaml" 
         value="[lin_x_joint, lin_y_joint, rot_z_joint]"/>
+
 
     <!-- launch cartesian interface -->
     <include file="$(find cartesian_interface)/launch/cartesio.launch">
@@ -21,6 +22,6 @@
     </include>
 
     <!-- show in rviz -->
-	<node type="rviz" name="rviz" pkg="rviz" args="-d $(find relax_cartesio)/relax.rviz"/>
+	<node type="rviz" name="rviz" pkg="rviz" args="-d $(find relax_cartesio)/config/relax.rviz"/>
 
 </launch>

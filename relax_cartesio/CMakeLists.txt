@@ -7,14 +7,14 @@ catkin_package()
 
 install(
   FILES 
-  relax_stack.yaml
-  relax_arm_stack.yaml
-  relax.launch
-  relax_arm.launch
-  mir_stack.yaml
-  mir.launch 
-  relax_arm_force_estimation.launch
-  relax.rviz
+  config/relax_stack.yaml
+  config/relax_arm_stack.yaml
+  launch/relax.launch
+  launch/relax_arm.launch
+  config/mir_stack.yaml
+  launch/mir.launch 
+  launch/relax_arm_force_estimation.launch
+  config/relax.rviz
   DESTINATION 
   ${CATKIN_PACKAGE_SHARE_DESTINATION}
 )
