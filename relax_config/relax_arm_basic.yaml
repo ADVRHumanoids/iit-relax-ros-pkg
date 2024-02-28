@@ -1,6 +1,8 @@
 XBotInterface:
-  urdf_path: $(rospack find relax_urdf)/urdf/relax_arm.urdf
-  srdf_path: $(rospack find relax_srdf)/srdf/relax_arm.srdf
+#   urdf_path: $(rospack find relax_urdf)/urdf/relax_arm.urdf
+#   srdf_path: $(rospack find relax_srdf)/srdf/relax_arm.srdf
+    urdf: xacro $(rospack find relax_urdf)/urdf/relax_arm.urdf.xacro end_effector:=none
+    srdf: xacro $(rospack find relax_srdf)/srdf/relax_arm.srdf.xacro end_effector:=none
 
 ModelInterface:
   model_type: "RBDL"
@@ -26,7 +28,7 @@ xbotcore_plugins:
         type: homing
 
     ros_io: {thread: nrt_main, type: ros_io, params: {publish_tf: {type: bool, value: true}}}
-    ros_control: {thread: nrt_main, type: ros_control, params: {autostart: {type: bool, value: false}}}
+    ros_control: {thread: nrt_main, type: ros_control, params: {autostart: {type: bool, value: true}}}
 
 # global parameters
 # additional parameters that don't relate to any plugin 
