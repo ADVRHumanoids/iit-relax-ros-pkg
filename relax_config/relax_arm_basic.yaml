@@ -13,6 +13,9 @@ ModelInterface:
 xbotcore_device_configs:
     sim: $(rospack find relax_config)/hal/relax_gz.yaml
     dummy: $(rospack find relax_config)/hal/relax_dummy.yaml
+    ec_pos: /home/embedded/src/xbot2_ws/src/relax_config/hal/relax_ec_all.yaml
+    ec_idle: /home/embedded/src/xbot2_ws/src/relax_config/hal/relax_ec_all.yaml
+    ec_imp: /home/embedded/src/xbot2_ws/src/relax_config/hal/relax_ec_all.yaml
 
 # threads
 xbotcore_threads:
