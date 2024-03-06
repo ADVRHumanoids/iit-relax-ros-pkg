@@ -204,7 +204,7 @@
     <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.028"/>
   </joint>
 
-
+  <!-- TERAFLEX PART -->
   <!-- link ring -->
   <link name="teraflex_1_link">
     <!-- link -->
