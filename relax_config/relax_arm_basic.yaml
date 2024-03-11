@@ -1,12 +1,12 @@
 XBotInterface:
-#   urdf_path: $(rospack find relax_urdf)/urdf/relax_arm.urdf
-#   srdf_path: $(rospack find relax_srdf)/srdf/relax_arm.srdf
-    urdf: xacro $(rospack find relax_urdf)/urdf/relax_arm.urdf.xacro end_effector:=none
-    srdf: xacro $(rospack find relax_srdf)/srdf/relax_arm.srdf.xacro end_effector:=none
+    #urdf_path: $(rospack find relax_urdf)/urdf/relax_arm.urdf
+    #srdf_path: $(rospack find relax_srdf)/srdf/relax_arm.srdf
+    urdf: xacro $(rospack find relax_urdf)/urdf/relax_arm.urdf.xacro end_effector:=dagana_fixed
+    srdf: xacro $(rospack find relax_srdf)/srdf/relax_arm.srdf.xacro end_effector:=dagana_fixed
 
 ModelInterface:
   model_type: "RBDL"
-  is_model_floating_base: "false"
+  is_model_floating_base: "False"
 
 
 # hal
