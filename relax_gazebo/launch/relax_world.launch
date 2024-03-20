@@ -68,13 +68,9 @@
   </group>
 
 
-   <!-- Load ros_control controller configurations -->
-  <rosparam file="$(find mir_description)/config/joint_state_controller.yaml" command="load" />
-  <rosparam file="$(find mir_description)/config/diffdrive_controller.yaml" command="load" subst_value="true" />
-
-  <!-- Start the controllers -->
-  <node name="controller_spawner" pkg="controller_manager" type="spawner" output="screen"
-    args="joint_state_controller mobile_base_controller"/>
+    <!--   Controllers for only the base   -->
+    <include file="$(find relax_ros_control)/launch/relax_base_control.launch">
+    </include>
 
   
 <!--  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">

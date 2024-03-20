@@ -1,0 +1,251 @@
+# Settings for ros_control control loop
+hardware_control_loop:
+   loop_hz: &loop_hz 1000
+
+# Settings for ros_control hardware interface
+ros_xbot_hw_interface:
+   joints: &robot_joints
+    - relax_arm1_joint0
+    - relax_arm1_joint1
+    - relax_arm1_joint2
+    - relax_arm1_joint3
+    - relax_arm1_joint4
+    - relax_arm1_joint5
+    
+   control_mode: 5 # * Bit 0 -> position * Bit 1 -> velocity * Bit 2 -> effort * Bit 3 -> stiffness * Bit 4 -> damping
+   
+################ POSITION CONTROLLERS (they use a position hardware interface) ################################## 
+# Joint Trajectory Controller - position based -------------------------------
+# For detailed explanations of parameter see http://wiki.ros.org/joint_trajectory_controller
+scaled_pos_joint_traj_controller:
+   type: position_controllers/ScaledJointTrajectoryController
+   joints: *robot_joints
+   constraints:
+      goal_time: 0.6
+      stopped_velocity_tolerance: 0.05
+      relax_arm1_joint0: {trajectory: 0.2, goal: 0.1}
+      relax_arm1_joint1: {trajectory: 0.2, goal: 0.1}
+      relax_arm1_joint2: {trajectory: 0.2, goal: 0.1}
+      relax_arm1_joint3: {trajectory: 0.2, goal: 0.1}
+      relax_arm1_joint4: {trajectory: 0.2, goal: 0.1}
+      relax_arm1_joint5: {trajectory: 0.2, goal: 0.1}
+   stop_trajectory_duration: 0.5
+   state_publish_rate: *loop_hz
+   action_monitor_rate: 20
+    
+pos_joint_traj_controller:
+   type: position_controllers/JointTrajectoryController
+   joints: *robot_joints
+   constraints:
+      goal_time: 0.6
+      stopped_velocity_tolerance: 0.05
+      relax_arm1_joint0: {trajectory: 0.2, goal: 0.1}
+      #relax_arm1_joint1: {trajectory: 0.2, goal: 0.1}
+      #relax_arm1_joint2: {trajectory: 0.2, goal: 0.1}
+      #relax_arm1_joint3: {trajectory: 0.2, goal: 0.1}
+      #relax_arm1_joint4: {trajectory: 0.2, goal: 0.1}
+      #relax_arm1_joint5: {trajectory: 0.2, goal: 0.1}
+   stop_trajectory_duration: 0.5
+   state_publish_rate: *loop_hz
+   action_monitor_rate: 20
+   
+#j_arm1_1_joint_controller:
+   #type: position_controllers/JointPositionController
+   #joint: j_arm1_1
+   
+pos_joint_controller:
+   type: position_controllers/JointGroupPositionController
+   joints: *robot_joints
+   
+test_pos_passthrough:
+  type: position_controllers/JointPositionController
+  joint: relax_arm1_joint0
+  pid: {p: 0.25, d: 1.0, i: 0.0}
+  
+test_vel_passthrough:
+  type: velocity_controllers/JointVelocityController
+  joint: relax_arm1_joint0
+  pid: {p: 0.25, d: 1.0, i: 0.0}
+  
+test_eff_passthrough:
+  type: effort_controllers/JointEffortController
+  joint: relax_arm1_joint0
+  pid: {p: 0.25, d: 1.0, i: 0.0}
+
+cartesian_pose_controller:
+    type: "position_controllers/CartesianMotionController"
+    end_effector_link: "ball1_tip"
+    robot_base_link: "base_link"
+    target_frame_topic: "target_frame"
+    joints: *robot_joints
+
+    pd_gains:
+        trans_x: {p: 100.0}
+        trans_y: {p: 100.0}
+        trans_z: {p: 100.0}
+        rot_x: {p: 1.0}
+        rot_y: {p: 1.0}
+        rot_z: {p: 1.0}
+        
+#This should be for the interactive marker on rviz        
+my_motion_control_handle:
+   type: "cartesian_controllers/MotionControlHandle"
+   end_effector_link: "ball1_tip"
+   robot_base_link: "base_link"
+   target_frame_topic: "/my_cartesian_motion_controller/target_frame"
+   joints: *robot_joints
+        
+#pose_based_cartesian_traj_controller:
+    #type: pose_controllers/CartesianTrajectoryController
+
+    #UR driver convention
+    #base: base
+    #tip: tool0_controller
+    #joints: *robot_joints
+
+#joint_based_cartesian_traj_controller:
+    #type: position_controllers/CartesianTrajectoryController
+
+    #UR driver convention
+    #base: base
+    #tip: tool0
+    #joints: *robot_joints
+
+#gripper_action_controller:
+   #type: position_controllers/GripperActionController
+   #joint: dagana_1_claw_joint
+   
+   
+   
+cart_imp:
+   type: cartesian_impedance_controller/CartesianImpedanceController
+   joints: *robot_joints
+
+   end_effector: ball1_tip            # Link to control arm in
+   update_frequency: 10                 # Controller update frequency in Hz
+    # Optional parameters - the mentioned values are the defaults
+   dynamic_reconfigure: true             # Starts dynamic reconfigure server
+   handle_trajectories: true             # Accept traj., e.g. from MoveIt
+   robot_description: /xbotcore/robot_description # In case of a varying name
+   wrench_ee_frame: ball1_tip         # Default frame for wrench commands
+   delta_tau_max: 1.0                    # Max. commanded torque diff between steps in Nm
+   filtering:                            # Update existing values (0.0 1.0] per s
+      nullspace_config: 0.1               # Nullspace configuration filtering
+      pose: 0.1                           # Reference pose filtering
+      stiffness: 0.1                      # Cartesian and nullspace stiffness
+      wrench: 0.1                         # Commanded torque
+   verbosity:
+      verbose_print: true                # Enables additional prints
+      state_msgs: true                   # Messages of controller state
+      tf_frames: true                    # Extra tf frames   
+
+        
+        
+##################################### JOINT SOFT LIMITS #######################################
+#https://github.com/ros-controls/ros_control/wiki/joint_limits_interface
+#http://wiki.ros.org/pr2_controller_manager/safety_limits    
+# you can also put the hard limits here, to override the one taken from urdf by xbot
+joint_limits:
+   relax_arm1_joint0:
+      has_position_limits: true
+      has_velocity_limits: true
+      has_acceleration_limits: false
+      has_effort_limits: true
+      has_jerk_limits: false
+      ##hard limits, will override urdf ones
+      #min_position: -2.85
+      #max_position: 2.85
+      #max_velocity: 3.86
+      #max_effort: 147.00
+      ##soft limits
+      has_soft_limits: true
+      k_position: 5
+      k_velocity: 0.5 #it seems not used but it is necessary
+      soft_lower_limit: -2.70
+      soft_upper_limit: 2.70
+   relax_arm1_joint1:
+      has_position_limits: true
+      has_velocity_limits: true
+      has_acceleration_limits: false
+      has_effort_limits: true
+      has_jerk_limits: false
+      ##hard limits, will override urdf ones
+      #min_position: -2.0
+      #max_position: 2.0
+      #max_velocity: 3.86
+      #max_effort: 147.00
+      ##soft limits
+      has_soft_limits: true
+      k_position: 5
+      k_velocity: 0.5 #it seems not used but it is necessary
+      soft_lower_limit: -2.70
+      soft_upper_limit: 2.70
+   relax_arm1_joint2:
+      has_position_limits: true
+      has_velocity_limits: true
+      has_acceleration_limits: false
+      has_effort_limits: true
+      has_jerk_limits: false
+      ##hard limits, will override urdf ones
+      #min_position: -2.2
+      #max_position: 2.2
+      #max_velocity: 6.06
+      #max_effort: 147.00
+      ##soft limits
+      has_soft_limits: true
+      k_position: 5
+      k_velocity: 0.5 #it seems not used but it is necessary
+      soft_lower_limit: -2.70
+      soft_upper_limit: 2.70
+   relax_arm1_joint3:
+      has_position_limits: true
+      has_velocity_limits: true
+      has_acceleration_limits: false
+      has_effort_limits: true
+      has_jerk_limits: false
+      ##hard limits, will override urdf ones
+      #min_position: -2.7
+      #max_position: 2.7
+      #max_velocity: 6.06
+      #max_effort: 147.00
+      ##soft limits
+      has_soft_limits: true
+      k_position: 5
+      k_velocity: 0.5 #it seems not used but it is necessary
+      soft_lower_limit: -2.7
+      soft_upper_limit: 2.7
+   relax_arm1_joint4:
+      has_position_limits: true
+      has_velocity_limits: true
+      has_acceleration_limits: false
+      has_effort_limits: true
+      has_jerk_limits: false
+      ##hard limits, will override urdf ones
+      #min_position: -2.2
+      #max_position: 2.2
+      #max_velocity: 11.72
+      #max_effort: 55.0
+      ##soft limits
+      has_soft_limits: true
+      k_position: 5
+      k_velocity: 0.5 #it seems not used but it is necessary
+      soft_lower_limit: -2
+      soft_upper_limit: 2
+   relax_arm1_joint5:
+      has_position_limits: true
+      has_velocity_limits: true
+      has_acceleration_limits: false
+      has_effort_limits: true
+      has_jerk_limits: false
+      ##hard limits, will override urdf ones
+      #min_position: -2.85
+      #max_position: 2.85
+      #max_velocity: 11.72
+      #max_effort: 55.0
+      ##soft limits
+      has_soft_limits: true
+      k_position: 5
+      k_velocity: 0.5 #it seems not used but it is necessary
+      soft_lower_limit: -2.7
+      soft_upper_limit: 2.7
+

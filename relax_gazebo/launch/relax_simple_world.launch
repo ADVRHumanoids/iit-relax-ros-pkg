@@ -12,7 +12,7 @@
     <arg name="recording" default="false"/>
     <arg name="debug" default="false"/>
     <arg name="physics" default="ode"/>
-    <arg name="verbose" default="false"/>
+    <arg name="verbose" default="true"/>
     <arg name="rviz" default="true"/>
     <arg name="rviz_config" default="$(find relax_urdf)/rviz/relax.rviz"/>
     
@@ -49,13 +49,10 @@
     <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
             args="-urdf -model relax -param robot_description"/>
 
-    <!-- Load ros_control controller configurations -->
-    <rosparam file="$(find relax_config)/mir_config/joint_state_controller.yaml" command="load" />
-    <rosparam file="$(find relax_config)/mir_config/diffdrive_controller.yaml" command="load" subst_value="true" />
-
-    <!-- Start the controllers -->
-    <node name="controller_spawner" pkg="controller_manager" type="spawner" output="screen"
-        args="joint_state_controller mobile_base_controller"/>
+    <!--   Controllers for only the base   -->
+    <include file="$(find relax_ros_control)/launch/relax_base_control.launch">
+        <arg name="prefix" value="$(arg prefix)"/>
+    </include>
 
   
     <node if="$(arg rviz)" pkg="rviz" type="rviz" name="rviz" output="screen" args="-d $(arg rviz_config)">

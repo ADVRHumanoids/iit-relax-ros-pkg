@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<launch>
+  
+    <arg name="rate" default="100" />
+    <arg name="gdb" default="false"/> <!-- for debug with gdb -->
+
+    <arg if="$(arg gdb)" name="prefix" value="gdb -ex run --arg" />
+    <arg unless="$(arg gdb)" name="prefix" value="" />
+    
+    <arg name="controllers" default=""/> 
+    <arg name="active_controllers" default=""/>
+    <arg name="stopped_controllers" default="cart_imp pos_joint_traj_controller pos_joint_controller" />
+
+    <arg name="controller_config_file" default="$(find relax_ros_control)/config/relax_arm_controllers.yaml" doc="Config file used for defining the ROS-Control controllers."/>
+    <rosparam file="$(arg controller_config_file)" command="load"/>
+
+    <!-- Launch the ros hw interface for xbot -->
+    <include file="$(find ros_xbot_hw_interface)/launch/ros_xbot_hw_interface.launch">
+      <arg name="gdb" value="$(arg gdb)" />
+    </include>
+    
+    <!-- spawn controller manager loading the controllers -->
+    <node name="ros_control_controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
+    output="screen" args="$(arg controllers) $(arg active_controllers)" />
+    
+    <!-- load other controller -->
+    <node name="ros_control_stopped_spawner" pkg="controller_manager" type="spawner" respawn="false"
+    output="screen" args="--stopped $(arg stopped_controllers)" unless="$(eval arg('stopped_controllers') == '')"/>
+    
+    
+    <!-- Numerically integrate twists into a pose -->
+<!--    <node name="spacenav_to_pose" pkg="cartesian_controller_utilities" type="pose.py" output="screen">
+        <param name="twist_topic" value="/spacenav/twist"/>
+        <param name="pose_topic" value="/cartesian_pose_controller/target_frame"/>
+        <param name="frame_id" value="base_link"/>
+        <param name="end_effector" value="tcp_1"/>
+        <param name="publishing_rate" value="100"/>
+    </node>-->
+    
+
+</launch>
+
