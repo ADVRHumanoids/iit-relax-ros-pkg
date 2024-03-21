@@ -12,15 +12,28 @@
 
 <!-- ******************************************************************* end_effector  **************************************************************** -->
 <xacro:if value="${END_EFFECTOR == 'none'}">
-    <!-- nothing to do -->
+    <link name="tcp_${arm_num}" />
+    <joint name="j_tcp_${arm_num}" type="fixed">
+        <parent link="relax_arm${arm_num}_linkEndEffector" />
+        <child link="tcp_${arm_num}" />
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+    </joint>
 </xacro:if>
 
 <xacro:if value="${END_EFFECTOR == 'ball'}">
 	<xacro:include filename="$(find relax_urdf)/urdf/parts/ball.urdf.xacro" />
 
 	<xacro:ball_end_effector arm_num="${arm_num}"  parent_link="relax_arm${arm_num}_linkEndEffector">
-		      <origin xyz="0 0 0.02" rpy="0. ${PI} 0."/>
+        <origin xyz="0 0 0.02" rpy="0. ${PI} 0."/>
 	</xacro:ball_end_effector>
+
+    <link name="tcp_${arm_num}" />
+    <joint name="j_tcp_${arm_num}" type="fixed">
+        <parent link="ball${arm_num}_tip" />
+        <child link="tcp_${arm_num}" />
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+    </joint>
+    
 </xacro:if>
 
 <xacro:if value="${END_EFFECTOR == 'dagana_fixed'}">
@@ -29,15 +42,64 @@
 	<xacro:dagana_gripper name="dagana_${arm_num}" parent_link="relax_arm${arm_num}_linkEndEffector" joint_type="fixed">
 		<origin xyz="0. 0 0" rpy="0. 0 0"/>
 	</xacro:dagana_gripper>
+    
+    <link name="tcp_${arm_num}" />
+    <joint name="j_tcp_${arm_num}" type="fixed">
+        <parent link="dagana_${arm_num}_tcp" />
+        <child link="tcp_${arm_num}" />
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+    </joint>
 	  
 </xacro:if>
 
 <xacro:if value="${END_EFFECTOR == 'dagana'}">
 	<xacro:include filename="$(find dagana_urdf)/urdf/dagana_macro.urdf.xacro" />
 
-	<xacro:dagana_gripper name="dagana_${arm_num}" parent_link="relax_arm${arm_num}_linkEndEffector" joint_type="revolute">
-		<origin xyz="0. 0 0" rpy="0. 0 0"/>
-	</xacro:dagana_gripper>
+    <xacro:dagana_gripper name="dagana_${arm_num}" parent_link="relax_arm${arm_num}_linkEndEffector" joint_type="revolute">
+        <origin xyz="0. 0 0" rpy="0. 0 0"/>
+    </xacro:dagana_gripper>
+    
+    <!--     to have the same final link as when "none" option is used     -->
+    <link name="tcp_${arm_num}" />
+    <joint name="j_tcp_${arm_num}" type="fixed">
+        <parent link="dagana_${arm_num}_tcp" />
+        <child link="tcp_${arm_num}" />
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+    </joint>
+</xacro:if>
+
+<xacro:if value="${END_EFFECTOR == 'disc'}">
+    <link name="tool_disc">
+        <visual>
+            <geometry>
+                <cylinder length="0.01" radius="0.1"/>
+            </geometry>
+            <material name="dark_grey"/>
+        </visual>
+        <collision>
+            <geometry>
+                <cylinder length="0.01" radius="0.1"/>
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="1"/>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.002"/>
+        </inertial>
+    </link>
+
+    <joint name="tool_disc_joint" type="fixed">
+        <parent link="relax_arm${arm_num}_linkEndEffector"/>
+        <child link="tool_disc"/>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+    </joint>
+  
+    <link name="tcp_${arm_num}" />
+    <joint name="j_tcp_${arm_num}" type="fixed">
+        <parent link="tool_disc" />
+        <child link="tcp_${arm_num}" />
+        <origin xyz="0 0 ${0.001/2}" rpy="0 0 0"/>
+    </joint>
 </xacro:if>
 
 
