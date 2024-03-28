@@ -4,7 +4,6 @@
     <xacro:property name="model_name" value="RELAX" />
     <xacro:property name="model_version" value="1.0" />
 
-
     <xacro:arg name="arm" default="relax_arm"/>  <!-- none, relax_arm -->
     <xacro:arg name="base" default="fixed"/> <!-- none, fixed, floating, mir -->
     <xacro:arg name="end_effector" default="none"/> <!-- none, ball, dagana_fixed, dagana -->

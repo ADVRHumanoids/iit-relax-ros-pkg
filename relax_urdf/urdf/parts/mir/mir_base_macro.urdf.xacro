@@ -107,15 +107,6 @@
     <xacro:caster_wheel prefix="${prefix}" locationprefix="bl" locationright="-1" wheel_base_dx="${-mir_back_caster_wheel_base_dx + mir_act_wheel_dx}"/>
     <xacro:caster_wheel prefix="${prefix}" locationprefix="br" locationright="1" wheel_base_dx="${-mir_back_caster_wheel_base_dx + mir_act_wheel_dx}"/>
 
-    <joint name="${prefix}base_link_surface_joint" type="fixed">
-      <origin xyz="${mir_act_wheel_dx} 0 0.352" rpy="0 0 0" />
-      <parent link="${prefix}base_link" />
-      <child link="${prefix}surface" />
-      <axis xyz="0 0 1" />
-    </joint>
-
-    <link name="${prefix}surface"/>
-
     <xacro:mir_wheel_transmissions prefix="${prefix}"/>
 
     <!-- set the gazebo friction parameters for the wheels -->

@@ -12,21 +12,21 @@
     <arg name="recording" default="false"/>
     <arg name="debug" default="false"/>
     <arg name="physics" default="ode"/>
-    <arg name="verbose" default="false"/>
+    <arg name="verbose" default="true"/>
     <arg name="rviz" default="true"/>
     <arg name="rviz_config" default="$(find relax_urdf)/rviz/relax.rviz"/>
     
-    <arg name="arm" default="true"/>
-    <arg name="base" default="true"/>
+    <arg name="arm" default="relax_arm"/>
+    <arg name="base" default="mir"/>
     <arg name="realsense" default="false"/>
-    <arg name="use_nav_controllers" default="true"/>
     <arg name="prefix" default=""/>
     <arg name="end_effector" default="none"/>
     <arg name="world_name" default="$(find relax_gazebo)/worlds/relax.world"/>  
   
   <!-- Load the URDF/SRDF into the ROS Parameter Server -->
     <param name="robot_description"
-         command="$(find xacro)/xacro $(find relax_urdf)/urdf/relax_robot.urdf.xacro arm:=$(arg arm) base:=$(arg base) realsense:=$(arg realsense) floating_joint:=false use_nav_controllers:=$(arg use_nav_controllers) end_effector:=$(arg end_effector)"/>
+         command="$(find xacro)/xacro $(find relax_urdf)/urdf/relax_robot.urdf.xacro 
+           arm:=$(arg arm) base:=$(arg base) realsense:=$(arg realsense) end_effector:=$(arg end_effector)"/>
   
    <!--  Necessary??  -->
     <param name="use_sim_time" type="bool" value="$(arg use_sim_time)"/>

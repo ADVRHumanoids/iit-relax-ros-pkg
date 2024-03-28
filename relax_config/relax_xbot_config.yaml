@@ -1,8 +1,6 @@
 XBotInterface:
-    #urdf_path: $(rospack find relax_urdf)/urdf/relax_arm.urdf
-    #srdf_path: $(rospack find relax_srdf)/srdf/relax_arm.srdf
-    urdf: xacro $(rospack find relax_urdf)/urdf/relax_arm.urdf.xacro end_effector:=dagana_fixed
-    srdf: xacro $(rospack find relax_srdf)/srdf/relax_arm.srdf.xacro end_effector:=dagana_fixed
+    urdf: xacro $(rospack find relax_urdf)/urdf/relax.urdf.xacro
+    srdf: xacro $(rospack find relax_srdf)/srdf/relax.srdf.xacro
 
 ModelInterface:
   model_type: "RBDL"

@@ -1,26 +1,31 @@
 <launch>
 
-	<!-- robot description -->
-	<param name="robot_description" textfile="$(find relax_urdf)/urdf/relax_xbot2.urdf"/>
-	<param name="robot_description_semantic" textfile="$(find relax_srdf)/srdf/relax.srdf"/>
-    <param name="cartesian/problem_description" textfile="$(find relax_cartesio)/relax_stack.yaml"/>
+    <arg name="rviz" default="true" />
+    <arg name="markers" default="true" />
+    <arg name="problem_description" default="$(find relax_cartesio)/config/relax_stack.yaml" /> <!-- set to false if only arm is controlled by xbot -->
 
-    <param name="cartesian/velocity_whitelist" type="yaml" 
-        value="[lin_x_joint, lin_y_joint, rot_z_joint]"/>
+    <arg name="gdb" default="false"/> <!-- for debug with gdb -->
+    <arg if="$(arg gdb)" name="prefix" value="gdb -ex run --arg" />
+    <arg unless="$(arg gdb)" name="prefix" value="" />
+
+    <!-- taking from xbot, since floating base is not handled by xbot so we do not need a different model for cartesio with the virtual frame -->
+    <remap from="robot_description" to="xbotcore/robot_description" />
+    <remap from="robot_description_semantic" to="xbotcore/robot_description_semantic" />
+    <param name="cartesian/problem_description" textfile="$(arg problem_description)"/>
 
     <!-- launch cartesian interface -->
     <include file="$(find cartesian_interface)/launch/cartesio.launch">
         <!-- Control frequency (Hz) -->
         <arg name="rate" value="100.0"/>
         <!-- Spawn RviZ interacrive markers -->
-        <arg name="markers" value="true"/>
+        <arg name="markers" value="$(arg markers)"/>
         <!-- Set to false for fixed base  -->
         <arg name="is_model_floating_base" value="false"/>
 
-        <!-- <arg name="prefix" value="xterm -e gdb"/> -->
+        <arg name="prefix" value="$(arg prefix)"/>
     </include>
 
     <!-- show in rviz -->
-	<node type="rviz" name="rviz" pkg="rviz" args="-d $(find relax_cartesio)/config/relax.rviz"/>
+	<node if="$(arg rviz)" type="rviz" name="rviz_ci" pkg="rviz" args="-d $(find relax_cartesio)/config/relax.rviz"/>
 
 </launch>

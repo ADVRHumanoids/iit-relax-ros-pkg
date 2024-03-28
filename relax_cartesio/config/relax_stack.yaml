@@ -1,9 +1,9 @@
 solver_options:
-    regularization: 1e-4
+    regularization: 1e-3
     back_end: "qpoases"
 
 stack:
-    - ["ArmControl", "Base"]
+    - ["ArmControl"]
     - ["Postural"]
     
 constraints: ["JointLimits", "VelocityLimits"]
@@ -21,14 +21,6 @@ ArmControl:
     base_link: "base_link"
     lambda: 0.1
     use_body_jacobian: true
-
-Base:
-    type: "Cartesian"
-    name: "mir_control"
-    distal_link: "base_link"
-    indices: [0, 5]
-    lambda: 0.1
-    name: mir
 
 Postural:
     type: Postural

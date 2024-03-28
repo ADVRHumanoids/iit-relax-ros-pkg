@@ -3,7 +3,7 @@
 
 <!-- car frame virtual joints -->
 <joint name="car_frame_tx" type="prismatic">
-    <parent link="base_footprint"/>
+    <parent link="base_link"/>
     <origin xyz="0.0 0.0 0.0"/>
     <child link="car_frame_intermediate_1"/>
     <axis xyz="1 0 0"/>

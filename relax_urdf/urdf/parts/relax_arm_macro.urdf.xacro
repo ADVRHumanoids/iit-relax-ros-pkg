@@ -14,7 +14,7 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0"/>
       <geometry name="relax_link1_visual">
-        <mesh filename="package://relax_urdf/meshes/untitled.stl" scale="0.001 0.001 0.001" />
+        <mesh filename="package://relax_urdf/meshes/mesh_link1.stl" scale="0.001 0.001 0.001" />
       </geometry>
       <material name="darkblue"/>
     </visual>

@@ -2,8 +2,8 @@
     <arg name="gui" default="true" />
     <arg name="visualize_inertia" default="false" />
 
-      <param name="robot_description" 
-             command="$(find xacro)/xacro $(find relax_urdf)/urdf/relax.urdf.xacro base:=mir"/>
+    <param name="robot_description" 
+            command="$(find xacro)/xacro $(find relax_urdf)/urdf/relax.urdf.xacro base:=floating"/>
 
      <param name="use_gui" value="$(arg gui)"/>
      <param name="rate" value="50.0"/>
