@@ -2,12 +2,11 @@
     <arg name="gui" default="true" />
     <arg name="visualize_inertia" default="false" />
 
-     <!-- send the relax robot XML to param server -->
-     <param name="robot_description" command="$(find xacro)/xacro '$(find relax_urdf)/urdf/relax.urdf.xacro'" />
-     <!-- <param name="robot_description_semantic" textfile="$(find relax_urdf)/srdf/relax.srdf" />   -->
+      <param name="robot_description" 
+             command="$(find xacro)/xacro $(find relax_urdf)/urdf/relax.urdf.xacro base:=mir"/>
+
      <param name="use_gui" value="$(arg gui)"/>
      <param name="rate" value="50.0"/>
-     
         
      <node name="joint_state_publisher" pkg="joint_state_publisher_gui" type="joint_state_publisher_gui">
      <param name="publish_default_efforts" value="True"/>
@@ -24,3 +23,4 @@
     <node if="$(arg visualize_inertia)" pkg="robot_inertia_publisher" type="robot_inertia_publisher" name="robot_inertia_publisher" output="screen" />
 
 </launch>
+

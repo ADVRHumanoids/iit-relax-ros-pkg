@@ -1,0 +1,32 @@
+digraph G {
+node [shape=box];
+"world" [label="world"];
+"base_link" [label="base_link"];
+"relax_arm1_link1" [label="relax_arm1_link1"];
+"relax_arm1_link2" [label="relax_arm1_link2"];
+"relax_arm1_link3" [label="relax_arm1_link3"];
+"relax_arm1_link4" [label="relax_arm1_link4"];
+"relax_arm1_link5" [label="relax_arm1_link5"];
+"relax_arm1_link6" [label="relax_arm1_link6"];
+"relax_arm1_linkEndEffector" [label="relax_arm1_linkEndEffector"];
+"tcp_1" [label="tcp_1"];
+node [shape=ellipse, color=blue, fontcolor=blue];
+"world" -> "world_joint" [label="xyz: 0 0 0 \nrpy: 0 -0 0"]
+"world_joint" -> "base_link"
+"base_link" -> "relax_arm1_joint0" [label="xyz: -0.134485 0 0.3557 \nrpy: 0 -0 0"]
+"relax_arm1_joint0" -> "relax_arm1_link1"
+"relax_arm1_link1" -> "relax_arm1_joint1" [label="xyz: 0 0.13166 0.24966 \nrpy: -1.5708 0 0"]
+"relax_arm1_joint1" -> "relax_arm1_link2"
+"relax_arm1_link2" -> "relax_arm1_joint2" [label="xyz: 0 -0.4 0 \nrpy: 0 -0 0"]
+"relax_arm1_joint2" -> "relax_arm1_link3"
+"relax_arm1_link3" -> "relax_arm1_joint3" [label="xyz: 0 -0.24966 -0.13166 \nrpy: 1.5708 -0 0"]
+"relax_arm1_joint3" -> "relax_arm1_link4"
+"relax_arm1_link4" -> "relax_arm1_joint4" [label="xyz: 0 -0.08816 0.1535 \nrpy: 1.5708 -0 0"]
+"relax_arm1_joint4" -> "relax_arm1_link5"
+"relax_arm1_link5" -> "relax_arm1_joint5" [label="xyz: 0 0.22216 -0.08816 \nrpy: -1.5708 0 0"]
+"relax_arm1_joint5" -> "relax_arm1_link6"
+"relax_arm1_link6" -> "relax_arm1_joint6" [label="xyz: 0 0 0.028 \nrpy: 0 -0 0"]
+"relax_arm1_joint6" -> "relax_arm1_linkEndEffector"
+"relax_arm1_linkEndEffector" -> "j_tcp_1" [label="xyz: 0 0 0 \nrpy: 0 -0 0"]
+"j_tcp_1" -> "tcp_1"
+}

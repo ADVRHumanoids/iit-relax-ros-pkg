@@ -1,20 +1,16 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://ros.org/wiki/xacro" name="relax">
   
-<!-- **** attach urdf robot model **** -->
-<xacro:include filename="$(find relax_urdf)/urdf/relax.urdf.xacro" />
+    <xacro:include filename="$(find relax_urdf)/urdf/config/relax_gazebo.urdf.xacro"/>
 
-<!-- **** attach robot gazebo **** -->
-<xacro:include filename="$(find relax_urdf)/urdf/gazebo/relax.gazebo.xacro" />
-
-<xacro:include filename="$(find relax_urdf)/urdf/gazebo/xbot.gazebo.xacro" />
-
-<xacro:include filename="$(find relax_urdf)/urdf/gazebo/materials.gazebo.xacro" />
-
-<xacro:if value="${RELAX_MOBILE_BASE}">
-    <xacro:if value="${USE_NAV_CONTROLLERS}">
+    <xacro:include filename="$(find relax_urdf)/urdf/gazebo/relax.gazebo.xacro" />
+    <xacro:include filename="$(find relax_urdf)/urdf/gazebo/xbot.gazebo.xacro" />
+    <xacro:include filename="$(find relax_urdf)/urdf/gazebo/materials.gazebo.xacro" />
+    
+    <xacro:if value="${RELAX_MOBILE_BASE == 'mir'}">
         <xacro:controller_plugin_gazebo robot_namespace=""/>
     </xacro:if>
-</xacro:if>
+    
+    <xacro:include filename="$(find relax_urdf)/urdf/parts/relax_core.urdf.xacro" />
 
 </robot>

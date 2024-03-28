@@ -1,0 +1,117 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro" name="relax">
+    
+<xacro:include filename="$(find relax_urdf)/urdf/properties/utils.urdf.xacro" />
+<xacro:include filename="$(find relax_urdf)/urdf/properties/materials.urdf.xacro" />
+
+<!-- ************************************ BASE ************************************ -->
+<xacro:if value="${RELAX_MOBILE_BASE == 'none'}">
+    <link name="world"/>
+    <joint name="world_joint" type="fixed">
+        <parent link="world"/>
+        <child link="base_link"/>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+    </joint>
+    <link name="base_link"/>
+    
+    <link name="relax_arm_base_link"/>
+    <joint name="relax_arm_base_link_joint" type="fixed">
+        <parent link="base_link"/>
+        <child link="relax_arm_base_link"/>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+    </joint>
+</xacro:if>   
+
+<xacro:if value="${RELAX_MOBILE_BASE == 'fixed'}">
+    <link name="world"/>
+    <joint name="world_joint" type="fixed">
+        <parent link="world"/>
+        <child link="base_link"/>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+    </joint>
+        
+    <!--  mir_act_wheel_dx is used so also wheels xacro is necessary here    -->
+    <xacro:include filename="$(find relax_urdf)/urdf/parts/mir/base_properties.urdf.xacro" />
+    <xacro:include filename="$(find relax_urdf)/urdf/parts/mir/wheels.urdf.xacro" />
+    <link name="base_link">
+        <xacro:box_inertial mass="${mir_base_mass}" x="${mir_base_inertial_x_length}" y="${mir_base_inertial_y_length}" z="${mir_base_inertial_z_length}">
+            <origin xyz="${mir_base_inertial_x + mir_act_wheel_dx} ${mir_base_inertial_y} ${mir_base_inertial_z}" rpy="0 0 0" />
+        </xacro:box_inertial>
+        <visual>
+            <origin xyz="${mir_act_wheel_dx} 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://relax_urdf/meshes/mesh_base_revised.stl" scale="0.001 0.001 0.001"/>
+            </geometry>
+            <material name="dark_grey"/>
+        </visual>
+        <collision>
+            <origin xyz="${mir_act_wheel_dx} 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://relax_urdf/meshes/mesh_base_revised.stl"  scale="0.001 0.001 0.001"/>
+            </geometry>
+        </collision>
+    </link>
+    
+    <xacro:include filename="$(find relax_urdf)/urdf/properties/kinematics_properties.urdf.xacro" />
+    <link name="relax_arm_base_link"/>
+    <joint name="relax_arm_base_link_joint" type="fixed">
+        <parent link="base_link"/>
+        <child link="relax_arm_base_link"/>
+        <origin xyz="${Joint_0_Ox} ${Joint_0_Oy} ${Joint_0_Oz}" rpy="${Joint_0_Oroll} ${Joint_0_Opitch} ${Joint_0_Oyaw}"/>
+    </joint>
+
+</xacro:if> 
+
+<xacro:if value="${RELAX_MOBILE_BASE == 'floating'}">
+    <link name="world"/>
+    <joint name="world_joint" type="floating">
+        <parent link="world"/>
+        <child link="base_footprint"/>
+    </joint>    
+    <xacro:include filename="$(find relax_urdf)/urdf/parts/virtual_frame.urdf.xacro"/>
+</xacro:if>  
+
+<xacro:if value="${RELAX_MOBILE_BASE == 'mir'}">
+    <xacro:property name="prefix" value="" />
+    <xacro:include filename="$(find relax_urdf)/urdf/parts/mir/mir_base_macro.urdf.xacro" />  
+    <xacro:mir prefix="${prefix}"/>
+    
+    <xacro:include filename="$(find relax_urdf)/urdf/properties/kinematics_properties.urdf.xacro" />
+    <link name="relax_arm_base_link"/>
+    <joint name="relax_arm_base_link_joint" type="fixed">
+        <parent link="base_link"/>
+        <child link="relax_arm_base_link"/>
+        <origin xyz="${Joint_0_Ox} ${Joint_0_Oy} ${Joint_0_Oz}" rpy="${Joint_0_Oroll} ${Joint_0_Opitch} ${Joint_0_Oyaw}"/>
+    </joint>
+
+</xacro:if>      
+
+
+<!-- ************ RELAX ARM ************ -->
+<xacro:if value="${RELAX_ARM == 'none'}">
+    
+</xacro:if>    
+
+<xacro:if value="${RELAX_ARM == 'relax_arm'}">
+    
+    <xacro:include filename="$(find relax_urdf)/urdf/properties/inertial_properties.urdf.xacro" />
+    <xacro:include filename="$(find relax_urdf)/urdf/properties/kinematics_properties.urdf.xacro" />
+    <xacro:include filename="$(find relax_urdf)/urdf/properties/dynamic_properties.urdf.xacro" />
+    <xacro:include filename="$(find relax_urdf)/urdf/properties/limits.urdf.xacro" />
+
+    <xacro:include filename="$(find relax_urdf)/urdf/parts/relax_arm_macro.urdf.xacro" />
+    <xacro:include filename="$(find relax_urdf)/urdf/parts/relax_ee_macro.urdf.xacro" />
+
+    <xacro:property name="arm_num" value="1" />
+    
+    <xacro:relax_arm arm_num="${arm_num}" parent_link="relax_arm_base_link" >
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+    </xacro:relax_arm>  
+
+    <xacro:relax_ee arm_num="${arm_num}" />    
+        
+</xacro:if>
+
+
+  
+</robot>

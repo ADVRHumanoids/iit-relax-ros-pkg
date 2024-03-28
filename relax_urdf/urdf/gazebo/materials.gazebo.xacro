@@ -21,6 +21,10 @@
   <material>Gazebo/Blue</material>
 </gazebo>
 
+<gazebo reference="base_link">
+    <material>Gazebo/DarkGrey</material>
+</gazebo>
+
 <xacro:if value="${END_EFFECTOR == 'ball'}">
 	<gazebo reference="ball1">
 		<material>Gazebo/BlackTransparent</material>

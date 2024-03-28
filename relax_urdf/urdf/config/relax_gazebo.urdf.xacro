@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro" name="relax">
+
+<xacro:property name="model_name" value="RELAX" />
+<xacro:property name="model_version" value="1.0" />
+
+    <xacro:arg name="arm" default="relax_arm"/>  <!-- none, relax_arm -->
+    <xacro:arg name="base" default="mir"/> <!-- none, fixed, floating, mir -->
+    <xacro:arg name="end_effector" default="none"/> <!-- none, ball, dagana_fixed, dagana -->
+
+    <!-- For sensors, you can use realsense=true argument to add all cameras (for now only d435i_control_box) 
+    or realsense=false togheter with d435_xxx=true to add single ones. This is like the centauro_urdf conf-->
+    <xacro:arg name="realsense" default="false"/>
+    <xacro:if value="$(arg realsense)">
+        <xacro:arg name="d435i_control_box" default="true"/>
+    </xacro:if>
+    <xacro:unless value="$(arg realsense)">
+        <xacro:arg name="d435i_control_box" default="false"/>
+    </xacro:unless>
+
+    <xacro:property name="RELAX_ARM" value="$(arg arm)" />
+
+    <xacro:property name="RELAX_MOBILE_BASE" value="$(arg base)" />
+    
+    <xacro:property name="END_EFFECTOR" value="$(arg end_effector)" />
+
+    <xacro:property name="ADD_D435I_CONTROL_BOX" value="$(arg d435i_control_box)" />
+
+</robot>

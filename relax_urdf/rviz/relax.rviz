@@ -8,6 +8,8 @@ Panels:
         - /Status1
         - /RobotModel1
         - /TF1
+        - /MarkerArray1
+        - /MarkerArray1/Namespaces1
       Splitter Ratio: 0.5
     Tree Height: 649
   - Class: rviz/Selection
@@ -53,7 +55,7 @@ Visualization Manager:
       Plane Cell Count: 10
       Reference Frame: <Fixed Frame>
       Value: true
-    - Alpha: 1
+    - Alpha: 0.699999988079071
       Class: rviz/RobotModel
       Collision Enabled: false
       Enabled: true
@@ -63,7 +65,74 @@ Visualization Manager:
         Expand Link Details: false
         Expand Tree: false
         Link Tree Style: Links in Alphabetic Order
+        back_laser_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        base_footprint:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
         base_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        bl_caster_rotation_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        bl_caster_wheel_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        br_caster_rotation_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        br_caster_wheel_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        fl_caster_rotation_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        fl_caster_wheel_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        fr_caster_rotation_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        fr_caster_wheel_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        front_laser_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        imu_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        imu_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        left_wheel_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -102,11 +171,28 @@ Visualization Manager:
           Alpha: 1
           Show Axes: false
           Show Trail: false
+        relax_arm_base_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        right_wheel_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        surface:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
         tcp_1:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-        world:
+        us_1_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        us_2_frame:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -117,32 +203,12 @@ Visualization Manager:
       Value: true
       Visual Enabled: true
     - Class: rviz/TF
-      Enabled: true
+      Enabled: false
       Filter (blacklist): ""
       Filter (whitelist): ""
       Frame Timeout: 15
       Frames:
         All Enabled: true
-        base_link:
-          Value: true
-        relax_arm1_link1:
-          Value: true
-        relax_arm1_link2:
-          Value: true
-        relax_arm1_link3:
-          Value: true
-        relax_arm1_link4:
-          Value: true
-        relax_arm1_link5:
-          Value: true
-        relax_arm1_link6:
-          Value: true
-        relax_arm1_linkEndEffector:
-          Value: true
-        tcp_1:
-          Value: true
-        world:
-          Value: true
       Marker Alpha: 1
       Marker Scale: 1
       Name: TF
@@ -150,18 +216,53 @@ Visualization Manager:
       Show Axes: true
       Show Names: true
       Tree:
-        world:
-          base_link:
-            relax_arm1_link1:
-              relax_arm1_link2:
-                relax_arm1_link3:
-                  relax_arm1_link4:
-                    relax_arm1_link5:
-                      relax_arm1_link6:
-                        relax_arm1_linkEndEffector:
-                          tcp_1:
-                            {}
+        {}
       Update Interval: 0
+      Value: false
+    - Class: rviz/MarkerArray
+      Enabled: true
+      Marker Topic: /link_inertias_viz
+      Name: MarkerArray
+      Namespaces:
+        back_laser_link_com: false
+        back_laser_link_inertia: false
+        base_link_com: true
+        base_link_inertia: true
+        bl_caster_rotation_link_com: false
+        bl_caster_rotation_link_inertia: false
+        bl_caster_wheel_link_com: false
+        bl_caster_wheel_link_inertia: false
+        br_caster_rotation_link_com: false
+        br_caster_rotation_link_inertia: false
+        br_caster_wheel_link_com: false
+        br_caster_wheel_link_inertia: false
+        fl_caster_rotation_link_com: false
+        fl_caster_rotation_link_inertia: false
+        fl_caster_wheel_link_com: false
+        fl_caster_wheel_link_inertia: false
+        fr_caster_rotation_link_com: false
+        fr_caster_rotation_link_inertia: false
+        fr_caster_wheel_link_com: false
+        fr_caster_wheel_link_inertia: false
+        front_laser_link_com: false
+        front_laser_link_inertia: false
+        left_wheel_link_com: false
+        left_wheel_link_inertia: false
+        relax_arm1_link1_com: false
+        relax_arm1_link1_inertia: false
+        relax_arm1_link2_com: false
+        relax_arm1_link2_inertia: false
+        relax_arm1_link3_com: false
+        relax_arm1_link3_inertia: false
+        relax_arm1_link4_com: false
+        relax_arm1_link4_inertia: false
+        relax_arm1_link5_com: false
+        relax_arm1_link5_inertia: false
+        relax_arm1_link6_com: false
+        relax_arm1_link6_inertia: false
+        right_wheel_link_com: false
+        right_wheel_link_inertia: false
+      Queue Size: 100
       Value: true
   Enabled: true
   Global Options:
@@ -191,7 +292,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 2.8959364891052246
+      Distance: 1.9585059881210327
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
@@ -199,17 +300,17 @@ Visualization Manager:
         Value: false
       Field of View: 0.7853981852531433
       Focal Point:
-        X: -0.30024996399879456
-        Y: -1.8047144412994385
-        Z: 1.3343074321746826
+        X: 0.03219820559024811
+        Y: -0.017306100577116013
+        Z: 0.20758278667926788
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.19539803266525269
+      Pitch: 0.8803976774215698
       Target Frame: <Fixed Frame>
-      Yaw: 1.5354081392288208
+      Yaw: 1.7454107999801636
     Saved: ~
 Window Geometry:
   Displays:

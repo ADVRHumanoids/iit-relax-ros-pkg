@@ -3,14 +3,17 @@
     <arg name="visualize_inertia" default="false" />
 
      <!-- send the relax robot XML to param server -->
-     <param name="robot_description" command="$(find xacro)/xacro '$(find relax_urdf)/urdf/relax_arm.urdf.xacro'" />
+      <param name="robot_description" 
+             command="$(find xacro)/xacro $(find relax_urdf)/urdf/relax.urdf.xacro base:=none"/>
+     
+     
      <!-- <param name="robot_description_semantic" textfile="$(find relax_urdf)/srdf/relax.srdf" />   -->
      <param name="use_gui" value="$(arg gui)"/>
      <param name="rate" value="50.0"/>
      
         
      <node name="joint_state_publisher" pkg="joint_state_publisher_gui" type="joint_state_publisher_gui">
-     <param name="publish_default_efforts" value="True"/>
+        <param name="publish_default_efforts" value="True"/>
      </node>
 
     <!-- start robot state publisher -->
