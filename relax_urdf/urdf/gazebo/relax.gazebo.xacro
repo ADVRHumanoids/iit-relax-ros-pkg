@@ -14,6 +14,10 @@
 </xacro:macro>
     
 <xacro:if value="${RELAX_ARM}">
+    <gazebo reference="relax_arm1_joint0">
+        <implicitSpringDamper>1</implicitSpringDamper>
+        <provideFeedback>true</provideFeedback>
+    </gazebo>
     <gazebo reference="relax_arm1_joint1">
         <implicitSpringDamper>1</implicitSpringDamper>
         <provideFeedback>true</provideFeedback>
