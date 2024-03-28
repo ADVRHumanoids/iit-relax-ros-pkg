@@ -28,6 +28,7 @@
             <gain name="wheel_mot"  p="10" d="2"/>
 
             <xacro:if value="${RELAX_ARM == 'relax_arm'}">
+                <pid name="relax_arm1_joint0" profile="medium_mot"/>
                 <pid name="relax_arm1_joint1" profile="medium_mot"/>
                 <pid name="relax_arm1_joint2" profile="medium_mot"/>
                 <pid name="relax_arm1_joint3" profile="medium_mot"/>
