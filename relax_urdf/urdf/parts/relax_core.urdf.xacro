@@ -13,10 +13,22 @@
         <origin xyz="0 0 0" rpy="0 0 0" />
     </joint>
     <link name="base_link">
-        <!--  a inertia is necessary for gazebo... solved in future version? https://github.com/gazebosim/sdformat/pull/1238  -->
-        <xacro:box_inertial mass="0.001" x="0.001" y="0.001" z="0.001">
-            <origin xyz="0 0 0" rpy="0 0 0" />
-        </xacro:box_inertial>
+        <visual>
+            <origin xyz="0 0 0.05" rpy="0 0 0" />
+            <geometry>
+                <cylinder length="0.10" radius="0.1"/>
+            </geometry>
+            <material name="dark_grey"/>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0.05" rpy="0 0 0" />
+            <geometry>
+                <cylinder length="0.10" radius="0.1"/>
+            </geometry>
+        </collision>
+        <xacro:cylinder_inertial mass="1" length="0.10" radius="0.1">
+            <origin xyz="0 0 0.05" rpy="0 0 0" />
+        </xacro:cylinder_inertial>
     </link>
 </xacro:if>   
 
@@ -118,7 +130,7 @@
     
     <xacro:if value="${RELAX_MOBILE_BASE == 'none'}">
         <xacro:relax_arm arm_num="${arm_num}" parent_link="base_link" >
-            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <origin xyz="0 0 0.1" rpy="0 0 0"/>
         </xacro:relax_arm> 
     </xacro:if>  
     
