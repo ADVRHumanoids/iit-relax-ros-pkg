@@ -7,7 +7,8 @@
 <!-- Center of Mass -->
 <xacro:property name="Link_1_x" value=" ${-1.8991406e+00*mmTom} "/>
 <xacro:property name="Link_1_y" value=" ${ 2.2645162e+01*mmTom} "/>
-<xacro:property name="Link_1_z" value=" ${ 1.6741297e+02*mmTom} "/>
+<!-- With the new ref frame of the link on the base of the link -->
+<xacro:property name="Link_1_z" value=" ${ (1.6741297e+02 - 54.16)*mmTom} "/>
 <!-- Mass -->
 <xacro:property name="Link_1_mass" value="6.2381702e+00"/>
 <!-- Inertia -->

@@ -21,7 +21,8 @@
 <!-- Joint 1 Origin : Link 1 - Link 2 -->
 <xacro:property name="Joint_1_Ox" value="  0.0 "/>
 <xacro:property name="Joint_1_Oy" value=" ${ 131.660*mmTom} "/>
-<xacro:property name="Joint_1_Oz" value=" ${ 249.660*mmTom} "/>
+<!-- With the new ref frame of the link on the base of the link -->
+<xacro:property name="Joint_1_Oz" value=" ${ (249.660-54.16)*mmTom} "/>
 
 <xacro:property name="Joint_1_Oroll" value=" -1.5707963 "/>
 <xacro:property name="Joint_1_Opitch" value=" 0.0 "/>
