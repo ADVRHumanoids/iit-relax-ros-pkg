@@ -8,3 +8,13 @@ xbotcore_devices:
         master: true  # this is a master device for 'joint'
         thread: rt_main
 
+    joint_gripper_adapter:
+        names: [dagana_1]
+        thread: rt_main
+        params:
+            dagana_1/joint_name: {value: dagana_1_claw_joint, type: string}
+            dagana_1/joint_type: {value: joint_dummy, type: string}
+            dagana_1/qopen: {value: 1.23, type: double}
+            dagana_1/qclosed: {value: 0.06, type: double}
+            dagana_1/vmax: {value: 10.0, type: double}
+            dagana_1/stiffness: {value: 50.0, type: double}
