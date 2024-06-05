@@ -16,6 +16,7 @@ xbotcore_device_configs:
     ec_pos: /home/embedded/src/xbot2_ws/src/relax_config/hal/relax_ec_all.yaml
     ec_idle: /home/embedded/src/xbot2_ws/src/relax_config/hal/relax_ec_all.yaml
     ec_imp: /home/embedded/src/xbot2_ws/src/relax_config/hal/relax_ec_all.yaml
+    ec_idle_no_brake: /home/embedded/src/xbot2_ws/src/relax_config/hal/relax_ec_all.yaml
 
 # threads
 xbotcore_threads:
@@ -32,6 +33,11 @@ xbotcore_plugins:
 
     ros_io: {thread: nrt_main, type: ros_io, params: {publish_tf: {type: bool, value: true}}}
     ros_control: {thread: nrt_main, type: ros_control, params: {autostart: {type: bool, value: true}}}
+
+    ec_ros: {thread: nrt_main, type: ec_ros}
+
+    gcomp: {thread: rt_main, type: thalesarm_gcomp}
+
 
 # global parameters
 # additional parameters that don't relate to any plugin 
