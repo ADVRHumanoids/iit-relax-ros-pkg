@@ -1,6 +1,6 @@
 XBotInterface:
-    urdf: xacro $(rospack find relax_urdf)/urdf/relax.urdf.xacro
-    srdf: xacro $(rospack find relax_srdf)/srdf/relax.srdf.xacro
+    urdf: xacro $(rospack find relax_urdf)/urdf/relax.urdf.xacro end_effector:=dagana nicla:=true
+    srdf: xacro $(rospack find relax_srdf)/srdf/relax.srdf.xacro end_effector:=dagana nicla:=true
 
 ModelInterface:
   model_type: "RBDL"
@@ -29,10 +29,37 @@ xbotcore_plugins:
         thread: rt_main
         type: homing
 
+    homing_gesture:
+        thread: rt_main
+        type: homing
+
+        params:
+            qhome: {value: [0, -0.2, -0.6, 0, -1.2, 1.57, 1.0], type: Eigen::VectorXd}
+
     ros_io: {thread: nrt_main, type: ros_io, params: {publish_tf: {type: bool, value: true}}}
     ros_control: {thread: nrt_main, type: ros_control, params: {autostart: {type: bool, value: true}}}
     
     ec_ros: {thread: nrt_main, type: ec_ros}
+
+    gcomp: {thread: rt_main, type: thalesarm_gcomp}
+
+
+    periodic_motion:
+        thread: rt_main
+        type: periodic_motion
+        params:
+           q_home_start: {value: [0, 0.5, -0.5, 0, 0, 0, 0.0], type: Eigen::VectorXd}
+           q_home_end:   {value: [0, -1.0, -1.0, 0, -1.57, -1.57, 0.0], type: Eigen::VectorXd}
+           time: {value: 10.0, type: double}
+
+    gesture_motion:
+        thread: rt_main
+        type: periodic_motion
+        params:
+           q_home_start: {value: [0, 0.0, -0.5, 0, 0, 0, 1.0], type: Eigen::VectorXd}
+           q_home_end:   {value: [0, -0.5, -1.0, 0, -1.57, -1.57, 1.0], type: Eigen::VectorXd}
+           time: {value: 8.0, type: double}
+
 
 
 # global parameters
