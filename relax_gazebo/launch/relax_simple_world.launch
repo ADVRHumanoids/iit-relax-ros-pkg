@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<launch>
+
+    <remap from="mobile_base_controller/cmd_vel" to="cmd_vel" />
+    <remap from="mobile_base_controller/odom"    to="odom" />
+    
+    
+    <!-- gazebo configuration parameters -->
+    <arg name="paused" default="false"/>
+    <arg name="use_sim_time" default="true"/>
+    <arg name="gui" default="true"/>
+    <arg name="recording" default="false"/>
+    <arg name="debug" default="false"/>
+    <arg name="physics" default="ode"/>
+    <arg name="verbose" default="true"/>
+    <arg name="rviz" default="true"/>
+    <arg name="rviz_config" default="$(find relax_urdf)/rviz/relax.rviz"/>
+    
+    <arg name="arm" default="relax_arm"/>
+    <arg name="base" default="mir"/>
+    <arg name="realsense" default="false"/>
+    <arg name="prefix" default=""/>
+    <arg name="end_effector" default="none"/>
+    <arg name="world_name" default="$(find relax_gazebo)/worlds/relax.world"/>  
+  
+  <!-- Load the URDF/SRDF into the ROS Parameter Server -->
+    <param name="robot_description"
+         command="$(find xacro)/xacro $(find relax_urdf)/urdf/relax_robot.urdf.xacro 
+           arm:=$(arg arm) base:=$(arg base) realsense:=$(arg realsense) end_effector:=$(arg end_effector)"/>
+  
+   <!--  Necessary??  -->
+    <param name="use_sim_time" type="bool" value="$(arg use_sim_time)"/>
+
+  <!-- run gazebo -->
+    <include file="$(find gazebo_ros)/launch/empty_world.launch">
+        <arg name="world_name" value="$(arg world_name)"/> 
+        <arg name="paused" value="$(arg paused)"/>
+        <arg name="use_sim_time" value="$(arg use_sim_time)"/>
+        <arg name="gui" value="true"/>
+        <arg name="recording" value="false"/>
+        <arg name="debug" value="$(arg debug)"/>
+        <arg name="verbose" value="$(arg verbose)"/>
+        <arg name="physics" value="$(arg physics)"/>
+        <!--   to record log headless is deprecated now it is called recording      -->
+        <!--        <arg name="headless" default="false"/> -->
+    </include>
+
+  	<!-- Run a python script to the send a service call to gazebo_ros to spawn a URDF robot -->
+    <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
+            args="-urdf -model relax -param robot_description"/>
+
+    <!-- Load ros_control controller configurations -->
+    <rosparam file="$(find relax_config)/mir_config/joint_state_controller.yaml" command="load" />
+    <rosparam file="$(find relax_config)/mir_config/diffdrive_controller.yaml" command="load" subst_value="true" />
+
+    <!-- Start the controllers -->
+    <node name="controller_spawner" pkg="controller_manager" type="spawner" output="screen"
+        args="joint_state_controller mobile_base_controller"/>
+
+  
+    <node if="$(arg rviz)" pkg="rviz" type="rviz" name="rviz" output="screen" args="-d $(arg rviz_config)">
+    </node> 
+
+</launch>

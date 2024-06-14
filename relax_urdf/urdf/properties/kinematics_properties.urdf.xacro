@@ -1,0 +1,76 @@
+<!--<?xml version="1.0"?>-->
+<robot  xmlns:xacro="http://ros.org/wiki/xacro">
+
+<!-- ARM -->
+
+<!-- Joint 0 Origin : Base - Link 1 -->
+<!-- See issue #33-->
+<!-- <xacro:property name="Joint_0_Ox" value=" ${-130.000*mmTom} "/> -->
+<xacro:property name="Joint_0_Ox" value=" ${-134.485*mmTom} "/>
+<xacro:property name="Joint_0_Oy" value=" 0.0 "/>
+<!-- Manually-brute-forcely reduce this since a vertical gap was present -->
+<!--<xacro:property name="Joint_0_Oz" value=" ${ 361.300*mmTom} "/>-->
+<!--<xacro:property name="Joint_0_Oz" value=" ${ 355.7*mmTom} "/>-->
+<!-- With the new ref frame of the link on the base of the link -->
+<xacro:property name="Joint_0_Oz" value=" ${ (355.7+54.16)*mmTom} "/>
+
+<xacro:property name="Joint_0_Oroll" value=" 0.0 "/>
+<xacro:property name="Joint_0_Opitch" value=" 0.0 "/>
+<xacro:property name="Joint_0_Oyaw" value=" 0.0 "/>
+
+<!-- Joint 1 Origin : Link 1 - Link 2 -->
+<xacro:property name="Joint_1_Ox" value="  0.0 "/>
+<xacro:property name="Joint_1_Oy" value=" ${ 131.660*mmTom} "/>
+<!-- With the new ref frame of the link on the base of the link -->
+<xacro:property name="Joint_1_Oz" value=" ${ (249.660-54.16)*mmTom} "/>
+
+<xacro:property name="Joint_1_Oroll" value=" -1.5707963 "/>
+<xacro:property name="Joint_1_Opitch" value=" 0.0 "/>
+<xacro:property name="Joint_1_Oyaw" value=" 0.0 "/>
+
+<!-- Joint 2 Origin : Link 2 - Link 3 -->
+<xacro:property name="Joint_2_Ox" value="  0.0 "/>
+<xacro:property name="Joint_2_Oy" value=" ${-400*mmTom} "/>
+<xacro:property name="Joint_2_Oz" value="  0.0 "/>
+
+<xacro:property name="Joint_2_Oroll" value="  0.0 "/>
+<xacro:property name="Joint_2_Opitch" value=" 0.0 "/>
+<xacro:property name="Joint_2_Oyaw" value=" 0.0 "/>
+
+<!-- Joint 3 Origin : Link 3 - Link 4 -->
+<xacro:property name="Joint_3_Ox" value="  0.0 "/>
+<xacro:property name="Joint_3_Oy" value=" ${-249.660*mmTom} "/>
+<xacro:property name="Joint_3_Oz" value=" ${-131.660*mmTom} "/>
+
+<xacro:property name="Joint_3_Oroll" value="  1.5707963 "/>
+<xacro:property name="Joint_3_Opitch" value=" 0.0 "/>
+<xacro:property name="Joint_3_Oyaw" value=" 0.0 "/>
+
+<!-- Joint 4 Origin : Link 4 - Link 5 -->
+<xacro:property name="Joint_4_Ox" value="  0.0 "/>
+<xacro:property name="Joint_4_Oy" value=" ${-88.1600*mmTom} "/>
+<xacro:property name="Joint_4_Oz" value=" ${ 153.500*mmTom} "/>
+
+<xacro:property name="Joint_4_Oroll" value=" 1.5707963 "/>
+<xacro:property name="Joint_4_Opitch" value=" 0.0 "/>
+<xacro:property name="Joint_4_Oyaw" value=" 0.0 "/>
+
+<!-- Joint 5 Origin : Link 5 - Link 6 -->
+<xacro:property name="Joint_5_Ox" value="  0.0 "/>
+<xacro:property name="Joint_5_Oy" value=" ${222.160*mmTom} "/>
+<xacro:property name="Joint_5_Oz" value=" ${-88.1600*mmTom} "/>
+
+<xacro:property name="Joint_5_Oroll" value="  -1.5707963 "/>
+<xacro:property name="Joint_5_Opitch" value=" 0.0 "/>
+<xacro:property name="Joint_5_Oyaw" value=" 0.0 "/>
+
+<!-- Joint 6 fake Origin : Link 6 - End-Effector -->
+<xacro:property name="Joint_6_Ox" value="  0.0 "/>
+<xacro:property name="Joint_6_Oy" value=" 0.0 "/>
+<xacro:property name="Joint_6_Oz" value=" ${28.0000*mmTom} "/>
+
+<xacro:property name="Joint_6_Oroll" value="  0.0 "/>
+<xacro:property name="Joint_6_Opitch" value=" 0.0 "/>
+<xacro:property name="Joint_6_Oyaw" value=" 0.0 "/>
+
+</robot>

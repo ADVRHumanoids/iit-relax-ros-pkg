@@ -1,0 +1,97 @@
+<!--<?xml version="1.0"?>-->
+<robot  xmlns:xacro="http://ros.org/wiki/xacro">
+
+<!-- ARM -->
+
+<!-- Link 1 -->
+<!-- Center of Mass -->
+<xacro:property name="Link_1_x" value=" ${-1.8991406e+00*mmTom} "/>
+<xacro:property name="Link_1_y" value=" ${ 2.2645162e+01*mmTom} "/>
+<!-- With the new ref frame of the link on the base of the link -->
+<xacro:property name="Link_1_z" value=" ${ (1.6741297e+02 - 54.16)*mmTom} "/>
+<!-- Mass -->
+<xacro:property name="Link_1_mass" value="6.2381702e+00"/>
+<!-- Inertia -->
+<xacro:property name="Link_1_xx" value=" ${ 6.5816037e+04*mm2Tom2} "/>
+<xacro:property name="Link_1_xy" value=" ${-1.1791629e+02*mm2Tom2} "/> 
+<xacro:property name="Link_1_xz" value=" ${-4.0067927e+01*mm2Tom2} "/>
+<xacro:property name="Link_1_yy" value=" ${ 5.7828314e+04*mm2Tom2} "/>
+<xacro:property name="Link_1_yz" value=" ${-1.1584403e+04*mm2Tom2} "/> 
+<xacro:property name="Link_1_zz" value=" ${ 1.9401960e+04*mm2Tom2} "/>
+
+<!-- Link 2 -->
+<!-- Center of Mass -->
+<xacro:property name="Link_2_x" value=" ${-3.1494342e-02*mmTom} "/>
+<xacro:property name="Link_2_y" value=" ${-2.0005579e+02*mmTom} "/>
+<xacro:property name="Link_2_z" value=" ${-5.7041875e+00*mmTom} "/>
+<!-- Mass -->
+<xacro:property name="Link_2_mass" value="2.6013710e+00"/>
+<!-- Inertia -->
+<xacro:property name="Link_2_xx" value=" ${ 6.4570453e+04*mm2Tom2} "/>
+<xacro:property name="Link_2_xy" value=" ${-1.9926538e+02*mm2Tom2} "/> 
+<xacro:property name="Link_2_xz" value=" ${-1.6866046e+00*mm2Tom2} "/>
+<xacro:property name="Link_2_yy" value=" ${ 5.1512542e+03*mm2Tom2} "/>
+<xacro:property name="Link_2_yz" value=" ${-2.9627309e+00*mm2Tom2} "/> 
+<xacro:property name="Link_2_zz" value=" ${ 6.6724653e+04*mm2Tom2} "/>
+
+<!-- Link 3 -->
+<!-- Center of Mass -->
+<xacro:property name="Link_3_x" value=" ${ 2.0858498e+00*mmTom} "/>
+<xacro:property name="Link_3_y" value=" ${-7.8452653e+01*mmTom} "/>
+<xacro:property name="Link_3_z" value=" ${-1.0797347e+02*mmTom} "/>
+<!-- Mass -->
+<xacro:property name="Link_3_mass" value="5.9482803e+00"/>
+<!-- Inertia -->
+<xacro:property name="Link_3_xx" value=" ${ 6.2877846e+04*mm2Tom2} "/>
+<xacro:property name="Link_3_xy" value=" ${ 1.1665783e+02*mm2Tom2} "/> 
+<xacro:property name="Link_3_xz" value=" ${ 1.2931181e+02*mm2Tom2} "/>
+<xacro:property name="Link_3_yy" value=" ${ 1.8390664e+04*mm2Tom2} "/>
+<xacro:property name="Link_3_yz" value=" ${-1.1034081e+04*mm2Tom2} "/> 
+<xacro:property name="Link_3_zz" value=" ${ 5.5056826e+04*mm2Tom2} "/>
+
+<!-- Link 4 -->
+<!-- Center of Mass -->
+<xacro:property name="Link_4_x" value=" ${ 9.6471566e-01*mmTom} "/>
+<xacro:property name="Link_4_y" value=" ${-4.2586853e+00*mmTom} "/>
+<xacro:property name="Link_4_z" value=" ${ 4.6169896e+01*mmTom} "/>
+<!-- Mass -->
+<xacro:property name="Link_4_mass" value="1.6710337e+00"/>
+<!-- Inertia -->
+<xacro:property name="Link_4_xx" value=" ${ 1.7329394e+04*mm2Tom2} "/>
+<xacro:property name="Link_4_xy" value=" ${ 2.1094011e+02*mm2Tom2} "/> 
+<xacro:property name="Link_4_xz" value=" ${-2.4511391e+02*mm2Tom2} "/>
+<xacro:property name="Link_4_yy" value=" ${ 1.0036061e+04*mm2Tom2} "/>
+<xacro:property name="Link_4_yz" value=" ${ 4.2230531e+02*mm2Tom2} "/> 
+<xacro:property name="Link_4_zz" value=" ${ 1.2350325e+04*mm2Tom2} "/>
+
+<!-- Link 5 -->
+<!-- Center of Mass -->
+<xacro:property name="Link_5_x" value=" ${-1.3991722e+00*mmTom} "/>
+<xacro:property name="Link_5_y" value=" ${ 5.2618238e+01*mmTom} "/>
+<xacro:property name="Link_5_z" value=" ${-8.4259542e+01*mmTom} "/>
+<!-- Mass -->
+<xacro:property name="Link_5_mass" value="6.1811020e+00"/>
+<!-- Inertia -->
+<xacro:property name="Link_5_xx" value=" ${ 5.9736008e+04*mm2Tom2} "/>
+<xacro:property name="Link_5_xy" value=" ${-1.4975682e+02*mm2Tom2} "/> 
+<xacro:property name="Link_5_xz" value=" ${-5.2815066e+01*mm2Tom2} "/>
+<xacro:property name="Link_5_yy" value=" ${ 1.5244195e+04*mm2Tom2} "/>
+<xacro:property name="Link_5_yz" value=" ${ 1.1994938e+03*mm2Tom2} "/> 
+<xacro:property name="Link_5_zz" value=" ${ 5.5701504e+04*mm2Tom2} "/>
+
+<!-- Link 6 -->
+<!-- Center of Mass -->
+<xacro:property name="Link_6_x" value=" ${ 5.6879032e-01*mmTom} "/>
+<xacro:property name="Link_6_y" value=" ${ 0.0000000e+00*mmTom} "/>
+<xacro:property name="Link_6_z" value=" ${ 2.2653642e+00*mmTom} "/>
+<!-- Mass -->
+<xacro:property name="Link_6_mass" value="4.8141935e-01"/>
+<!-- Inertia -->
+<xacro:property name="Link_6_xx" value=" ${ 8.2206420e+02*mm2Tom2} "/>
+<xacro:property name="Link_6_xy" value=" ${ 1.0675057e-01*mm2Tom2} "/> 
+<xacro:property name="Link_6_xz" value=" ${ 3.5319177e-01*mm2Tom2} "/>
+<xacro:property name="Link_6_yy" value=" ${ 8.3596992e+02*mm2Tom2} "/>
+<xacro:property name="Link_6_yz" value=" ${ 0.0000000e+00*mm2Tom2} "/> 
+<xacro:property name="Link_6_zz" value=" ${ 1.2890535e+03*mm2Tom2} "/>
+
+</robot>

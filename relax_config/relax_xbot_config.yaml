@@ -1,0 +1,77 @@
+XBotInterface:
+    urdf: xacro $(rospack find relax_urdf)/urdf/relax.urdf.xacro end_effector:=dagana nicla:=true
+    srdf: xacro $(rospack find relax_srdf)/srdf/relax.srdf.xacro end_effector:=dagana nicla:=true
+
+ModelInterface:
+  model_type: "RBDL"
+  is_model_floating_base: "False"
+
+
+# hal
+xbotcore_device_configs:
+    sim: $(rospack find relax_config)/hal/relax_gz.yaml
+    dummy: $(rospack find relax_config)/hal/relax_dummy.yaml
+    ec_pos: /home/embedded/src/xbot2_ws/src/relax_config/hal/relax_ec_all.yaml
+    ec_idle: /home/embedded/src/xbot2_ws/src/relax_config/hal/relax_ec_all.yaml
+    ec_imp: /home/embedded/src/xbot2_ws/src/relax_config/hal/relax_ec_all.yaml
+    ec_idle_no_brake: /home/embedded/src/xbot2_ws/src/relax_config/hal/relax_ec_all.yaml
+
+# threads
+xbotcore_threads:
+    rt_main:  {sched: fifo , prio: 60, period: 0.001}
+    nrt_main: {sched: other, prio: 0 , period: 0.005}
+
+
+# plugins
+xbotcore_plugins:
+
+    homing:
+        thread: rt_main
+        type: homing
+
+    homing_gesture:
+        thread: rt_main
+        type: homing
+
+        params:
+            qhome: {value: [0, -0.2, -0.6, 0, -1.2, 1.57, 1.0], type: Eigen::VectorXd}
+
+    ros_io: {thread: nrt_main, type: ros_io, params: {publish_tf: {type: bool, value: true}}}
+    ros_control: {thread: nrt_main, type: ros_control, params: {autostart: {type: bool, value: true}}}
+    
+    ec_ros: {thread: nrt_main, type: ec_ros}
+
+    gcomp: {thread: rt_main, type: thalesarm_gcomp}
+
+
+    periodic_motion:
+        thread: rt_main
+        type: periodic_motion
+        params:
+           q_home_start: {value: [0, 0.5, -0.5, 0, 0, 0, 0.0], type: Eigen::VectorXd}
+           q_home_end:   {value: [0, -1.0, -1.0, 0, -1.57, -1.57, 0.0], type: Eigen::VectorXd}
+           time: {value: 10.0, type: double}
+
+    gesture_motion:
+        thread: rt_main
+        type: periodic_motion
+        params:
+           q_home_start: {value: [0, 0.0, -0.5, 0, 0, 0, 1.0], type: Eigen::VectorXd}
+           q_home_end:   {value: [0, -0.5, -1.0, 0, -1.57, -1.57, 1.0], type: Eigen::VectorXd}
+           time: {value: 8.0, type: double}
+
+
+
+# global parameters
+# additional parameters that don't relate to any plugin 
+xbotcore_param:
+    /xbot/hal/joint_safety/filter_autostart: {value: true, type: bool}
+    /xbot/hal/joint_safety/filter_cutoff_hz: {value: 2.0, type: double}
+    /xbot/hal/enable_safety: {value: true, type: bool}
+    /xbot_internal/ros_io/call_timeout: {value: 1.0, type: chrono}
+    /rt_main/memory_hooks: {value: true, type: bool}
+
+
+
+
+

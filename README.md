@@ -1,34 +1,60 @@
-HOW TO CREATE THE URDF, SRDF AND SDF FILES:
--------------------------------------------
-First add the path of the packged to the ```ROS_PACKAGE_PATH``` env variable so that ROS can find it:
+# iit-relax-ros-pkg 
+Description of IIT's RELAX 6-DoF robot, plus configuration files enabling simulation inside the Gazebo environment via the XBot2 framework, and inverse kinematics via the CartesIO framework.
 
-```export ROS_PACKAGE_PATH=$ROS_PACKAGE_PATH:path/to/iit-relax-ros-pkg```
+*NOTE:* we recommend the `rosmon` package as a replacement for the `roslaunch` command, as it is faster and provides useful introspection (`apt install ros-$ROS_DISTRO-rosmon`, then refresh the terminal).
 
-If everything goes well you should be able to ```roscd relax_urdf```.
+## Robot configurations
+You want to use:
+- `relax.urdf.xacro` for xbot, cartesio, rviz
+- `relax_robot.urdf.xacro` for gazebo
+### Options
+When generating the xacro from the launch file, you can pass various option to it. You can check them in the relax_urdf/config folder:
+- `arm`: none, relax_arm  
+- `base`: none, fixed, floating, mir
+  - `none`: the arm will be on itself without the base
+  - `fixed`: there is the base, but not wheels. This is the default for xbot robot
+  - `floating`: it regards the old trial with car_frame, to let xbot control also the base. Not to be used at this state
+  - `mir`: the entire base will be loaded, with wheels. This is the default for the gazebo robot
+- `end_effector`: various one
 
-Then go to the ```../iit-relax-ros-pkg/relax_urdf/scripts/``` folder and run:
+## Installing the package
+Drop it into a catkin workspace `src/` folder, and then invoke either `catkin_make` or `catkin build`.
 
-```./create_urdf_srdf_sdf.sh relax```
+Simulation and inverse kinematics also requires the `xbot2` (full desktop) binary distribution (instructions [here](https://advrhumanoids.github.io/xbot2/)).
 
-Due to missing packages there could be some error messages, the final ```.urdf```, ```.srdf``` and ```.sdf``` should 
-anyway be created.
+## Visualizing the robot
+Just type 
+```bash
+mon launch relax_urdf relax_slider.launch
+```
 
-# Dependency
-- XBot2
-- Cartesian Interface
+## Simulating the robot
 
-# How to use it - Dummy mode (only RViz)
+Terminal #1:
+```bash
+mon launch relax_gazebo relax_world.launch verbose:=true
+```
 
-- clone this repository
-- set_xbot2_config [local_path]/relax_config/relax_basic.yaml
-- roscore
-- xbot2-core -H dummy
-- rviz (with robot model, tf:  relax_config/relax.rviz)
-- rosrun tf static_transform_publisher 0 0 0 0 0 0 ci/base_link base_link 2
-- mon launch relax_cartesio_config relax_cartesio.launch
-- Interactive marker to move the arm or the base_link
+Terminal #2:
+```bash
+xbot2-core --simtime --config $(rospack find relax_config)/relax_xbot_config.yaml
+```
+*Note that the required configuration file can be set once and for all via `xbot2_set_config $(rospack find relax_config)/relax_basic.yaml`, allowing to omit the `--config` flag.*
 
-You can change the file `relax_urdf/urdf/config/relax.urdf.xacro` you can select if you want the base, arm or both.
-After the changes you have to create again the urdf.
-WARNING:
-Sometimes the CI may fail while moving the base via interactive markers.
+It is now possible to play with the robot via the provided GUI (invoked with the `xbot2-gui` command), or to send joint space reference via ROS, e.g. using Python or C++ (see our [examples repository](https://github.com/ADVRHumanoids/xbot2_examples/blob/master/src/ros_api/README.md)).
+
+## Inverse kinematics
+Just type 
+```bash
+mon launch relax_cartesio relax_cartesio.launch gui:=true
+```
+The IK solver will attach to the `xbot2-core` program if available, and will otherwise run in "visual mode".
+
+It is now possible to play wih the robot via interactive markers, or to send Cartesian space reference via ROS, e.g. using Python or C++ (see the docs [here](https://advrhumanoids.github.io/CartesianInterface/quickstart.html)). 
+
+To move the end-effector via interacrive markers
+
+ - right click on a control, select *Continuous control*
+ - move the marker
+ - the IK should track the provided reference
+

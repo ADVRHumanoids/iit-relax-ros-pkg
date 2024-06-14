@@ -1,17 +1,58 @@
-cmake_minimum_required(VERSION 2.4.6)
-include($ENV{ROS_ROOT}/core/rosbuild/rosbuild.cmake)
+project(${ROBOT_NAME}_urdf)
 
-# Set the build type.  Options are:
-#  Coverage       : w/ debug symbols, w/o optimization, w/ code-coverage
-#  Debug          : w/ debug symbols, w/o optimization
-#  Release        : w/o debug symbols, w/ optimization
-#  RelWithDebInfo : w/ debug symbols, w/ optimization
-#  MinSizeRel     : w/o debug symbols, w/ optimization, stripped binaries
-#set(ROS_BUILD_TYPE RelWithDebInfo)
+find_package(catkin REQUIRED COMPONENTS)
 
-rosbuild_init()
+catkin_package()
 
-#set the default path for built executables to the "bin" directory
-set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
-#set the default path for built libraries to the "lib" directory
-set(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/lib)
+# mark urdf, meshes, launch and rviz files for installation
+install(DIRECTORY meshes
+  DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
+)
+
+install(DIRECTORY launch
+  DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
+)
+
+install(DIRECTORY urdf
+  DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
+)
+
+install(DIRECTORY rviz
+  DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
+)
+
+
+# main urdf
+generate_urdf(
+  XACRO ${ROBOT_NAME}.urdf.xacro 
+  CONFIG config/${ROBOT_NAME}.urdf.xacro 
+  ADD_TO_ALL TRUE
+)
+
+# main urdf xbot2
+generate_urdf(
+  XACRO ${ROBOT_NAME}_xbot2.urdf.xacro 
+  CONFIG config/${ROBOT_NAME}_xbot2.urdf.xacro 
+  ADD_TO_ALL TRUE
+)
+
+
+# MIR urdf
+generate_urdf(
+  XACRO ${ROBOT_NAME}.urdf.xacro 
+  CONFIG config/${ROBOT_NAME}_mir.urdf.xacro 
+  ADD_TO_ALL TRUE
+)
+
+# arm urdf
+generate_urdf(
+  XACRO ${ROBOT_NAME}.urdf.xacro 
+  CONFIG config/${ROBOT_NAME}_arm.urdf.xacro 
+  ADD_TO_ALL TRUE
+)
+
+# capsule model for main urdf
+generate_capsule_urdf(
+  CONFIG_NAME ${ROBOT_NAME}
+  ADD_TO_ALL TRUE
+)

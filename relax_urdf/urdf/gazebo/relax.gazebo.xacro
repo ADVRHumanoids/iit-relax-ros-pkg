@@ -1,104 +1,43 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://ros.org/wiki/xacro">    
     
-<xacro:if value="${RELAX_MOBILE_BASE}">
-    <gazebo reference="wheel_left">
-        <material>Gazebo/DarkGrey </material>
-        <collision>
-            <surface>
-                <friction>
-                    <ode>
-                        <mu>1.0</mu>
-                        <mu2>1.0</mu2>
-                    </ode>
-                    <bullet>
-                        <friction>1.0</friction>
-                        <friction2>1.0</friction2>
-                    </bullet>
-                </friction>
-                <contact>
-                    <ode>
-                        <kp>2100000</kp>
-                        <kd>1</kd>
-                        <max_vel>100</max_vel>
-                    </ode>
-                    <bullet>
-                        <soft_cfm>0.007</soft_cfm>
-                        <soft_erp>0.25</soft_erp>
-                        <kp>1000000</kp>
-                        <kd>5</kd>
-                    </bullet>
-                </contact>
-            </surface>
-        </collision>
-    </gazebo>
+<xacro:macro name="controller_plugin_gazebo" params="robot_namespace">
+<gazebo>
+    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+    <xacro:unless value="${robot_namespace == ''}">
+        <robotNamespace>${robot_namespace}</robotNamespace>
+    </xacro:unless>
+    <controlPeriod>0.001</controlPeriod>
+    <legacyModeNS>false</legacyModeNS>
+    </plugin>
+</gazebo>
+</xacro:macro>
     
-    <gazebo reference="wheel_right">
-        <material>Gazebo/DarkGrey </material>
-        <collision>
-            <surface>
-                <friction>
-                    <ode>
-                        <mu>1.0</mu>
-                        <mu2>1.0</mu2>
-                    </ode>
-                    <bullet>
-                        <friction>1.0</friction>
-                        <friction2>1.0</friction2>
-                    </bullet>
-                </friction>
-                <contact>
-                    <ode>
-                        <kp>2100000</kp>
-                        <kd>1</kd>
-                        <max_vel>100</max_vel>
-                    </ode>
-                    <bullet>
-                        <soft_cfm>0.007</soft_cfm>
-                        <soft_erp>0.25</soft_erp>
-                        <kp>1000000</kp>
-                        <kd>5</kd>
-                    </bullet>
-                </contact>
-            </surface>
-        </collision>
-    </gazebo>
-    
-    <gazebo reference="j_left_wheel">
+<xacro:if value="${RELAX_ARM == 'relax_arm'}">
+    <gazebo reference="relax_arm1_joint0">
         <implicitSpringDamper>1</implicitSpringDamper>
         <provideFeedback>true</provideFeedback>
     </gazebo>
-
-
-    <gazebo reference="j_right_wheel">
-        <implicitSpringDamper>1</implicitSpringDamper>
-        <provideFeedback>true</provideFeedback>
-    </gazebo>   
-</xacro:if>
-
-
-
-<xacro:if value="${RELAX_ARM}">
-    <gazebo reference="joint1">
+    <gazebo reference="relax_arm1_joint1">
         <implicitSpringDamper>1</implicitSpringDamper>
         <provideFeedback>true</provideFeedback>
     </gazebo>
-    <gazebo reference="joint2">
+    <gazebo reference="relax_arm1_joint2">
         <implicitSpringDamper>1</implicitSpringDamper>
         <provideFeedback>true</provideFeedback>
     </gazebo>
-    <gazebo reference="joint3">
+    <gazebo reference="relax_arm1_joint3">
         <implicitSpringDamper>1</implicitSpringDamper>
         <provideFeedback>true</provideFeedback>
     </gazebo>
-    <gazebo reference="joint4">
+    <gazebo reference="relax_arm1_joint4">
         <implicitSpringDamper>1</implicitSpringDamper>
         <provideFeedback>true</provideFeedback>
     </gazebo>
-    <gazebo reference="joint5">
+    <gazebo reference="relax_arm1_joint5">
         <implicitSpringDamper>1</implicitSpringDamper>
         <provideFeedback>true</provideFeedback>
-    </gazebo> 
+    </gazebo>
 </xacro:if>
 
 </robot>

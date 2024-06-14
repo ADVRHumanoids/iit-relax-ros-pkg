@@ -1,18 +1,22 @@
 xbotcore_devices:
 
     joint_gz:
-        names: []
+        names: [relax_arm1_joint0, relax_arm1_joint1, relax_arm1_joint2,
+                relax_arm1_joint3, relax_arm1_joint4, relax_arm1_joint5, dagana_1_claw_joint]
         thread: rt_main
 
     joint_master:
         master: true  # this is a master device for 'joint'
         thread: rt_main
 
-    #imu_gz:
-        #names: []
-        #thread: rt_main
-
-    link_state_sensor:
-        names: []
+    joint_gripper_adapter:
+        names: [dagana_1]
         thread: rt_main
-        type: link_state_sensor
+        params:
+            dagana_1/joint_name: {value: dagana_1_claw_joint, type: string}
+            dagana_1/joint_type: {value: joint_gz, type: string}
+            dagana_1/qopen: {value: 1.0, type: double}
+            dagana_1/qclosed: {value: 0.0, type: double}
+            dagana_1/vmax: {value: 1.0, type: double}
+            dagana_1/stiffness: {value: 10.0, type: double}
+

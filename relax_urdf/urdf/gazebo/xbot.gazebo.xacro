@@ -3,36 +3,38 @@
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
 
 <gazebo>
-
-    <plugin name="xbot2_link_state_sensor" filename="libxbot2_gz_link_state_sensor.so">
-        <links>
-            <link name="base_link"/>
-            <link name="left_wheel"/>
-        </links>
-    </plugin>
-    <!--
-    <plugin name="xbot2_ft_driver" filename="libxbot2_gz_ft_server.so"/>
-    
-    <plugin name="xbot2_imu_driver" filename="libxbot2_gz_imu_server.so"/>-->
-    
     <plugin name="xbot2_joint_driver" filename="libxbot2_gz_joint_server.so">
+        
+        <xacro:if value="${RELAX_MOBILE_BASE == 'mir'}">
+        <ignore_joints>
+            <joint_to_ignore name="left_wheel_joint"/>
+            <joint_to_ignore name="right_wheel_joint"/>
+            <joint_to_ignore name="bl_caster_rotation_joint"/>
+            <joint_to_ignore name="bl_caster_wheel_joint"/>
+            <joint_to_ignore name="br_caster_rotation_joint"/>
+            <joint_to_ignore name="br_caster_wheel_joint"/>
+            <joint_to_ignore name="fl_caster_rotation_joint"/>
+            <joint_to_ignore name="fl_caster_wheel_joint"/>
+            <joint_to_ignore name="fr_caster_rotation_joint"/>
+            <joint_to_ignore name="fr_caster_wheel_joint"/>
+        </ignore_joints>
+        </xacro:if>
+        
         <pid>
-            <!-- TODO -> CHANGE PARAMS              -->
             <gain name="lowpwr_mot" p="50"  d="5"/>
             <gain name="small_mot"  p="250"  d="5"/>
             <gain name="medium_mot" p="1000" d="10"/>
             <gain name="big_mot"    p="3000" d="10"/>
-            <gain name="wheel_mot"  p="0" d="10"/>
-            
-            <pid name="j_left_wheel_roll"     profile="wheel_mot"/>
-            <pid name="j_right_wheel_roll"     profile="wheel_mot"/>
-            
-            <pid name="joint1" profile="medium_mot"/>
-            <pid name="joint2" profile="medium_mot"/>
-            <pid name="joint3" profile="medium_mot"/>
-            <pid name="joint4" profile="small_mot"/>
-            <pid name="joint5" profile="small_mot"/>
-            
+            <gain name="wheel_mot"  p="10" d="2"/>
+
+            <xacro:if value="${RELAX_ARM == 'relax_arm'}">
+                <pid name="relax_arm1_joint0" profile="medium_mot"/>
+                <pid name="relax_arm1_joint1" profile="medium_mot"/>
+                <pid name="relax_arm1_joint2" profile="medium_mot"/>
+                <pid name="relax_arm1_joint3" profile="medium_mot"/>
+                <pid name="relax_arm1_joint4" profile="small_mot"/>
+                <pid name="relax_arm1_joint5" profile="small_mot"/>
+            </xacro:if>
         </pid>
     </plugin>
 </gazebo>
